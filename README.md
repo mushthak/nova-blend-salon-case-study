@@ -103,6 +103,42 @@ Given the customer doesn't have connectivity
 
 ---
 
+### Validate Salon Cache Use Case
+
+#### Primary course:
+1. Execute "Validate Cache" command with above data.
+2. System retrieves salon data from cache.
+3. System validates cache is less than seven days old.
+
+#### Retrieval error course (sad path):
+1. System deletes cache.
+
+#### Expired cache course (sad path): 
+1. System deletes cache.
+
+---
+
+### Cache Salons Use Case
+
+#### Data:
+- Salons
+
+#### Primary course (happy path):
+1. Execute "Save salons" command with above data.
+2. System deletes old cache data.
+3. System encodes salons.
+4. System timestamps the new cache.
+5. System saves new cache data.
+6. System delivers success message.
+
+#### Deleting error course (sad path):
+1. System delivers error.
+
+#### Saving error course (sad path):
+1. System delivers error.
+
+---
+
 ## Flowchart
 
 ![Salon Loading Feature](salon_flowchart.drawio.png)
