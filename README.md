@@ -63,11 +63,8 @@ Given the customer doesn't have connectivity
 
 ### Load Salons From Cache Use Case
 
-#### Data:
-- URL
-
 #### Primary course:
-1. Execute "Load salons" command with above data.
+1. Execute "Load salons" command.
 2. System retrieves salon data from cache.
 3. System validates cache is less than seven days old.
 4. System creates salon list from cached data.
@@ -77,10 +74,10 @@ Given the customer doesn't have connectivity
 1. System delivers error.
 
 #### Expired cache course (sad path): 
-1. System delivers no feed images.
+1. System delivers no salons.
 
 #### Empty cache course (sad path): 
-1. System delivers no feed images.
+1. System delivers no salons.
 
 ---
 
