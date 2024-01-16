@@ -102,3 +102,8 @@ Given the customer doesn't have connectivity
 1. System delivers connectivity error.
 
 ---
+
+## Flowchart
+
+![Salon Loading Feature](salon_flowchart.drawio.png)
+
