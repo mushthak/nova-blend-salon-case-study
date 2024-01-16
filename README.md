@@ -58,3 +58,50 @@ Given the customer doesn't have connectivity
  Then the app should display an error message
 
 ```
+
+## Use Cases
+
+### Load Salons From Cache Use Case
+
+#### Data:
+- URL
+
+#### Primary course:
+1. Execute "Load salons" command with above data.
+2. System retrieves salon data from cache.
+3. System validates cache is less than seven days old.
+4. System creates salon list from cached data.
+5. System delivers salon list.
+
+#### Retrieval error course (sad path):
+1. System delivers error.
+
+#### Expired cache course (sad path): 
+1. System delivers no feed images.
+
+#### Empty cache course (sad path): 
+1. System delivers no feed images.
+
+---
+
+### Load Salons Data From Remote Use Case
+
+#### Data:
+- URL
+
+#### Primary course (happy path):
+1. Execute "Load Salons" command with above data.
+2. System downloads data from the URL.
+3. System validates downloaded data.
+4. System delivers salon data.
+
+#### Cancel course:
+1. System does not deliver image data nor error.
+
+#### Invalid data – error course (sad path):
+1. System delivers invalid data error.
+
+#### No connectivity – error course (sad path):
+1. System delivers connectivity error.
+
+---
