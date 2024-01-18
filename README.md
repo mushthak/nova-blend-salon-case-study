@@ -32,7 +32,7 @@ Given the customer
 
   ```
 Given the customer
-  And the cached is empty
+  And the cache is empty
  When the customer requests to see the salons
  Then the app should show empty list
  ```
