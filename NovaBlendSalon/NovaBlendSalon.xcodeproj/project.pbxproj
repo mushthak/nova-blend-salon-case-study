@@ -7,82 +7,96 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29BDDD802B56AB650026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD772B56AB650026D484 /* NovaBlendSalon.framework */; };
-		29BDDD852B56AB650026D484 /* NovaBlendSalonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDD842B56AB650026D484 /* NovaBlendSalonTests.swift */; };
+		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
+		29BDDDAC2B5C016F0026D484 /* NovaBlendSalonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* NovaBlendSalonTests.swift */; };
+		29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB72B5C01E20026D484 /* Salon.swift */; };
+		29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB92B5C03760026D484 /* SalonLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		29BDDD812B56AB650026D484 /* PBXContainerItemProxy */ = {
+		29BDDDA82B5C016F0026D484 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 29BDDD6E2B56AB650026D484 /* Project object */;
+			containerPortal = 29BDDD952B5C016F0026D484 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 29BDDD762B56AB650026D484;
+			remoteGlobalIDString = 29BDDD9D2B5C016F0026D484;
 			remoteInfo = NovaBlendSalon;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		29BDDD772B56AB650026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		29BDDD7F2B56AB650026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29BDDD842B56AB650026D484 /* NovaBlendSalonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonTests.swift; sourceTree = "<group>"; };
+		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29BDDDAB2B5C016F0026D484 /* NovaBlendSalonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonTests.swift; sourceTree = "<group>"; };
+		29BDDDB72B5C01E20026D484 /* Salon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salon.swift; sourceTree = "<group>"; };
+		29BDDDB92B5C03760026D484 /* SalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		29BDDD742B56AB650026D484 /* Frameworks */ = {
+		29BDDD9B2B5C016F0026D484 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29BDDD7C2B56AB650026D484 /* Frameworks */ = {
+		29BDDDA32B5C016F0026D484 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BDDD802B56AB650026D484 /* NovaBlendSalon.framework in Frameworks */,
+				29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		29BDDD6D2B56AB650026D484 = {
+		29BDDD942B5C016F0026D484 = {
 			isa = PBXGroup;
 			children = (
-				29BDDD792B56AB650026D484 /* NovaBlendSalon */,
-				29BDDD832B56AB650026D484 /* NovaBlendSalonTests */,
-				29BDDD782B56AB650026D484 /* Products */,
+				29BDDDA02B5C016F0026D484 /* NovaBlendSalon */,
+				29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */,
+				29BDDD9F2B5C016F0026D484 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		29BDDD782B56AB650026D484 /* Products */ = {
+		29BDDD9F2B5C016F0026D484 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				29BDDD772B56AB650026D484 /* NovaBlendSalon.framework */,
-				29BDDD7F2B56AB650026D484 /* NovaBlendSalonTests.xctest */,
+				29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */,
+				29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29BDDD792B56AB650026D484 /* NovaBlendSalon */ = {
+		29BDDDA02B5C016F0026D484 /* NovaBlendSalon */ = {
 			isa = PBXGroup;
 			children = (
+				29BDDDB62B5C01B60026D484 /* Salon Feature */,
 			);
 			path = NovaBlendSalon;
 			sourceTree = "<group>";
 		};
-		29BDDD832B56AB650026D484 /* NovaBlendSalonTests */ = {
+		29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */ = {
 			isa = PBXGroup;
 			children = (
-				29BDDD842B56AB650026D484 /* NovaBlendSalonTests.swift */,
+				29BDDDAB2B5C016F0026D484 /* NovaBlendSalonTests.swift */,
 			);
 			path = NovaBlendSalonTests;
+			sourceTree = "<group>";
+		};
+		29BDDDB62B5C01B60026D484 /* Salon Feature */ = {
+			isa = PBXGroup;
+			children = (
+				29BDDDB72B5C01E20026D484 /* Salon.swift */,
+				29BDDDB92B5C03760026D484 /* SalonLoader.swift */,
+			);
+			path = "Salon Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		29BDDD722B56AB650026D484 /* Headers */ = {
+		29BDDD992B5C016F0026D484 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -92,14 +106,14 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		29BDDD762B56AB650026D484 /* NovaBlendSalon */ = {
+		29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29BDDD892B56AB650026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalon" */;
+			buildConfigurationList = 29BDDDB02B5C016F0026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalon" */;
 			buildPhases = (
-				29BDDD722B56AB650026D484 /* Headers */,
-				29BDDD732B56AB650026D484 /* Sources */,
-				29BDDD742B56AB650026D484 /* Frameworks */,
-				29BDDD752B56AB650026D484 /* Resources */,
+				29BDDD992B5C016F0026D484 /* Headers */,
+				29BDDD9A2B5C016F0026D484 /* Sources */,
+				29BDDD9B2B5C016F0026D484 /* Frameworks */,
+				29BDDD9C2B5C016F0026D484 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -107,46 +121,47 @@
 			);
 			name = NovaBlendSalon;
 			productName = NovaBlendSalon;
-			productReference = 29BDDD772B56AB650026D484 /* NovaBlendSalon.framework */;
+			productReference = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		29BDDD7E2B56AB650026D484 /* NovaBlendSalonTests */ = {
+		29BDDDA52B5C016F0026D484 /* NovaBlendSalonTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29BDDD8C2B56AB650026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalonTests" */;
+			buildConfigurationList = 29BDDDB32B5C016F0026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalonTests" */;
 			buildPhases = (
-				29BDDD7B2B56AB650026D484 /* Sources */,
-				29BDDD7C2B56AB650026D484 /* Frameworks */,
-				29BDDD7D2B56AB650026D484 /* Resources */,
+				29BDDDA22B5C016F0026D484 /* Sources */,
+				29BDDDA32B5C016F0026D484 /* Frameworks */,
+				29BDDDA42B5C016F0026D484 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				29BDDD822B56AB650026D484 /* PBXTargetDependency */,
+				29BDDDA92B5C016F0026D484 /* PBXTargetDependency */,
 			);
 			name = NovaBlendSalonTests;
 			productName = NovaBlendSalonTests;
-			productReference = 29BDDD7F2B56AB650026D484 /* NovaBlendSalonTests.xctest */;
+			productReference = 29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		29BDDD6E2B56AB650026D484 /* Project object */ = {
+		29BDDD952B5C016F0026D484 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					29BDDD762B56AB650026D484 = {
+					29BDDD9D2B5C016F0026D484 = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
-					29BDDD7E2B56AB650026D484 = {
+					29BDDDA52B5C016F0026D484 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = 29BDDD712B56AB650026D484 /* Build configuration list for PBXProject "NovaBlendSalon" */;
+			buildConfigurationList = 29BDDD982B5C016F0026D484 /* Build configuration list for PBXProject "NovaBlendSalon" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,26 +169,26 @@
 				en,
 				Base,
 			);
-			mainGroup = 29BDDD6D2B56AB650026D484;
-			productRefGroup = 29BDDD782B56AB650026D484 /* Products */;
+			mainGroup = 29BDDD942B5C016F0026D484;
+			productRefGroup = 29BDDD9F2B5C016F0026D484 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				29BDDD762B56AB650026D484 /* NovaBlendSalon */,
-				29BDDD7E2B56AB650026D484 /* NovaBlendSalonTests */,
+				29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */,
+				29BDDDA52B5C016F0026D484 /* NovaBlendSalonTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		29BDDD752B56AB650026D484 /* Resources */ = {
+		29BDDD9C2B5C016F0026D484 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29BDDD7D2B56AB650026D484 /* Resources */ = {
+		29BDDDA42B5C016F0026D484 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -183,33 +198,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		29BDDD732B56AB650026D484 /* Sources */ = {
+		29BDDD9A2B5C016F0026D484 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
+				29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		29BDDD7B2B56AB650026D484 /* Sources */ = {
+		29BDDDA22B5C016F0026D484 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BDDD852B56AB650026D484 /* NovaBlendSalonTests.swift in Sources */,
+				29BDDDAC2B5C016F0026D484 /* NovaBlendSalonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		29BDDD822B56AB650026D484 /* PBXTargetDependency */ = {
+		29BDDDA92B5C016F0026D484 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 29BDDD762B56AB650026D484 /* NovaBlendSalon */;
-			targetProxy = 29BDDD812B56AB650026D484 /* PBXContainerItemProxy */;
+			target = 29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */;
+			targetProxy = 29BDDDA82B5C016F0026D484 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		29BDDD872B56AB650026D484 /* Debug */ = {
+		29BDDDAE2B5C016F0026D484 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -275,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		29BDDD882B56AB650026D484 /* Release */ = {
+		29BDDDAF2B5C016F0026D484 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -333,9 +350,10 @@
 			};
 			name = Release;
 		};
-		29BDDD8A2B56AB650026D484 /* Debug */ = {
+		29BDDDB12B5C016F0026D484 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -359,13 +377,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		29BDDD8B2B56AB650026D484 /* Release */ = {
+		29BDDDB22B5C016F0026D484 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -393,9 +413,10 @@
 			};
 			name = Release;
 		};
-		29BDDD8D2B56AB650026D484 /* Debug */ = {
+		29BDDDB42B5C016F0026D484 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -407,9 +428,10 @@
 			};
 			name = Debug;
 		};
-		29BDDD8E2B56AB650026D484 /* Release */ = {
+		29BDDDB52B5C016F0026D484 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -424,34 +446,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29BDDD712B56AB650026D484 /* Build configuration list for PBXProject "NovaBlendSalon" */ = {
+		29BDDD982B5C016F0026D484 /* Build configuration list for PBXProject "NovaBlendSalon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				29BDDD872B56AB650026D484 /* Debug */,
-				29BDDD882B56AB650026D484 /* Release */,
+				29BDDDAE2B5C016F0026D484 /* Debug */,
+				29BDDDAF2B5C016F0026D484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29BDDD892B56AB650026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalon" */ = {
+		29BDDDB02B5C016F0026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				29BDDD8A2B56AB650026D484 /* Debug */,
-				29BDDD8B2B56AB650026D484 /* Release */,
+				29BDDDB12B5C016F0026D484 /* Debug */,
+				29BDDDB22B5C016F0026D484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29BDDD8C2B56AB650026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalonTests" */ = {
+		29BDDDB32B5C016F0026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalonTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				29BDDD8D2B56AB650026D484 /* Debug */,
-				29BDDD8E2B56AB650026D484 /* Release */,
+				29BDDDB42B5C016F0026D484 /* Debug */,
+				29BDDDB52B5C016F0026D484 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 29BDDD6E2B56AB650026D484 /* Project object */;
+	rootObject = 29BDDD952B5C016F0026D484 /* Project object */;
 }
