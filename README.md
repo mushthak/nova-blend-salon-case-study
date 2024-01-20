@@ -143,3 +143,58 @@ Given the customer doesn't have connectivity
 
 ![Salon Loading Feature](salon_flowchart.drawio.png)
 
+## Model Specs
+
+### Salon
+
+| Property      | Type                |
+|---------------|---------------------|
+| `id`          | `UUID`              |
+| `name`        | `String`            |
+| `location`    | `String`            |
+| `phone`       | `String` (optional) |
+| `openTime`    | `Float`             |
+| `closeTime`   | `Float`             |
+
+### Payload contract
+
+```
+GET *url* (TBD)
+
+200 RESPONSE
+
+{
+    "items": [
+        {
+            "id": "a UUID",
+            "name": "a name",
+            "location": "a location",
+            "phone": "a phone number",
+            "openTime": 9.30
+            "closeTime": 22.30,
+        },
+        {
+            "id": "another UUID",
+            "name": "another name",
+            "location": "another location",
+            "openTime": 10.30
+            "closeTime": 20.30,
+        },
+        {
+            "id": "even another UUID",
+            "name": "even another name",
+            "location": "even another location",
+            "openTime": 8.00
+            "closeTime": 14.00,
+        },
+        {
+            "id": "yet another UUID",
+            "name": "yet another name",
+            "location": "yet another location",
+            "openTime": 11.00
+            "closeTime": 16.00,
+        }
+        ...
+    ]
+}
+```
