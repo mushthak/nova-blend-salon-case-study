@@ -198,3 +198,9 @@ GET *url* (TBD)
     ]
 }
 ```
+
+---
+
+## App Architecture
+
+![](architecture.png)
