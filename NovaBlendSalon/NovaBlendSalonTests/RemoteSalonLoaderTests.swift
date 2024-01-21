@@ -17,27 +17,25 @@ private final class RemoteSalonLoader {
     }
     
     func load() {
-        client.requestedURL = url
-        client.requestedURLs.append(url)
+        client.getFrom(url: url)
     }
 }
 
-class HTTPClient {
-    var requestedURL: URL?
-    var requestedURLs = [URL]()
+protocol HTTPClient {
+    func getFrom(url: URL)
 }
 
 final class RemoteSalonLoaderTests: XCTestCase {
     func test_init_doesnotRequestDataFromURL() {
         let (_,client) = makeSUT()
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestDataFromURL() {
         let (sut,client) = makeSUT()
         sut.load()
         
-        XCTAssertNotNil(client.requestedURL)
+        XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
     func test_loadTwice_requestDataFromURLTwice() {
@@ -52,8 +50,16 @@ final class RemoteSalonLoaderTests: XCTestCase {
 }
 
 //MARK: Helper
-private func makeSUT(url: URL = URL(string: "http://a-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClient) {
-    let client = HTTPClient()
+private func makeSUT(url: URL = URL(string: "http://a-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
+    let client = HTTPClientSpy()
     let sut = RemoteSalonLoader(url: url, client: client)
     return(sut, client)
+}
+
+private class HTTPClientSpy: HTTPClient {
+    var requestedURLs = [URL]()
+    
+    func getFrom(url: URL) {
+        requestedURLs.append(url)
+    }
 }
