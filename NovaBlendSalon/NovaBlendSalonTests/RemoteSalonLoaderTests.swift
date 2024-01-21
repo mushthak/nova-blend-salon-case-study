@@ -6,32 +6,10 @@
 //
 
 import XCTest
-
-private final class RemoteSalonLoader {
-    private let url: URL
-    private let client: HTTPClient
-    
-    enum Error {
-        case connectivity
-    }
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load(completion: @escaping (Error) -> Void) {
-        client.getFrom(url: url) { error in
-            completion(.connectivity)
-        }
-    }
-}
-
-protocol HTTPClient {
-    func getFrom(url: URL, completion: @escaping (Error) -> Void)
-}
+import NovaBlendSalon
 
 final class RemoteSalonLoaderTests: XCTestCase {
+    
     func test_init_doesnotRequestDataFromURL() {
         let (_,client) = makeSUT()
         XCTAssertTrue(client.requestedURLs.isEmpty)

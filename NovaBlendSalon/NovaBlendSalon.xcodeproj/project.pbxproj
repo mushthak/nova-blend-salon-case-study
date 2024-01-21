@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* RemoteSalonLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */; };
 		29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB72B5C01E20026D484 /* Salon.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoaderTests.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		296576832B5CDD24005ECB8B /* Salon API */ = {
+			isa = PBXGroup;
+			children = (
+				296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */,
+			);
+			path = "Salon API";
+			sourceTree = "<group>";
+		};
 		29BDDD942B5C016F0026D484 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 		29BDDDB62B5C01B60026D484 /* Salon Feature */ = {
 			isa = PBXGroup;
 			children = (
+				296576832B5CDD24005ECB8B /* Salon API */,
 				29BDDDB72B5C01E20026D484 /* Salon.swift */,
 				29BDDDB92B5C03760026D484 /* SalonLoader.swift */,
 			);
@@ -203,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
+				296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */,
 				29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
