@@ -27,18 +27,21 @@ class HTTPClient {
 
 final class RemoteSalonLoaderTests: XCTestCase {
     func test_init_doesnotRequestDataFromURL() {
-        let client = HTTPClient()
-        let _ = RemoteSalonLoader(url: URL(string: "http://a-url.com")!, client: client)
-        
+        let (_,client) = makeSUT()
         XCTAssertNil(client.requestedURL)
     }
     
     func test_load_requestDataFromURL() {
-        let client = HTTPClient()
-        let sut = RemoteSalonLoader(url: URL(string: "http://a-url.com")!, client: client)
-        
+        let (sut,client) = makeSUT()
         sut.load()
         
         XCTAssertNotNil(client.requestedURL)
     }
+}
+
+//MARK: Helper
+private func makeSUT(url: URL = URL(string: "http://a-url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClient) {
+    let client = HTTPClient()
+    let sut = RemoteSalonLoader(url: url, client: client)
+    return(sut, client)
 }
