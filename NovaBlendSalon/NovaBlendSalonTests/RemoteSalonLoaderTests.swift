@@ -18,11 +18,13 @@ private final class RemoteSalonLoader {
     
     func load() {
         client.requestedURL = url
+        client.requestedURLs.append(url)
     }
 }
 
 class HTTPClient {
     var requestedURL: URL?
+    var requestedURLs = [URL]()
 }
 
 final class RemoteSalonLoaderTests: XCTestCase {
@@ -36,6 +38,16 @@ final class RemoteSalonLoaderTests: XCTestCase {
         sut.load()
         
         XCTAssertNotNil(client.requestedURL)
+    }
+    
+    func test_loadTwice_requestDataFromURLTwice() {
+        let url = URL(string: "http://a-url.com")!
+        let (sut,client) = makeSUT(url: url)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
     }
 }
 
