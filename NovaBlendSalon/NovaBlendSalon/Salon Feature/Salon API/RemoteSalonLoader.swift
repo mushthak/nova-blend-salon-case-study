@@ -15,7 +15,7 @@ public final class RemoteSalonLoader {
     private let url: URL
     private let client: HTTPClient
     
-    public enum Error {
+    public enum Error: Swift.Error {
         case connectivity
     }
     
