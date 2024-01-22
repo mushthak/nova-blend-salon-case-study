@@ -15,32 +15,31 @@ final class RemoteSalonLoaderTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    func test_load_requestDataFromURL() {
+    func test_load_requestDataFromURL() async throws{
         let (sut,client) = makeSUT()
-        sut.load { _ in }
+        try await sut.load()
         XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
-    func test_loadTwice_requestDataFromURLTwice() {
+    func test_loadTwice_requestDataFromURLTwice() async throws{
         let url = URL(string: "http://a-url.com")!
         let (sut,client) = makeSUT(url: url)
         
-        sut.load { _ in }
-        sut.load { _ in }
+        try await sut.load()
+        try await sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
-    func test_load_deliversConnectivityErrorOnClientError() {
+    func test_load_deliversConnectivityErrorOnClientError() async throws {
         let (sut,client) = makeSUT()
-        
         client.error = NSError(domain: "Test", code: 0)
-        var capturedError = [RemoteSalonLoader.Error]()
-        sut.load { error in
-            capturedError.append(error)
-        }
         
-        XCTAssertEqual(capturedError, [.connectivity])
+        do {
+            try await sut.load()
+        } catch {
+            XCTAssertEqual(error as? RemoteSalonLoader.Error, .connectivity)
+        }
     }
 }
 
@@ -55,9 +54,9 @@ private class HTTPClientSpy: HTTPClient {
     var requestedURLs = [URL]()
     var error: Error?
     
-    func getFrom(url: URL, completion: @escaping (Error) -> Void) {
+    func getFrom(url: URL) async throws {
         if let error = error {
-            completion(error)
+            throw error
         }
         requestedURLs.append(url)
     }

@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-    func getFrom(url: URL, completion: @escaping (Error) -> Void)
+    func getFrom(url: URL) async throws
 }
 
 public final class RemoteSalonLoader {
@@ -24,9 +24,11 @@ public final class RemoteSalonLoader {
         self.client = client
     }
     
-    public func load(completion: @escaping (Error) -> Void) {
-        client.getFrom(url: url) { error in
-            completion(.connectivity)
+    public func load() async throws {
+        do {
+            try await client.getFrom(url: url)
+        } catch {
+            throw Error.connectivity
         }
     }
 }
