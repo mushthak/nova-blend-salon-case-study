@@ -51,7 +51,7 @@ private func makeSUT(url: URL = URL(string: "http://a-url.com")!, file: StaticSt
 }
 
 private class HTTPClientSpy: HTTPClient {
-    var requestedURLs = [URL]()
+    private(set) var requestedURLs = [URL]()
     var error: Error?
     
     func getFrom(url: URL) async throws {
