@@ -11,19 +11,19 @@ import NovaBlendSalon
 final class RemoteSalonLoaderTests: XCTestCase {
     
     func test_init_doesnotRequestDataFromURL() {
-        let (_,client) = makeSUT(with: .success(()))
+        let (_,client) = makeSUT()
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestDataFromURL() async throws{
-        let (sut,client) = makeSUT(with: .success(()))
+        let (sut,client) = makeSUT()
         try await sut.load()
         XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
     func test_loadTwice_requestDataFromURLTwice() async throws{
         let url = URL(string: "http://a-url.com")!
-        let (sut,client) = makeSUT(url: url, with: .success(()))
+        let (sut,client) = makeSUT(url: url)
         
         try await sut.load()
         try await sut.load()
@@ -44,10 +44,14 @@ final class RemoteSalonLoaderTests: XCTestCase {
 }
 
 //MARK: Helper
-private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Result<Void, Error>, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
+private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Result<Void, Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
     let client = HTTPClientSpy(result: result)
     let sut = RemoteSalonLoader(url: url, client: client)
     return(sut, client)
+}
+
+private  func anyValidResponse() -> Result<Void, Error> {
+    return .success(())
 }
 
 private class HTTPClientSpy: HTTPClient {
