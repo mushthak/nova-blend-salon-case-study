@@ -41,29 +41,40 @@ final class RemoteSalonLoaderTests: XCTestCase {
             XCTAssertEqual(error as? RemoteSalonLoader.Error, .connectivity)
         }
     }
+    
+    func test_load_deliversInvalidDataErrorOnNon200HTTPResponse() async throws {
+        let response = HTTPURLResponse(url: URL(string: "http://a-url.com")!, statusCode: 400, httpVersion: nil, headerFields: nil)!
+        let (sut,_) = makeSUT(with: .success(response))
+        
+        do {
+            try await sut.load()
+            XCTFail("Expected to throw \(RemoteSalonLoader.Error.invalidData) but got success instead")
+        } catch {
+            XCTAssertEqual(error as? RemoteSalonLoader.Error, .invalidData)
+        }
+    }
 }
 
 //MARK: Helper
-private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Result<Void, Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
+private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Result<HTTPURLResponse, Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
     let client = HTTPClientSpy(result: result)
     let sut = RemoteSalonLoader(url: url, client: client)
     return(sut, client)
 }
 
-private  func anyValidResponse() -> Result<Void, Error> {
-    return .success(())
+private  func anyValidResponse() -> Result<HTTPURLResponse, Error> {
+    return .success(HTTPURLResponse(url: URL(string: "http://a-url.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!)
 }
 
 private class HTTPClientSpy: HTTPClient {
     private(set) var requestedURLs = [URL]()
-    let result: Result<Void, Error>
+    let result: Result<HTTPURLResponse, Error>
     
-    init(requestedURLs: [URL] = [URL](), result: Result<Void, Error>) {
-        self.requestedURLs = requestedURLs
+    init(result: Result<HTTPURLResponse, Error>) {
         self.result = result
     }
     
-    func getFrom(url: URL) async throws {
+    func getFrom(url: URL) async throws -> HTTPURLResponse {
         requestedURLs.append(url)
         return try result.get()
     }

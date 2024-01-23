@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-    func getFrom(url: URL) async throws
+    func getFrom(url: URL) async throws -> HTTPURLResponse
 }
 
 public final class RemoteSalonLoader {
@@ -17,6 +17,7 @@ public final class RemoteSalonLoader {
     
     public enum Error: Swift.Error {
         case connectivity
+        case invalidData
     }
     
     public init(url: URL, client: HTTPClient) {
@@ -25,10 +26,12 @@ public final class RemoteSalonLoader {
     }
     
     public func load() async throws {
-        do {
-            try await client.getFrom(url: url)
-        } catch {
+        guard let result = try? await client.getFrom(url: url) else {
             throw Error.connectivity
+        }
+        
+        if result.statusCode != 200 {
+            throw Error.invalidData
         }
     }
 }
