@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol HTTPClient {
-    func getFrom(url: URL) async throws -> HTTPURLResponse
+    func getFrom(url: URL) async throws -> (Data, HTTPURLResponse)
 }
 
 public final class RemoteSalonLoader {
@@ -26,12 +26,14 @@ public final class RemoteSalonLoader {
     }
     
     public func load() async throws {
-        guard let result = try? await client.getFrom(url: url) else {
+        guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
         
-        if result.statusCode != 200 {
+        guard response.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: data) else {
             throw Error.invalidData
         }
+        
+        
     }
 }
