@@ -17,7 +17,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
     
     func test_load_requestDataFromURL() async throws{
         let (sut,client) = makeSUT()
-        try await sut.load()
+        _ = try await sut.load()
         XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
@@ -25,8 +25,8 @@ final class RemoteSalonLoaderTests: XCTestCase {
         let url = URL(string: "http://a-url.com")!
         let (sut,client) = makeSUT(url: url)
         
-        try await sut.load()
-        try await sut.load()
+        _ = try await sut.load()
+        _ = try await sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
@@ -36,7 +36,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
         let (sut,_) = makeSUT(with: .failure(error))
         
         do {
-            try await sut.load()
+            _ = try await sut.load()
         } catch {
             XCTAssertEqual(error as? RemoteSalonLoader.Error, .connectivity)
         }
@@ -51,7 +51,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
                 let (sut,_) = makeSUT(with: .success((Data(), response)))
                 
                 do {
-                    try await sut.load()
+                    _ = try await sut.load()
                     XCTFail("Expected to throw \(RemoteSalonLoader.Error.invalidData) but got success instead")
                 } catch {
                     XCTAssertEqual(error as? RemoteSalonLoader.Error, .invalidData)
@@ -66,7 +66,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
         let (sut,_) = makeSUT(with: .success((invalidJSON, response)))
         
         do {
-            try await sut.load()
+            _ = try await sut.load()
             XCTFail("Expected to throw \(RemoteSalonLoader.Error.invalidData) but got success instead")
         } catch {
             XCTAssertEqual(error as? RemoteSalonLoader.Error, .invalidData)
