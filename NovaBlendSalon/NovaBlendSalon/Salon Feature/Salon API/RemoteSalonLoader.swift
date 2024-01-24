@@ -15,6 +15,8 @@ public final class RemoteSalonLoader {
     private let url: URL
     private let client: HTTPClient
     
+    private let OK_200 = 200
+    
     private struct Root: Decodable {
         let salons: [Salon]
     }
@@ -34,7 +36,7 @@ public final class RemoteSalonLoader {
             throw Error.connectivity
         }
         
-        guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
+        guard response.statusCode == OK_200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw Error.invalidData
         }
         
