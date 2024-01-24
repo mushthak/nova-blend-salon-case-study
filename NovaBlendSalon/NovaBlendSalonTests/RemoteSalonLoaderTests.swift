@@ -81,8 +81,52 @@ final class RemoteSalonLoaderTests: XCTestCase {
             let salons: [Salon] = try await sut.load()
             XCTAssertEqual(salons, [])
         } catch {
-            XCTFail("Expected to receive empty JSON but got \(error) instead")
+            XCTFail("Expected to receive empty items array but got \(error) instead")
         }
+    }
+    
+    func test_load_deliversItemsArrayOn200HTTPResponseWithJSONList() async throws {
+        let item1 = Salon(id: UUID(),
+                          name: "a name",
+                          location: nil,
+                          phone: nil,
+                          openTime: 0.0,
+                          closeTime: 1.0)
+        
+        let item1JSON = [ "id" : item1.id.uuidString,
+                          "name": item1.name,
+                          "openTime": item1.openTime,
+                          "closeTime": item1.closeTime
+        ] as [String : Any]
+        
+        let item2 = Salon(id: UUID(),
+                          name: "another name",
+                          location: "another location",
+                          phone: "another phone",
+                          openTime: 2.0,
+                          closeTime: 3.0)
+        
+        let item2JSON = [ "id" : item2.id.uuidString,
+                          "name": item2.name,
+                          "location": item2.location!,
+                          "phone": item2.phone!,
+                          "openTime": item2.openTime,
+                          "closeTime": item2.closeTime
+        ] as [String : Any]
+        
+        let itemsJSON = [
+            "salons" : [item1JSON, item2JSON]
+        ]
+        let json = try! JSONSerialization.data(withJSONObject: itemsJSON)
+        let (sut,_) = makeSUT(with: .success((json, anyValidHTTPResponse())))
+        
+        do {
+            let salons: [Salon] = try await sut.load()
+            XCTAssertEqual(salons, [item1, item2])
+        } catch {
+            XCTFail("Expected to receive items array but got \(error) instead")
+        }
+        
     }
 }
 
@@ -94,7 +138,7 @@ private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Re
 }
 
 private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
-    return .success((Data.init(_: "[]".utf8), anyValidHTTPResponse()))
+    return .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse()))
 }
 
 private func anyValidHTTPResponse() -> HTTPURLResponse {

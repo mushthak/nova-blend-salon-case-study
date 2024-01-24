@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Salon: Equatable {
+public struct Salon: Equatable, Decodable {
     public let id: UUID
     public let name: String
     public let location: String?

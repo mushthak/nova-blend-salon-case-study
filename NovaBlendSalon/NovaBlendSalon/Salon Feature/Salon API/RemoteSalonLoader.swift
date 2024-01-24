@@ -15,6 +15,10 @@ public final class RemoteSalonLoader {
     private let url: URL
     private let client: HTTPClient
     
+    private struct Root: Decodable {
+        let salons: [Salon]
+    }
+    
     public enum Error: Swift.Error {
         case connectivity
         case invalidData
@@ -30,10 +34,12 @@ public final class RemoteSalonLoader {
             throw Error.connectivity
         }
         
-        guard response.statusCode == 200, let _ = try? JSONSerialization.jsonObject(with: data) else {
+        guard response.statusCode == 200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw Error.invalidData
         }
         
-        return []
+        return root.salons
     }
 }
+
+
