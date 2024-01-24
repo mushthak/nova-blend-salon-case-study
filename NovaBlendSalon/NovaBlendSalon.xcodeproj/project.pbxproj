@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
+		296576872B615163005ECB8B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576862B615162005ECB8B /* HTTPClient.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* RemoteSalonLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */; };
 		29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB72B5C01E20026D484 /* Salon.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
+		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoaderTests.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */,
+				296576862B615162005ECB8B /* HTTPClient.swift */,
 			);
 			path = "Salon API";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
 				296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */,
+				296576872B615163005ECB8B /* HTTPClient.swift in Sources */,
 				29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

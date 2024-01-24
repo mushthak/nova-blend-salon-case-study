@@ -7,10 +7,6 @@
 
 import Foundation
 
-public protocol HTTPClient {
-    func getFrom(url: URL) async throws -> (Data, HTTPURLResponse)
-}
-
 public final class RemoteSalonLoader {
     private let url: URL
     private let client: HTTPClient
