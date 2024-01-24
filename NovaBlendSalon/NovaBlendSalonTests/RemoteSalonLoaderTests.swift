@@ -72,6 +72,18 @@ final class RemoteSalonLoaderTests: XCTestCase {
             XCTAssertEqual(error as? RemoteSalonLoader.Error, .invalidData)
         }
     }
+    
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() async throws {
+        let emptyListJSON = Data.init(_: "{\"salons\": []}".utf8)
+        let (sut,_) = makeSUT(with: .success((emptyListJSON, anyValidHTTPResponse())))
+        
+        do {
+            let salons: [Salon] = try await sut.load()
+            XCTAssertEqual(salons, [])
+        } catch {
+            XCTFail("Expected to receive empty JSON but got \(error) instead")
+        }
+    }
 }
 
 //MARK: Helper

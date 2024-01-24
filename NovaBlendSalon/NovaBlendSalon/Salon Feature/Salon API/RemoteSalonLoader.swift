@@ -25,7 +25,7 @@ public final class RemoteSalonLoader {
         self.client = client
     }
     
-    public func load() async throws {
+    public func load() async throws -> [Salon] {
         guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
@@ -34,6 +34,6 @@ public final class RemoteSalonLoader {
             throw Error.invalidData
         }
         
-        
+        return []
     }
 }

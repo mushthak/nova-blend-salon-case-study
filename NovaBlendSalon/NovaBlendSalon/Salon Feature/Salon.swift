@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Salon {
+public struct Salon: Equatable {
     public let id: UUID
     public let name: String
     public let location: String?
