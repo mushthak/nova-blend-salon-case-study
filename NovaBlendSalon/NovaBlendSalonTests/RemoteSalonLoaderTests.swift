@@ -74,7 +74,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
     }
     
     func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() async throws {
-        let emptyListJSON = Data.init(_: "{\"salons\": []}".utf8)
+        let emptyListJSON = makeItemsJSON(items: [])
         let (sut,_) = makeSUT(with: .success((emptyListJSON, anyValidHTTPResponse())))
         
         do {
@@ -86,43 +86,26 @@ final class RemoteSalonLoaderTests: XCTestCase {
     }
     
     func test_load_deliversItemsArrayOn200HTTPResponseWithJSONList() async throws {
-        let item1 = Salon(id: UUID(),
-                          name: "a name",
-                          location: nil,
-                          phone: nil,
-                          openTime: 0.0,
-                          closeTime: 1.0)
+        let item1 = makeItem(id: UUID(),
+                             name: "a name",
+                             location: nil,
+                             phone: nil,
+                             openTime: 0.0,
+                             closeTime: 1.0)
         
-        let item1JSON = [ "id" : item1.id.uuidString,
-                          "name": item1.name,
-                          "openTime": item1.openTime,
-                          "closeTime": item1.closeTime
-        ] as [String : Any]
+        let item2 = makeItem(id: UUID(),
+                             name: "another name",
+                             location: "a location",
+                             phone: "a phone",
+                             openTime: 2.0,
+                             closeTime: 3.0)
         
-        let item2 = Salon(id: UUID(),
-                          name: "another name",
-                          location: "another location",
-                          phone: "another phone",
-                          openTime: 2.0,
-                          closeTime: 3.0)
-        
-        let item2JSON = [ "id" : item2.id.uuidString,
-                          "name": item2.name,
-                          "location": item2.location!,
-                          "phone": item2.phone!,
-                          "openTime": item2.openTime,
-                          "closeTime": item2.closeTime
-        ] as [String : Any]
-        
-        let itemsJSON = [
-            "salons" : [item1JSON, item2JSON]
-        ]
-        let json = try! JSONSerialization.data(withJSONObject: itemsJSON)
+        let json = makeItemsJSON(items: [item1.json, item2.json])
         let (sut,_) = makeSUT(with: .success((json, anyValidHTTPResponse())))
         
         do {
             let salons: [Salon] = try await sut.load()
-            XCTAssertEqual(salons, [item1, item2])
+            XCTAssertEqual(salons, [item1.model, item2.model])
         } catch {
             XCTFail("Expected to receive items array but got \(error) instead")
         }
@@ -151,6 +134,31 @@ private func anyURL() -> URL {
 
 private func anyError() -> Error {
     return NSError(domain: "Test", code: 0)
+}
+
+private func makeItem(id: UUID, name: String, location: String? = nil, phone: String? = nil, openTime: Float, closeTime: Float) -> (model: Salon, json: [String: Any]) {
+    let model = Salon(id: id,
+                      name: name,
+                      location: location,
+                      phone: phone,
+                      openTime: openTime,
+                      closeTime: closeTime)
+    
+    let json: [String: Any?] = [
+        "id" : model.id.uuidString,
+        "name": model.name,
+        "location": location,
+        "phone":  phone,
+        "openTime": model.openTime,
+        "closeTime": model.closeTime
+    ]
+    
+    return (model, json.compactMapValues { $0 })
+}
+
+private func makeItemsJSON(items: [[String : Any]]) -> Data {
+    let json = ["salons": items]
+    return try! JSONSerialization.data(withJSONObject: json)
 }
 
 private class HTTPClientSpy: HTTPClient {
