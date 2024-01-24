@@ -22,7 +22,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
     }
     
     func test_loadTwice_requestDataFromURLTwice() async throws{
-        let url = URL(string: "http://a-url.com")!
+        let url = anyURL()
         let (sut,client) = makeSUT(url: url)
         
         _ = try await sut.load()
@@ -32,7 +32,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
     }
     
     func test_load_deliversConnectivityErrorOnClientError() async throws {
-        let error = NSError(domain: "Test", code: 0)
+        let error = anyError()
         let (sut,_) = makeSUT(with: .failure(error))
         
         do {
@@ -47,7 +47,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
         samples.enumerated().forEach { index, code in
             
             Task {
-                let response = HTTPURLResponse(url: URL(string: "http://a-url.com")!, statusCode: code, httpVersion: nil, headerFields: nil)!
+                let response = HTTPURLResponse(url: anyURL(), statusCode: code, httpVersion: nil, headerFields: nil)!
                 let (sut,_) = makeSUT(with: .success((Data(), response)))
                 
                 do {
@@ -131,7 +131,7 @@ final class RemoteSalonLoaderTests: XCTestCase {
 }
 
 //MARK: Helper
-private func makeSUT(url: URL = URL(string: "http://a-url.com")!,with result: Result<(Data, HTTPURLResponse), Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
+private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
     let client = HTTPClientSpy(result: result)
     let sut = RemoteSalonLoader(url: url, client: client)
     return(sut, client)
@@ -142,7 +142,15 @@ private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
 }
 
 private func anyValidHTTPResponse() -> HTTPURLResponse {
-    return HTTPURLResponse(url: URL(string: "http://a-url.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+    return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
+}
+
+private func anyURL() -> URL {
+    return URL(string: "http://a-url.com")!
+}
+
+private func anyError() -> Error {
+    return NSError(domain: "Test", code: 0)
 }
 
 private class HTTPClientSpy: HTTPClient {
