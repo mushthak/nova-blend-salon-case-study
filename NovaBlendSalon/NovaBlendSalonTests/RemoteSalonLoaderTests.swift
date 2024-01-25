@@ -116,7 +116,15 @@ final class RemoteSalonLoaderTests: XCTestCase {
     private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy(result: result)
         let sut = RemoteSalonLoader(url: url, client: client)
+        trackForMemoryLeak(sut)
+        trackForMemoryLeak(client)
         return(sut, client)
+    }
+    
+    private func trackForMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
+        }
     }
     
     private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
