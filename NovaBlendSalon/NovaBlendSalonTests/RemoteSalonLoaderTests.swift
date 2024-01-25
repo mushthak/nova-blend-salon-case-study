@@ -111,17 +111,42 @@ final class RemoteSalonLoaderTests: XCTestCase {
         }
         
     }
-}
-
-//MARK: Helper
-private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = anyValidResponse(), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
-    let client = HTTPClientSpy(result: result)
-    let sut = RemoteSalonLoader(url: url, client: client)
-    return(sut, client)
-}
-
-private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
-    return .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse()))
+    
+    //MARK: Helper
+    private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteSalonLoader, client: HTTPClientSpy) {
+        let client = HTTPClientSpy(result: result)
+        let sut = RemoteSalonLoader(url: url, client: client)
+        return(sut, client)
+    }
+    
+    private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
+        return .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse()))
+    }
+    
+    private func makeItem(id: UUID, name: String, location: String? = nil, phone: String? = nil, openTime: Float, closeTime: Float) -> (model: Salon, json: [String: Any]) {
+        let model = Salon(id: id,
+                          name: name,
+                          location: location,
+                          phone: phone,
+                          openTime: openTime,
+                          closeTime: closeTime)
+        
+        let json: [String: Any?] = [
+            "id" : model.id.uuidString,
+            "name": model.name,
+            "location": location,
+            "phone":  phone,
+            "openTime": model.openTime,
+            "closeTime": model.closeTime
+        ]
+        
+        return (model, json.compactMapValues { $0 })
+    }
+    
+    private func makeItemsJSON(items: [[String : Any]]) -> Data {
+        let json = ["salons": items]
+        return try! JSONSerialization.data(withJSONObject: json)
+    }
 }
 
 private func anyValidHTTPResponse() -> HTTPURLResponse {
@@ -134,31 +159,6 @@ private func anyURL() -> URL {
 
 private func anyError() -> Error {
     return NSError(domain: "Test", code: 0)
-}
-
-private func makeItem(id: UUID, name: String, location: String? = nil, phone: String? = nil, openTime: Float, closeTime: Float) -> (model: Salon, json: [String: Any]) {
-    let model = Salon(id: id,
-                      name: name,
-                      location: location,
-                      phone: phone,
-                      openTime: openTime,
-                      closeTime: closeTime)
-    
-    let json: [String: Any?] = [
-        "id" : model.id.uuidString,
-        "name": model.name,
-        "location": location,
-        "phone":  phone,
-        "openTime": model.openTime,
-        "closeTime": model.closeTime
-    ]
-    
-    return (model, json.compactMapValues { $0 })
-}
-
-private func makeItemsJSON(items: [[String : Any]]) -> Data {
-    let json = ["salons": items]
-    return try! JSONSerialization.data(withJSONObject: json)
 }
 
 private class HTTPClientSpy: HTTPClient {
