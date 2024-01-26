@@ -14,7 +14,7 @@ public final class RemoteSalonLoader {
     private let OK_200 = 200
     
     private struct Root: Decodable {
-        let salons: [Salon]
+        let salons: [RemoteSalonItem]
     }
     
     public enum Error: Swift.Error {
@@ -36,7 +36,29 @@ public final class RemoteSalonLoader {
             throw Error.invalidData
         }
         
-        return root.salons
+        return root.salons.map { $0.salon }
+    }
+}
+
+private struct RemoteSalonItem: Decodable {
+    public let id: UUID
+    public let name: String
+    public let location: String?
+    public let phone: String?
+    public let open_time: Float
+    public let close_time: Float
+    
+    init(id: UUID, name: String, location: String?, phone: String?, open_time: Float, close_time: Float) {
+        self.id = id
+        self.name = name
+        self.location = location
+        self.phone = phone
+        self.open_time = open_time
+        self.close_time = close_time
+    }
+    
+    var salon: Salon {
+        return Salon(id: id, name: name, location: location, phone: phone, openTime: open_time, closeTime: close_time)
     }
 }
 

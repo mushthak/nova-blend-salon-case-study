@@ -144,8 +144,8 @@ final class RemoteSalonLoaderTests: XCTestCase {
             "name": model.name,
             "location": location,
             "phone":  phone,
-            "openTime": model.openTime,
-            "closeTime": model.closeTime
+            "open_time": model.openTime,
+            "close_time": model.closeTime
         ]
         
         return (model, json.compactMapValues { $0 })
