@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SalonMapper {
+internal enum SalonMapper {
     
     private struct Root: Decodable {
         let salons: [RemoteSalonItem]
