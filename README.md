@@ -170,29 +170,29 @@ GET *url* (TBD)
             "name": "a name",
             "location": "a location",
             "phone": "a phone number",
-            "openTime": 9.30
-            "closeTime": 22.30,
+            "open_time": 9.30
+            "close_time": 22.30,
         },
         {
             "id": "another UUID",
             "name": "another name",
             "location": "another location",
-            "openTime": 10.30
-            "closeTime": 20.30,
+            "open_time": 10.30
+            "close_time": 20.30,
         },
         {
             "id": "even another UUID",
             "name": "even another name",
             "location": "even another location",
-            "openTime": 8.00
-            "closeTime": 14.00,
+            "open_time": 8.00
+            "close_time": 14.00,
         },
         {
             "id": "yet another UUID",
             "name": "yet another name",
             "location": "yet another location",
-            "openTime": 11.00
-            "closeTime": 16.00,
+            "open_time": 11.00
+            "close_time": 16.00,
         }
         ...
     ]
