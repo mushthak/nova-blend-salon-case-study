@@ -11,12 +11,6 @@ public final class RemoteSalonLoader {
     private let url: URL
     private let client: HTTPClient
     
-    private let OK_200 = 200
-    
-    private struct Root: Decodable {
-        let salons: [RemoteSalonItem]
-    }
-    
     public enum Error: Swift.Error {
         case connectivity
         case invalidData
@@ -31,12 +25,7 @@ public final class RemoteSalonLoader {
         guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
-        
-        guard response.statusCode == OK_200, let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            throw Error.invalidData
-        }
-        
-        return root.salons.map { $0.salon }
+        return try SalonMapper.map(data, from: response)
     }
 }
 
@@ -62,4 +51,25 @@ private struct RemoteSalonItem: Decodable {
     }
 }
 
+private struct SalonMapper {
+    
+    private struct Root: Decodable {
+        let salons: [RemoteSalonItem]
+    }
+    
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Salon] {
+        guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
+            throw RemoteSalonLoader.Error.invalidData
+        }
+        
+        return root.salons.map { $0.salon }
+    }
+}
 
+private extension HTTPURLResponse {
+    private static var OK_200: Int { return 200 }
+    
+    var isOK: Bool {
+        return statusCode == HTTPURLResponse.OK_200
+    }
+}
