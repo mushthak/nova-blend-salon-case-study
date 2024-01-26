@@ -7,7 +7,7 @@
 
 import Foundation
 
-public final class RemoteSalonLoader {
+public final class RemoteSalonLoader: SalonLoader {
     private let url: URL
     private let client: HTTPClient
     
