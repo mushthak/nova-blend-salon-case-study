@@ -88,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				29BDDDB62B5C01B60026D484 /* Salon Feature */,
+				296576832B5CDD24005ECB8B /* Salon API */,
 			);
 			path = NovaBlendSalon;
 			sourceTree = "<group>";
@@ -103,7 +104,6 @@
 		29BDDDB62B5C01B60026D484 /* Salon Feature */ = {
 			isa = PBXGroup;
 			children = (
-				296576832B5CDD24005ECB8B /* Salon API */,
 				29BDDDB72B5C01E20026D484 /* Salon.swift */,
 				29BDDDB92B5C03760026D484 /* SalonLoader.swift */,
 			);
