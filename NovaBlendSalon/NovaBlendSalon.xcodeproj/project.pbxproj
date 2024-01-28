@@ -66,6 +66,14 @@
 			path = "Salon API";
 			sourceTree = "<group>";
 		};
+		296576902B66A6B8005ECB8B /* Salon API */ = {
+			isa = PBXGroup;
+			children = (
+				29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */,
+			);
+			path = "Salon API";
+			sourceTree = "<group>";
+		};
 		29BDDD942B5C016F0026D484 = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +104,7 @@
 		29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */ = {
 			isa = PBXGroup;
 			children = (
-				29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */,
+				296576902B66A6B8005ECB8B /* Salon API */,
 			);
 			path = NovaBlendSalonTests;
 			sourceTree = "<group>";
