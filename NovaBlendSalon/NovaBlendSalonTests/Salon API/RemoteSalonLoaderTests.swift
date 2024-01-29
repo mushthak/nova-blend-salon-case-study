@@ -121,12 +121,6 @@ final class RemoteSalonLoaderTests: XCTestCase {
         return(sut, client)
     }
     
-    private func trackForMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak", file: file, line: line)
-        }
-    }
-    
     private  func anyValidResponse() -> Result<(Data, HTTPURLResponse), Error> {
         return .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse()))
     }
@@ -155,18 +149,6 @@ final class RemoteSalonLoaderTests: XCTestCase {
         let json = ["salons": items]
         return try! JSONSerialization.data(withJSONObject: json)
     }
-}
-
-private func anyValidHTTPResponse() -> HTTPURLResponse {
-    return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
-}
-
-private func anyURL() -> URL {
-    return URL(string: "http://a-url.com")!
-}
-
-private func anyError() -> Error {
-    return NSError(domain: "Test", code: 0)
 }
 
 private class HTTPClientSpy: HTTPClient {
