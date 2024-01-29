@@ -24,6 +24,12 @@ public final class URLSessionHTTPClient {
 
 final class URLSessionHttpClientTests: XCTestCase {
     
+    override func tearDown() {
+        super.tearDown()
+        
+        URLProtocolStub.removeStub()
+    }
+    
     func test_getFromURL_performsGETRequestWithURL() async throws {
         let url = anyURL()
         do {
@@ -35,7 +41,20 @@ final class URLSessionHttpClientTests: XCTestCase {
         } catch  {
             XCTFail("Expected to perform a GET request with url \(url) with but got \(error) instead")
         }
-        
+    }
+    
+    func test_getFromURL_failsOnRequestError() async throws {
+        let url = anyURL()
+        let requestError = anyNSError() 
+        do {
+            URLProtocolStub.error = requestError
+            try await makeSUT().getFrom(url: url)
+            XCTFail("Expected to throw error \(requestError) but got success instead")
+        } catch  {
+            let receivedError = error as NSError
+            XCTAssertEqual(receivedError.code, requestError.code)
+            XCTAssertEqual(receivedError.domain, requestError.domain)
+        }
     }
     
     //MARK: - Helpers
@@ -58,5 +77,9 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     private func anyURL() -> URL {
         return URL(string: "http://a-url.com")!
+    }
+    
+    private func anyNSError() -> NSError {
+        return NSError(domain: "Test", code: 0)
     }
 }

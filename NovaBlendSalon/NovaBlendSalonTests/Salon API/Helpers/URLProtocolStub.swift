@@ -16,6 +16,17 @@ class URLProtocolStub: URLProtocol {
         set { queue.sync { _urlRequest = newValue } }
     }
     
+    private static var _error: Error?
+    static var error: Error? {
+        get { return queue.sync { _error } }
+        set { queue.sync { _error = newValue } }
+    }
+    
+    static func removeStub() {
+        urlRequest = nil
+        error = nil
+    }
+    
     override class func canInit(with request: URLRequest) -> Bool {
         return true
     }
@@ -27,7 +38,12 @@ class URLProtocolStub: URLProtocol {
     override func startLoading() {
         client?.urlProtocol(self, didReceive: HTTPURLResponse(), cacheStoragePolicy: .allowed)
         
-        client?.urlProtocolDidFinishLoading(self)
+        if let error = URLProtocolStub.error {
+            client?.urlProtocol(self, didFailWithError: error)
+        } else {
+            client?.urlProtocolDidFinishLoading(self)
+        }
+
         URLProtocolStub.urlRequest = request
     }
     
