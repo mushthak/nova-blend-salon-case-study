@@ -47,7 +47,7 @@ final class URLSessionHttpClientTests: XCTestCase {
         let url = anyURL()
         let requestError = anyNSError() 
         do {
-            URLProtocolStub.error = requestError
+            URLProtocolStub.stub(error: requestError)
             try await makeSUT().getFrom(url: url)
             XCTFail("Expected to throw error \(requestError) but got success instead")
         } catch  {

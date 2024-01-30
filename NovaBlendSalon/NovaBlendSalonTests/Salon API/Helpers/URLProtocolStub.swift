@@ -16,15 +16,22 @@ class URLProtocolStub: URLProtocol {
         set { queue.sync { _urlRequest = newValue } }
     }
     
-    private static var _error: Error?
-    static var error: Error? {
-        get { return queue.sync { _error } }
-        set { queue.sync { _error = newValue } }
+    private static var _stub: Stub?
+    private static var stub: Stub? {
+        get { return queue.sync { _stub } }
+        set { queue.sync { _stub = newValue } }
+    }
+    private struct Stub {
+        let error: Error?
+    }
+    
+    static func stub(error: Error?) {
+        stub = Stub(error: error)
     }
     
     static func removeStub() {
         urlRequest = nil
-        error = nil
+        stub = nil
     }
     
     override class func canInit(with request: URLRequest) -> Bool {
@@ -36,14 +43,14 @@ class URLProtocolStub: URLProtocol {
     }
     
     override func startLoading() {
-        client?.urlProtocol(self, didReceive: HTTPURLResponse(), cacheStoragePolicy: .allowed)
+        client?.urlProtocol(self, didReceive: HTTPURLResponse(), cacheStoragePolicy: .notAllowed)
         
-        if let error = URLProtocolStub.error {
+        if let error = URLProtocolStub.stub?.error {
             client?.urlProtocol(self, didFailWithError: error)
         } else {
             client?.urlProtocolDidFinishLoading(self)
         }
-
+        
         URLProtocolStub.urlRequest = request
     }
     
