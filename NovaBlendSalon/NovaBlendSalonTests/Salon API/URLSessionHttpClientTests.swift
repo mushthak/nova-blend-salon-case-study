@@ -16,8 +16,9 @@ public final class URLSessionHTTPClient {
         self.session = session
     }
     
-    public func getFrom(url: URL) async throws {
-        let _ = try await session.data(from: url)
+    public func getFrom(url: URL) async throws -> (Data) {
+        let (data, _) = try await session.data(from: url)
+        return data
     }
     
 }
@@ -45,15 +46,26 @@ final class URLSessionHttpClientTests: XCTestCase {
     
     func test_getFromURL_failsOnRequestError() async throws {
         let url = anyURL()
-        let requestError = anyNSError() 
+        let responseError = anyNSError()
         do {
-            URLProtocolStub.stub(error: requestError)
-            try await makeSUT().getFrom(url: url)
-            XCTFail("Expected to throw error \(requestError) but got success instead")
+            URLProtocolStub.stub(error: responseError, data: nil)
+            _ = try await makeSUT().getFrom(url: url)
+            XCTFail("Expected to throw error \(responseError) but got success instead")
         } catch  {
             let receivedError = error as NSError
-            XCTAssertEqual(receivedError.code, requestError.code)
-            XCTAssertEqual(receivedError.domain, requestError.domain)
+            XCTAssertEqual(receivedError.code, responseError.code)
+            XCTAssertEqual(receivedError.domain, responseError.domain)
+        }
+    }
+    
+    func test_getFromURL_succeedsOnHTTPURLResponseWithData() async throws {
+        do {
+            let responseData = anyData()
+            URLProtocolStub.stub(error: nil, data: responseData)
+            let receivedData = try await makeSUT().getFrom(url: anyURL())
+            XCTAssertEqual(receivedData, responseData)
+        } catch  {
+            XCTFail("Expected to succeed but thrown error \(error) instead")
         }
     }
     
