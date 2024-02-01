@@ -11,14 +11,18 @@ import NovaBlendSalon
 public final class URLSessionHTTPClient {
     
     private let session: URLSession
+    private struct UnexpectedValuesRepresentation: Error {}
     
     public init(session: URLSession = .shared) {
         self.session = session
     }
     
     public func getFrom(url: URL) async throws -> (Data, HTTPURLResponse) {
-        let (data, res) = try await session.data(from: url)
-        return (data, res as! HTTPURLResponse)
+        let (data, response) = try await session.data(from: url)
+        guard let response = response as? HTTPURLResponse else {
+            throw UnexpectedValuesRepresentation()
+        }
+        return (data, response)
     }
     
 }
@@ -55,6 +59,18 @@ final class URLSessionHttpClientTests: XCTestCase {
             let receivedError = error as NSError
             XCTAssertEqual(receivedError.code, responseError.code)
             XCTAssertEqual(receivedError.domain, responseError.domain)
+        }
+    }
+    
+    func test_getFromURL_failsOnNonHTTPURLResponse() async throws {
+        do {
+            let data = anyData()
+            let response = nonHTTPURLResponse()
+            URLProtocolStub.stub(error: nil, data: data, response: response)
+            _ = try await makeSUT().getFrom(url: anyURL())
+            XCTFail("Expected to throw error but got success instead")
+        } catch  {
+            XCTAssertNotNil(error)
         }
     }
     
