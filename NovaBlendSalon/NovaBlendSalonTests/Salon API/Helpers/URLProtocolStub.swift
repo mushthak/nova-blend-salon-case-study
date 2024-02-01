@@ -24,10 +24,11 @@ class URLProtocolStub: URLProtocol {
     private struct Stub {
         let error: Error?
         let data: Data?
+        let response: URLResponse?
     }
     
-    static func stub(error: Error?, data: Data?) {
-        stub = Stub(error: error, data: data)
+    static func stub(error: Error?, data: Data?, response: URLResponse?) {
+        stub = Stub(error: error, data: data, response: response)
     }
     
     static func removeStub() {
@@ -48,7 +49,13 @@ class URLProtocolStub: URLProtocol {
             client?.urlProtocol(self, didLoad: data)
         }
         
-        client?.urlProtocol(self, didReceive: HTTPURLResponse(), cacheStoragePolicy: .notAllowed)
+        if let response = URLProtocolStub.stub?.response {
+            client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+
+        } else {
+            client?.urlProtocol(self, didReceive: HTTPURLResponse(), cacheStoragePolicy: .notAllowed)
+        }
+        
         
         if let error = URLProtocolStub.stub?.error {
             client?.urlProtocol(self, didFailWithError: error)
