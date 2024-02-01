@@ -8,7 +8,7 @@
 import XCTest
 import NovaBlendSalon
 
-public final class URLSessionHTTPClient {
+public final class URLSessionHTTPClient: HTTPClient {
     
     private let session: URLSession
     private struct UnexpectedValuesRepresentation: Error {}
