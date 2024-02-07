@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:../../../../../.Trash/nova-blend-salon-case-study 10.06.59&#x202f;PM/NovaBlendSalon/CI_macOS.xctestplan"
+            reference = "container:CI_macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

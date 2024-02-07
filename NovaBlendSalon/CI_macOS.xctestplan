@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "74796FC1-E006-49F2-87F2-FF68256E1E7D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "296576A12B6E5F7D005ECB8B",
+        "name" : "NovaBlendSalonAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "29BDDDA52B5C016F0026D484",
+        "name" : "NovaBlendSalonTests"
+      }
+    }
+  ],
+  "version" : 1
+}
