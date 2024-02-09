@@ -8,7 +8,7 @@
 import XCTest
 import NovaBlendSalon
 
-final class RemoteSalonLoaderTests: XCTestCase {
+final class LoadSalonFromRemoteUseCaseTests: XCTestCase {
     
     func test_init_doesnotRequestDataFromURL() {
         let (_,client) = makeSUT()

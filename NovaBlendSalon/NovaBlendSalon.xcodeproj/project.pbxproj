@@ -19,7 +19,7 @@
 		296576A62B6E5F7D005ECB8B /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		296576AD2B6FCCC0005ECB8B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
-		29BDDDAC2B5C016F0026D484 /* RemoteSalonLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */; };
+		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
 		29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB72B5C01E20026D484 /* Salon.swift */; };
 		29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB92B5C03760026D484 /* SalonLoader.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +55,7 @@
 		296576A42B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoaderTests.swift; sourceTree = "<group>"; };
+		29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSalonFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		29BDDDB72B5C01E20026D484 /* Salon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salon.swift; sourceTree = "<group>"; };
 		29BDDDB92B5C03760026D484 /* SalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				296576952B66A7CD005ECB8B /* Helpers */,
-				29BDDDAB2B5C016F0026D484 /* RemoteSalonLoaderTests.swift */,
+				29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */,
 				296576932B66A74E005ECB8B /* URLSessionHttpClientTests.swift */,
 			);
 			path = "Salon API";
@@ -341,7 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BDDDAC2B5C016F0026D484 /* RemoteSalonLoaderTests.swift in Sources */,
+				29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */,
 				296576972B66A7D7005ECB8B /* URLProtocolStub.swift in Sources */,
 				296576942B66A74E005ECB8B /* URLSessionHttpClientTests.swift in Sources */,
 				296576992B6815A8005ECB8B /* TestHelpers.swift in Sources */,
