@@ -9,6 +9,10 @@ import XCTest
 
 private class SalonStore {
     var receivedMessages = 0
+    
+    func retrieve() {
+        receivedMessages += 1
+    }
 }
 
 private class LocalSalonLoader {
@@ -18,6 +22,10 @@ private class LocalSalonLoader {
         self.store = store
     }
     
+    func load() {
+        store.retrieve()
+    }
+    
 }
 
 final class LoadSalonFromCacheUseCaseTests: XCTestCase {
@@ -25,6 +33,14 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         XCTAssertEqual(store.receivedMessages, 0)
+    }
+    
+    func test_load_requestsCacheRetrival() {
+        let (sut, store) = makeSUT()
+        
+        sut.load()
+        
+        XCTAssertEqual(store.receivedMessages, 1)
     }
     
     //MARK: Helpers
