@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291F50FE2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */; };
 		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
 		296576872B615163005ECB8B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576862B615162005ECB8B /* HTTPClient.swift */; };
 		296576892B641001005ECB8B /* SalonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576882B641001005ECB8B /* SalonMapper.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		291F50FA2B73E9A0000771BE /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
+		291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSalonFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		296576882B641001005ECB8B /* SalonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonMapper.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		291F50FC2B771FF4000771BE /* Salon Cache */ = {
+			isa = PBXGroup;
+			children = (
+				291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */,
+			);
+			path = "Salon Cache";
+			sourceTree = "<group>";
+		};
 		296576832B5CDD24005ECB8B /* Salon API */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 			children = (
 				296576AC2B6FCC90005ECB8B /* Helpers */,
 				296576902B66A6B8005ECB8B /* Salon API */,
+				291F50FC2B771FF4000771BE /* Salon Cache */,
 			);
 			path = NovaBlendSalonTests;
 			sourceTree = "<group>";
@@ -345,6 +356,7 @@
 				296576972B66A7D7005ECB8B /* URLProtocolStub.swift in Sources */,
 				296576942B66A74E005ECB8B /* URLSessionHttpClientTests.swift in Sources */,
 				296576992B6815A8005ECB8B /* TestHelpers.swift in Sources */,
+				291F50FE2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift in Sources */,
 				2965769B2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
