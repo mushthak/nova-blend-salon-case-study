@@ -43,6 +43,15 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, 1)
     }
     
+    func test_load_twice_requestsCacheRetrivalTwice() {
+        let (sut, store) = makeSUT()
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(store.receivedMessages, 2)
+    }
+    
     //MARK: Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStore) {
         let store = SalonStore()
