@@ -6,9 +6,10 @@
 //
 
 import XCTest
+import NovaBlendSalon
 
 private class SalonStore {
-    typealias Result = Error?
+    typealias Result = Swift.Result<[Salon], Error>
     
     var receivedMessages = 0
     let result: Result
@@ -17,11 +18,9 @@ private class SalonStore {
         self.result = result
     }
     
-    func retrieve() async throws {
+    func retrieve() async throws -> [Salon] {
         receivedMessages += 1
-        if result != nil {
-            throw result!
-        }
+        return try result.get()
     }
 }
 
@@ -36,9 +35,9 @@ private class LocalSalonLoader {
         self.store = store
     }
     
-    func load() async throws {
+    func load() async throws -> [Salon] {
         do {
-            try await store.retrieve()
+            return try await store.retrieve()
         } catch  {
             throw Error.retrival
         }
@@ -71,7 +70,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     }
     
     func test_load_failsOnRetrivalError() async {
-        let (sut, _) = makeSUT(with: anyNSError())
+        let (sut, _) = makeSUT(with: .failure(anyNSError()))
         
         do {
             _ = try await sut.load()
@@ -82,8 +81,20 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         
     }
     
+    func test_load_deliversEmptySalonsOnEmptyCache() async {
+        let (sut, _) = makeSUT(with: .success([]))
+        
+        do {
+            let result: [Salon] = try await sut.load()
+            XCTAssertEqual(result, [])
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+        
+    }
+    
     //MARK: Helpers
-    private func makeSUT(with result: SalonStore.Result = nil,file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStore) {
+    private func makeSUT(with result: SalonStore.Result = .success([]),file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStore) {
         let store = SalonStore(result: result)
         let sut = LocalSalonLoader(store: store)
         trackForMemoryLeak(store)
