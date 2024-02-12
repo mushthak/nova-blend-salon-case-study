@@ -55,7 +55,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     func test_load_requestsCacheRetrival() async throws {
         let (sut, store) = makeSUT()
         
-        try await sut.load()
+        _ = try await sut.load()
         
         XCTAssertEqual(store.receivedMessages, 1)
     }
@@ -63,8 +63,8 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     func test_load_twice_requestsCacheRetrivalTwice() async throws {
         let (sut, store) = makeSUT()
         
-        try await sut.load()
-        try await sut.load()
+        _ = try await sut.load()
+        _ = try await sut.load()
         
         XCTAssertEqual(store.receivedMessages, 2)
     }
