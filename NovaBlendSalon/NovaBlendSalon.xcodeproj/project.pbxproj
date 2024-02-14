@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		291F50FE2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */; };
+		291F51012B7BC90F000771BE /* LocalSalonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51002B7BC90F000771BE /* LocalSalonItem.swift */; };
+		291F51032B7BC984000771BE /* LocalSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51022B7BC984000771BE /* LocalSalonLoader.swift */; };
+		291F51052B7BC9AF000771BE /* SalonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51042B7BC9AF000771BE /* SalonStore.swift */; };
+		291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51062B7BC9D2000771BE /* SalonCachePolicy.swift */; };
+		291F51092B7BCABA000771BE /* SalonStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51082B7BCABA000771BE /* SalonStoreSpy.swift */; };
 		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
 		296576872B615163005ECB8B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576862B615162005ECB8B /* HTTPClient.swift */; };
 		296576892B641001005ECB8B /* SalonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576882B641001005ECB8B /* SalonMapper.swift */; };
@@ -45,6 +50,11 @@
 /* Begin PBXFileReference section */
 		291F50FA2B73E9A0000771BE /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
 		291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSalonFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		291F51002B7BC90F000771BE /* LocalSalonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSalonItem.swift; sourceTree = "<group>"; };
+		291F51022B7BC984000771BE /* LocalSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSalonLoader.swift; sourceTree = "<group>"; };
+		291F51042B7BC9AF000771BE /* SalonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonStore.swift; sourceTree = "<group>"; };
+		291F51062B7BC9D2000771BE /* SalonCachePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCachePolicy.swift; sourceTree = "<group>"; };
+		291F51082B7BCABA000771BE /* SalonStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonStoreSpy.swift; sourceTree = "<group>"; };
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		296576882B641001005ECB8B /* SalonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonMapper.swift; sourceTree = "<group>"; };
@@ -93,6 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */,
+				291F51082B7BCABA000771BE /* SalonStoreSpy.swift */,
+			);
+			path = "Salon Cache";
+			sourceTree = "<group>";
+		};
+		291F50FF2B7BC8F0000771BE /* Salon Cache */ = {
+			isa = PBXGroup;
+			children = (
+				291F51002B7BC90F000771BE /* LocalSalonItem.swift */,
+				291F51022B7BC984000771BE /* LocalSalonLoader.swift */,
+				291F51042B7BC9AF000771BE /* SalonStore.swift */,
+				291F51062B7BC9D2000771BE /* SalonCachePolicy.swift */,
 			);
 			path = "Salon Cache";
 			sourceTree = "<group>";
@@ -169,6 +191,7 @@
 			children = (
 				29BDDDB62B5C01B60026D484 /* Salon Feature */,
 				296576832B5CDD24005ECB8B /* Salon API */,
+				291F50FF2B7BC8F0000771BE /* Salon Cache */,
 			);
 			path = NovaBlendSalon;
 			sourceTree = "<group>";
@@ -339,10 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291F51032B7BC984000771BE /* LocalSalonLoader.swift in Sources */,
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
+				291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */,
 				296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */,
 				296576892B641001005ECB8B /* SalonMapper.swift in Sources */,
 				296576872B615163005ECB8B /* HTTPClient.swift in Sources */,
+				291F51052B7BC9AF000771BE /* SalonStore.swift in Sources */,
+				291F51012B7BC90F000771BE /* LocalSalonItem.swift in Sources */,
 				29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */,
 				2965769D2B6BC9D5005ECB8B /* URLSessionHTTPClient.swift in Sources */,
 			);
@@ -354,6 +381,7 @@
 			files = (
 				29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */,
 				296576972B66A7D7005ECB8B /* URLProtocolStub.swift in Sources */,
+				291F51092B7BCABA000771BE /* SalonStoreSpy.swift in Sources */,
 				296576942B66A74E005ECB8B /* URLSessionHttpClientTests.swift in Sources */,
 				296576992B6815A8005ECB8B /* TestHelpers.swift in Sources */,
 				291F50FE2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift in Sources */,
