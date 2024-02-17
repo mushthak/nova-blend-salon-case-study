@@ -12,6 +12,8 @@ class SalonStoreSpy: SalonStore {
     typealias Result = Swift.Result<CachedSalon, Error>
     
     var receivedMessages = 0
+    var receivedDeletionMessages = 0
+    
     let result: Result
     
     init(result: Result) {
@@ -21,5 +23,9 @@ class SalonStoreSpy: SalonStore {
     func retrieve() async throws -> CachedSalon {
         receivedMessages += 1
         return try result.get()
+    }
+    
+    func deleteCachedSalons() {
+        receivedDeletionMessages += 1
     }
 }
