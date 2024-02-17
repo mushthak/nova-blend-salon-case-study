@@ -32,4 +32,8 @@ public class LocalSalonLoader {
         }
     }
     
+    public func save(_ salons: [Salon]) {
+        store.deleteCachedSalons()
+    }
+    
 }

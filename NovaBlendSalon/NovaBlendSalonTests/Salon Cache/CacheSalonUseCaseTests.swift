@@ -9,10 +9,18 @@ import XCTest
 import NovaBlendSalon
 
 final class CacheSalonUseCaseTests: XCTestCase {
-
+    
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         XCTAssertEqual(store.receivedMessages, 0)
+    }
+    
+    func test_save_requestsCacheDeletion() {
+        let (sut, store) = makeSUT()
+        
+        sut.save(uniqueSalons().models)
+        
+        XCTAssertEqual(store.receivedDeletionMessages, 1)
     }
     
     //MARK: Helpers
@@ -23,5 +31,15 @@ final class CacheSalonUseCaseTests: XCTestCase {
         trackForMemoryLeak(sut)
         return(sut, store)
     }
-
+    
+    private func uniqueSalons() -> (models: [Salon], local: [LocalSalonItem]) {
+        let models = [uniqueSalon(), uniqueSalon()]
+        let local = models.map { LocalSalonItem(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone, openTime: $0.openTime, closeTime: $0.closeTime) }
+        return (models, local)
+    }
+    
+    private func uniqueSalon() -> Salon {
+        return Salon(id: UUID(), name: "any", location: "any", phone: "any", openTime: 0.0, closeTime: 0.0)
+    }
+    
 }
