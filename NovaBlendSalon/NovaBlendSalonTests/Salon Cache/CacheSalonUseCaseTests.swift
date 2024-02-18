@@ -32,14 +32,4 @@ final class CacheSalonUseCaseTests: XCTestCase {
         return(sut, store)
     }
     
-    private func uniqueSalons() -> (models: [Salon], local: [LocalSalonItem]) {
-        let models = [uniqueSalon(), uniqueSalon()]
-        let local = models.map { LocalSalonItem(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone, openTime: $0.openTime, closeTime: $0.closeTime) }
-        return (models, local)
-    }
-    
-    private func uniqueSalon() -> Salon {
-        return Salon(id: UUID(), name: "any", location: "any", phone: "any", openTime: 0.0, closeTime: 0.0)
-    }
-    
 }
