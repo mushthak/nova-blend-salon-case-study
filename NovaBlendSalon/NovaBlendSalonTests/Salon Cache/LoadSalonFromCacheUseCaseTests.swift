@@ -12,7 +12,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
-        XCTAssertEqual(store.receivedMessages, 0)
+        XCTAssertEqual(store.receivedMessages, [])
     }
     
     func test_load_requestsCacheRetrival() async throws {
@@ -20,7 +20,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         
         _ = try await sut.load()
         
-        XCTAssertEqual(store.receivedMessages, 1)
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     func test_load_twice_requestsCacheRetrivalTwice() async throws {
@@ -29,7 +29,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         _ = try await sut.load()
         _ = try await sut.load()
         
-        XCTAssertEqual(store.receivedMessages, 2)
+        XCTAssertEqual(store.receivedMessages, [.retrieve, .retrieve])
     }
     
     func test_load_failsOnRetrivalError() async {

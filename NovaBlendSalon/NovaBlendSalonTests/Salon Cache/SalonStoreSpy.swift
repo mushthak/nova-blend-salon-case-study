@@ -11,8 +11,12 @@ import NovaBlendSalon
 class SalonStoreSpy: SalonStore {
     typealias Result = Swift.Result<CachedSalon, Error>
     
-    var receivedMessages = 0
-    var receivedDeletionMessages = 0
+    enum ReceivedMessage: Equatable {
+        case deleteCachedSalons
+        case retrieve
+    }
+    
+    private(set) var receivedMessages = [ReceivedMessage]()
     
     let result: Result
     
@@ -21,11 +25,11 @@ class SalonStoreSpy: SalonStore {
     }
     
     func retrieve() async throws -> CachedSalon {
-        receivedMessages += 1
+        receivedMessages.append(.retrieve)
         return try result.get()
     }
     
     func deleteCachedSalons() {
-        receivedDeletionMessages += 1
+        receivedMessages.append(.deleteCachedSalons)
     }
 }
