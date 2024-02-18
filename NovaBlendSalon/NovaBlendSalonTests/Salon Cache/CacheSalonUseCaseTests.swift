@@ -12,7 +12,7 @@ final class CacheSalonUseCaseTests: XCTestCase {
     
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
-        XCTAssertEqual(store.receivedMessages, 0)
+        XCTAssertEqual(store.receivedMessages, [])
     }
     
     func test_save_requestsCacheDeletion() {
@@ -20,7 +20,7 @@ final class CacheSalonUseCaseTests: XCTestCase {
         
         sut.save(uniqueSalons().models)
         
-        XCTAssertEqual(store.receivedDeletionMessages, 1)
+        XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons])
     }
     
     //MARK: Helpers
