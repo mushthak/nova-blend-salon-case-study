@@ -32,8 +32,8 @@ public class LocalSalonLoader {
         }
     }
     
-    public func save(_ salons: [Salon]) {
-        store.deleteCachedSalons()
+    public func save(_ salons: [Salon]) async throws {
+        try await store.deleteCachedSalons()
     }
     
 }

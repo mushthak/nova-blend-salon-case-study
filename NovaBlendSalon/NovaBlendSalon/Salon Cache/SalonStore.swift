@@ -11,7 +11,7 @@ public typealias CachedSalon = (salons: [Salon], timestamp: Date)
 
 public protocol SalonStore {
     func retrieve() async throws -> CachedSalon
-    func deleteCachedSalons()
+    func deleteCachedSalons() async throws
 }
 
 

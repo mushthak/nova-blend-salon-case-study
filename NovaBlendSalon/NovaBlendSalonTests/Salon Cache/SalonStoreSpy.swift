@@ -29,7 +29,8 @@ class SalonStoreSpy: SalonStore {
         return try result.get()
     }
     
-    func deleteCachedSalons() {
+    func deleteCachedSalons() async throws{
         receivedMessages.append(.deleteCachedSalons)
+        _ = try result.get()
     }
 }
