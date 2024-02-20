@@ -30,12 +30,12 @@ final class CacheSalonUseCaseTests: XCTestCase {
     
     func test_save_requestsNewCacheInsertionWithTimestampOnSuccessfulDeletion() async {
         let timestamp = Date()
-        let feed = uniqueSalons()
-        let (sut, store) = makeSUT(with: .success((feed.local, timestamp)),currentDate: { timestamp })
+        let salons = uniqueSalons()
+        let (sut, store) = makeSUT(with: .success((salons.local, timestamp)),currentDate: { timestamp })
         
         do {
-            try await sut.save(feed.models)
-            XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons, .insert(feed.local, timestamp)])
+            try await sut.save(salons.models)
+            XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons, .insert(salons.local, timestamp)])
         } catch  {
             XCTFail("Expected success but got \(error) intead")
         }

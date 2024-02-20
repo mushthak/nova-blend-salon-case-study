@@ -35,7 +35,7 @@ class SalonStoreSpy: SalonStore {
         _ = try result.get()
     }
     
-    func insert(_ feed: [LocalSalonItem], timestamp: Date) async throws {
-        receivedMessages.append(.insert(feed, timestamp))
+    func insert(_ salons: [LocalSalonItem], timestamp: Date) async throws {
+        receivedMessages.append(.insert(salons, timestamp))
     }
 }

@@ -23,7 +23,7 @@ final class NovaBlendSalonAPIEndToEndTests: XCTestCase {
             XCTAssertEqual(salons[2], expectedSalon(at: 2))
             XCTAssertEqual(salons[3], expectedSalon(at: 3))
         }catch {
-            XCTFail("Expected successfull feed result, for \(error) instead")
+            XCTFail("Expected successfull result but got \(error) instead")
         }
     }
     

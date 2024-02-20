@@ -1,5 +1,5 @@
 //
-//  FeedCachePolicy.swift
+//  SalonCachePolicy.swift
 //  SalonCachePolicy
 //
 //  Created by Mushthak Ebrahim on 13/02/24.
