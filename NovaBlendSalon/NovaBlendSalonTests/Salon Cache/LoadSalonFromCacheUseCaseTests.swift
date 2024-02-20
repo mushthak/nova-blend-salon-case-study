@@ -60,7 +60,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         let feed = uniqueSalons()
         let fixedCurrentDate = Date()
         let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge()
-        let (sut, _) = makeSUT(with: .success((feed.models, expiredTimestamp)),currentDate: { fixedCurrentDate })
+        let (sut, _) = makeSUT(with: .success((feed.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
         
         do {
             let result: [Salon] = try await sut.load()
@@ -74,7 +74,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         let feed = uniqueSalons()
         let fixedCurrentDate = Date()
         let expiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: -1)
-        let (sut, _) = makeSUT(with: .success((feed.models, expiredTimestamp)),currentDate: { fixedCurrentDate })
+        let (sut, _) = makeSUT(with: .success((feed.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
         
         do {
             let result: [Salon] = try await sut.load()
@@ -88,7 +88,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         let feed = uniqueSalons()
         let fixedCurrentDate = Date()
         let nonExpiredTimestamp = fixedCurrentDate.minusFeedCacheMaxAge().adding(seconds: 1)
-        let (sut, _) = makeSUT(with: .success((feed.models, nonExpiredTimestamp)),currentDate: { fixedCurrentDate })
+        let (sut, _) = makeSUT(with: .success((feed.local, nonExpiredTimestamp)),currentDate: { fixedCurrentDate })
         
         do {
             let result: [Salon] = try await sut.load()
