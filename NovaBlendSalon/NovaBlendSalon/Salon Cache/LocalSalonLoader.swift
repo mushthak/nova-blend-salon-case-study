@@ -24,7 +24,7 @@ public class LocalSalonLoader {
         do {
             let cache: CachedSalon = try await store.retrieve()
             if SalonCachePolicy.validate(cache.timestamp, against: currentDate()) {
-                return cache.salons
+                return cache.salons.toModels()
             }
             return []
         } catch  {
@@ -34,6 +34,19 @@ public class LocalSalonLoader {
     
     public func save(_ salons: [Salon]) async throws {
         try await store.deleteCachedSalons()
+        try await store.insert(salons.toLocal(), timestamp: currentDate())
     }
     
+}
+
+private extension Array where Element == LocalSalonItem {
+    func toModels() -> [Salon] {
+        return map{Salon(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone, openTime: $0.openTime, closeTime: $0.closeTime)}
+    }
+}
+
+private extension Array where Element == Salon {
+    func toLocal() -> [LocalSalonItem] {
+        return map { LocalSalonItem(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone, openTime: $0.openTime, closeTime: $0.closeTime) }
+    }
 }

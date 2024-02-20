@@ -14,6 +14,7 @@ class SalonStoreSpy: SalonStore {
     enum ReceivedMessage: Equatable {
         case deleteCachedSalons
         case retrieve
+        case insert([LocalSalonItem], Date)
     }
     
     private(set) var receivedMessages = [ReceivedMessage]()
@@ -32,5 +33,9 @@ class SalonStoreSpy: SalonStore {
     func deleteCachedSalons() async throws{
         receivedMessages.append(.deleteCachedSalons)
         _ = try result.get()
+    }
+    
+    func insert(_ feed: [LocalSalonItem], timestamp: Date) async throws {
+        receivedMessages.append(.insert(feed, timestamp))
     }
 }

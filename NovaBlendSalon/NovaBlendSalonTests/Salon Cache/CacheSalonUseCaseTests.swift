@@ -15,14 +15,6 @@ final class CacheSalonUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
     
-    func test_save_requestsCacheDeletion() async throws {
-        let (sut, store) = makeSUT()
-        
-        try await sut.save(uniqueSalons().models)
-        
-        XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons])
-    }
-    
     func test_save_doesNotRequestCacheInsertionOnDeletionError() async {
         let deletionError = anyNSError()
         let (sut, store) = makeSUT(with: .failure(deletionError))
@@ -34,6 +26,19 @@ final class CacheSalonUseCaseTests: XCTestCase {
             XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons])
         }
         
+    }
+    
+    func test_save_requestsNewCacheInsertionWithTimestampOnSuccessfulDeletion() async {
+        let timestamp = Date()
+        let feed = uniqueSalons()
+        let (sut, store) = makeSUT(with: .success((feed.local, timestamp)),currentDate: { timestamp })
+        
+        do {
+            try await sut.save(feed.models)
+            XCTAssertEqual(store.receivedMessages, [.deleteCachedSalons, .insert(feed.local, timestamp)])
+        } catch  {
+            XCTFail("Expected success but got \(error) intead")
+        }
     }
     
     //MARK: Helpers
