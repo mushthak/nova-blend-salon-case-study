@@ -41,6 +41,18 @@ final class CacheSalonUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_failsOnDeletionError() async {
+        let deletionError = anyNSError()
+        let (sut, _) = makeSUT(with: .failure(deletionError))
+        
+        do {
+            try await sut.save(uniqueSalons().models)
+            XCTFail("Expected to throw error but got success instead")
+        } catch  {
+            XCTAssertEqual(error as NSError, deletionError)
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result)
