@@ -33,7 +33,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     }
     
     func test_load_failsOnRetrivalError() async {
-        let (sut, _) = makeSUT(with: .failure(anyNSError()))
+        let (sut, _) = makeSUT(with: retrivalError())
         
         do {
             _ = try await sut.load()
@@ -105,6 +105,10 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
         trackForMemoryLeak(store)
         trackForMemoryLeak(sut)
         return(sut, store)
+    }
+    
+    private func retrivalError() -> SalonStoreSpy.Result {
+        return .failure(.retrivalError)
     }
     
 }
