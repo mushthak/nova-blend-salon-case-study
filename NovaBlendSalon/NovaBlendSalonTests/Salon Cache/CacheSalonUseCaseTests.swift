@@ -49,7 +49,7 @@ final class CacheSalonUseCaseTests: XCTestCase {
             try await sut.save(uniqueSalons().models)
             XCTFail("Expected to throw error but got success instead")
         } catch  {
-            XCTAssertEqual(error as NSError, deletionError)
+            XCTAssertEqual(error as? LocalSalonLoader.Error, .deletion)
         }
     }
     
