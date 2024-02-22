@@ -14,6 +14,7 @@ public class LocalSalonLoader {
     public enum Error: Swift.Error {
         case retrival
         case deletion
+        case insertion
     }
     
     public init(store: SalonStore, currentDate: @escaping () -> Date) {
@@ -40,7 +41,11 @@ public class LocalSalonLoader {
             throw Error.deletion
         }
         
-        try await store.insert(salons.toLocal(), timestamp: currentDate())
+        do {
+            try await store.insert(salons.toLocal(), timestamp: currentDate())
+        } catch {
+            throw Error.insertion
+        }
     }
     
 }

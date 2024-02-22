@@ -9,12 +9,18 @@ import Foundation
 import NovaBlendSalon
 
 class SalonStoreSpy: SalonStore {
-    typealias Result = Swift.Result<CachedSalon, Error>
+    typealias Result = Swift.Result<CachedSalon, SalonStoreSpy.Error>
     
     enum ReceivedMessage: Equatable {
         case deleteCachedSalons
         case retrieve
         case insert([LocalSalonItem], Date)
+    }
+    
+    enum Error: Swift.Error {
+        case retrivalError
+        case deletionError
+        case insertionError
     }
     
     private(set) var receivedMessages = [ReceivedMessage]()
@@ -32,10 +38,23 @@ class SalonStoreSpy: SalonStore {
     
     func deleteCachedSalons() async throws{
         receivedMessages.append(.deleteCachedSalons)
-        _ = try result.get()
+
+        switch result {
+        case .failure(let error) where error == .deletionError:
+            throw error
+        case .success(_), .failure(_):
+            break
+        }
     }
     
     func insert(_ salons: [LocalSalonItem], timestamp: Date) async throws {
         receivedMessages.append(.insert(salons, timestamp))
+        
+        switch result {
+        case .failure(let error) where error == .insertionError:
+            throw error
+        case .success(_), .failure(_):
+            break
+        }
     }
 }
