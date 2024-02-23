@@ -62,6 +62,18 @@ final class CacheSalonUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_succeedsOnSuccessfullCacheInsertion() async {
+        let timestamp = Date()
+        let salons = uniqueSalons()
+        let (sut, _) = makeSUT(currentDate: { timestamp })
+        
+        do {
+            try await sut.save(salons.models)
+        } catch  {
+            XCTFail("Expected successfull cache insertion but got \(error) intead")
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result)
