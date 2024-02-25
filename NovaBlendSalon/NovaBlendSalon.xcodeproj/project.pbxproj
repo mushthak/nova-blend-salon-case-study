@@ -30,6 +30,7 @@
 		29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB92B5C03760026D484 /* SalonLoader.swift */; };
 		29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */; };
 		29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */; };
+		29EDA0AD2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		29BDDDB92B5C03760026D484 /* SalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoader.swift; sourceTree = "<group>"; };
 		29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheSalonUseCaseTests.swift; sourceTree = "<group>"; };
 		29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCacheTestHelpers.swift; sourceTree = "<group>"; };
+		29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateSalonFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */,
 				291F51082B7BCABA000771BE /* SalonStoreSpy.swift */,
 				29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */,
+				29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */,
 			);
 			path = "Salon Cache";
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				296576972B66A7D7005ECB8B /* URLProtocolStub.swift in Sources */,
 				291F51092B7BCABA000771BE /* SalonStoreSpy.swift in Sources */,
 				296576942B66A74E005ECB8B /* URLSessionHttpClientTests.swift in Sources */,
+				29EDA0AD2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift in Sources */,
 				29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */,
 				29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */,
 				296576992B6815A8005ECB8B /* TestHelpers.swift in Sources */,
