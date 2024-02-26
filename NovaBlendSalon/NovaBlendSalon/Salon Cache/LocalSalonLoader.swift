@@ -48,6 +48,14 @@ public class LocalSalonLoader {
         }
     }
     
+    public func validateCache() async  {
+        do {
+            _ = try await store.retrieve()
+        } catch  {
+            try? await store.deleteCachedSalons()
+        }
+    }
+    
 }
 
 private extension Array where Element == LocalSalonItem {

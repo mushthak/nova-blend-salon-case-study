@@ -9,10 +9,18 @@ import XCTest
 import NovaBlendSalon
 
 final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
-
+    
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
         XCTAssertEqual(store.receivedMessages, [])
+    }
+    
+    func test_validateCache_deletesCacheOnRetrievalError() async {
+        let (sut, store) = makeSUT(with: retrivalError())
+        
+        await sut.validateCache()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedSalons])
     }
     
     //MARK: Helpers
@@ -22,5 +30,9 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         trackForMemoryLeak(store)
         trackForMemoryLeak(sut)
         return(sut, store)
+    }
+    
+    private func retrivalError() -> SalonStoreSpy.Result {
+        return .failure(.retrivalError)
     }
 }
