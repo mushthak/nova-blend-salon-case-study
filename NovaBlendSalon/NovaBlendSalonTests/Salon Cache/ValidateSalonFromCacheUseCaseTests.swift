@@ -23,6 +23,14 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedSalons])
     }
     
+    func test_validateCache_doesNotDeleteCacheOnEmptyCache() async {
+        let (sut, store) = makeSUT(with: emptyCacheResult())
+        
+        await sut.validateCache()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result)
@@ -34,5 +42,9 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
     
     private func retrivalError() -> SalonStoreSpy.Result {
         return .failure(.retrivalError)
+    }
+    
+    private func emptyCacheResult() ->  SalonStoreSpy.Result {
+        return .success(([], Date()))
     }
 }
