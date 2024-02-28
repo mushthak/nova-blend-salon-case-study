@@ -112,21 +112,3 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     }
     
 }
-
-private extension Date {
-    func minusSalonCacheMaxAge() -> Date {
-        return adding(days: -salonCacheMaxAgeInDays)
-    }
-    
-    private var salonCacheMaxAgeInDays: Int {
-        return 7
-    }
-    
-    private func adding(days: Int, calendar: Calendar = Calendar(identifier: .gregorian)) -> Date {
-        return calendar.date(byAdding: .day, value: days, to: self)!
-    }
-    
-    func adding(seconds: TimeInterval) -> Date {
-        return self + seconds
-    }
-}

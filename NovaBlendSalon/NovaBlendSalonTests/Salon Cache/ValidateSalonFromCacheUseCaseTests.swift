@@ -31,6 +31,17 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
+    func test_validateCache_doesNotDeleteNonExpiredCache() async {
+        let salons = uniqueSalons()
+        let fixedCurrentDate = Date()
+        let expiredTimestamp = fixedCurrentDate.minusSalonCacheMaxAge().adding(seconds: 1)
+        let (sut, store) = makeSUT(with: .success((salons.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
+        
+        await sut.validateCache()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result)
