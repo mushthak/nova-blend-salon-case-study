@@ -18,7 +18,7 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
     func test_validateCache_deletesCacheOnRetrievalError() async {
         let (sut, store) = makeSUT(with: retrivalError())
         
-        await sut.validateCache()
+        try? await sut.validateCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedSalons])
     }
@@ -26,7 +26,7 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
     func test_validateCache_doesNotDeleteCacheOnEmptyCache() async {
         let (sut, store) = makeSUT(with: emptyCacheResult())
         
-        await sut.validateCache()
+        try? await sut.validateCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -37,7 +37,7 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         let expiredTimestamp = fixedCurrentDate.minusSalonCacheMaxAge().adding(seconds: 1)
         let (sut, store) = makeSUT(with: .success((salons.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
         
-        await sut.validateCache()
+        try? await sut.validateCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -48,7 +48,7 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         let expiredTimestamp = fixedCurrentDate.minusSalonCacheMaxAge()
         let (sut, store) = makeSUT(with: .success((salons.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
         
-        await sut.validateCache()
+        try? await sut.validateCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedSalons])
     }
@@ -59,14 +59,25 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         let expiredTimestamp = fixedCurrentDate.minusSalonCacheMaxAge().adding(seconds: -1)
         let (sut, store) = makeSUT(with: .success((salons.local, expiredTimestamp)),currentDate: { fixedCurrentDate })
         
-        await sut.validateCache()
+        try? await sut.validateCache()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedSalons])
     }
     
+    func test_validateCache_failsOnDeletionErrorOfFailedRetrieval() async {
+        let (sut, _) = makeSUT(with: retrivalError(), deletionError: anyNSError())
+        
+        do {
+            try await sut.validateCache()
+        } catch {
+            XCTAssertEqual(error as? LocalSalonLoader.Error, .deletion)
+        }
+        
+    }
+    
     //MARK: Helpers
-    private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
-        let store = SalonStoreSpy(result: result)
+    private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, deletionError: Error? = nil, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
+        let store = SalonStoreSpy(result: result, deletionError: deletionError)
         let sut = LocalSalonLoader(store: store, currentDate: currentDate)
         trackForMemoryLeak(store)
         trackForMemoryLeak(sut)

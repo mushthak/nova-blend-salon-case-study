@@ -48,14 +48,18 @@ public class LocalSalonLoader {
         }
     }
     
-    public func validateCache() async  {
+    public func validateCache() async throws {
         do {
             let cache = try await store.retrieve()
             if !SalonCachePolicy.validate(cache.timestamp, against: currentDate()) {
                 try? await store.deleteCachedSalons()
             }
         } catch  {
-            try? await store.deleteCachedSalons()
+            do {
+                try await store.deleteCachedSalons()
+            } catch  {
+                throw Error.deletion
+            }
         }
     }
     

@@ -26,9 +26,11 @@ class SalonStoreSpy: SalonStore {
     private(set) var receivedMessages = [ReceivedMessage]()
     
     let result: Result
+    let deletionError : Swift.Error?
     
-    init(result: Result) {
+    init(result: Result, deletionError: Swift.Error? = nil) {
         self.result = result
+        self.deletionError = deletionError
     }
     
     func retrieve() async throws -> CachedSalon {
@@ -38,6 +40,10 @@ class SalonStoreSpy: SalonStore {
     
     func deleteCachedSalons() async throws{
         receivedMessages.append(.deleteCachedSalons)
+        
+        if deletionError != nil {
+            throw deletionError!
+        }
 
         switch result {
         case .failure(let error) where error == .deletionError:
