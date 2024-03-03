@@ -75,6 +75,17 @@ final class ValidateSalonFromCacheUseCaseTests: XCTestCase {
         
     }
     
+    func test_validateCache_succeedsOnSuccessfulDeletionOfFailedRetrieval() async {
+        let (sut, _) = makeSUT(with: retrivalError())
+        
+        do {
+            try await sut.validateCache()
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+        
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, deletionError: Error? = nil, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result, deletionError: deletionError)
