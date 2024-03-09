@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class LocalSalonLoader {
+public class LocalSalonLoader: SalonLoader {
     let store: SalonStore
     let currentDate: () -> Date
     
