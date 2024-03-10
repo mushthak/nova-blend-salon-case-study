@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class LocalSalonLoader: SalonLoader {
+public class LocalSalonLoader {
     let store: SalonStore
     let currentDate: () -> Date
     
@@ -21,7 +21,9 @@ public class LocalSalonLoader: SalonLoader {
         self.store = store
         self.currentDate = currentDate
     }
-    
+}
+
+extension LocalSalonLoader: SalonLoader {
     public func load() async throws -> [Salon] {
         do {
             let cache: CachedSalon = try await store.retrieve()
@@ -33,7 +35,9 @@ public class LocalSalonLoader: SalonLoader {
             throw Error.retrival
         }
     }
-    
+}
+
+extension LocalSalonLoader {
     public func save(_ salons: [Salon]) async throws {
         do {
             try await store.deleteCachedSalons()
@@ -48,6 +52,17 @@ public class LocalSalonLoader: SalonLoader {
         }
     }
     
+    //MARK: Helpers
+    private func deleteCachedSalons() async throws {
+        do {
+            try await store.deleteCachedSalons()
+        } catch  {
+            throw Error.deletion
+        }
+    }
+}
+
+extension LocalSalonLoader {
     public func validateCache() async throws {
         do {
             let cache = try await store.retrieve()
@@ -58,16 +73,6 @@ public class LocalSalonLoader: SalonLoader {
             try await deleteCachedSalons()
         }
     }
-    
-    //MARK: Helpers
-    private func deleteCachedSalons() async throws {
-        do {
-            try await store.deleteCachedSalons()
-        } catch  {
-            throw Error.deletion
-        }
-    }
-    
 }
 
 private extension Array where Element == LocalSalonItem {
