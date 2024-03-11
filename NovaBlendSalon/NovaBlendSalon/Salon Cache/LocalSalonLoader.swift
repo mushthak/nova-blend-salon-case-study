@@ -37,7 +37,7 @@ extension LocalSalonLoader: SalonLoader {
     }
 }
 
-extension LocalSalonLoader {
+extension LocalSalonLoader: SalonCache {
     public func save(_ salons: [Salon]) async throws {
         do {
             try await store.deleteCachedSalons()
