@@ -110,8 +110,8 @@
 		291F50FC2B771FF4000771BE /* Salon Cache */ = {
 			isa = PBXGroup;
 			children = (
+				29B6B01A2BA20F520013C3AB /* Helpers */,
 				291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */,
-				291F51082B7BCABA000771BE /* SalonStoreSpy.swift */,
 				29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */,
 				29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */,
 			);
@@ -172,6 +172,14 @@
 			children = (
 				2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */,
 				29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		29B6B01A2BA20F520013C3AB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				291F51082B7BCABA000771BE /* SalonStoreSpy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
