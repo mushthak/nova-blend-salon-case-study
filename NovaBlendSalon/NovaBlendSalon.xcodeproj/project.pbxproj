@@ -24,6 +24,7 @@
 		296576A52B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576A42B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift */; };
 		296576A62B6E5F7D005ECB8B /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		296576AD2B6FCCC0005ECB8B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
+		2988560F2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
@@ -69,6 +70,7 @@
 		2965769C2B6BC9D5005ECB8B /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		296576A22B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		296576A42B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataSalonStoreTests.swift; sourceTree = "<group>"; };
 		29B6B0172B9F61D00013C3AB /* SalonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCache.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 				291F50FD2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift */,
 				29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */,
 				29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */,
+				2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */,
 			);
 			path = "Salon Cache";
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				296576942B66A74E005ECB8B /* URLSessionHttpClientTests.swift in Sources */,
 				29EDA0AD2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift in Sources */,
 				29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */,
+				2988560F2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift in Sources */,
 				29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */,
 				296576992B6815A8005ECB8B /* TestHelpers.swift in Sources */,
 				291F50FE2B77206F000771BE /* LoadSalonFromCacheUseCaseTests.swift in Sources */,
