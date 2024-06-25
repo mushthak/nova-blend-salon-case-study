@@ -9,21 +9,6 @@ import Foundation
 import NovaBlendSalon
 import XCTest
 
-class SwiftDataSalonStore: SalonStore {
-    func retrieve() async throws -> NovaBlendSalon.CachedSalon {
-        return (salons: [], timestamp: Date.init())
-    }
-    
-    func deleteCachedSalons() async throws {
-        
-    }
-    
-    func insert(_ salons: [NovaBlendSalon.LocalSalonItem], timestamp: Date) async throws {
-        
-    }
-
-}
-
 class SwiftDataSalonStoreTests: XCTestCase {
     
     func test_retrieve_deliversEmptyOnEmptyCache() async {
