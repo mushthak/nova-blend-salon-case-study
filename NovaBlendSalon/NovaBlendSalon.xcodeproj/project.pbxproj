@@ -26,6 +26,7 @@
 		296576AD2B6FCCC0005ECB8B /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
 		2988560F2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */; };
 		298856132C2AEA81009BB335 /* SwiftDataSalonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */; };
+		298856152C2AF2A2009BB335 /* ManagedSalonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
@@ -73,6 +74,7 @@
 		296576A42B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataSalonStoreTests.swift; sourceTree = "<group>"; };
 		298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataSalonStore.swift; sourceTree = "<group>"; };
+		298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSalonItem.swift; sourceTree = "<group>"; };
 		29B6B0172B9F61D00013C3AB /* SalonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCache.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */,
+				298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291F51032B7BC984000771BE /* LocalSalonLoader.swift in Sources */,
+				298856152C2AF2A2009BB335 /* ManagedSalonItem.swift in Sources */,
 				29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */,
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
 				291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */,

@@ -6,12 +6,19 @@
 //
 
 import Foundation
+import SwiftData
 
 public final class SwiftDataSalonStore: SalonStore {
-    public init(){}
+    var modelContext: ModelContext
+    
+    public init(modelContext: ModelContext){
+        self.modelContext = modelContext
+    }
     
     public func retrieve() async throws -> NovaBlendSalon.CachedSalon {
-        return (salons: [], timestamp: Date.init())
+        let descriptor = FetchDescriptor<ManagedSalonItem>()
+        let salons = try modelContext.fetch(descriptor)
+        return (salons: salons.compactMap{ $0.local }, timestamp: Date.init())
     }
     
     public func deleteCachedSalons() async throws {

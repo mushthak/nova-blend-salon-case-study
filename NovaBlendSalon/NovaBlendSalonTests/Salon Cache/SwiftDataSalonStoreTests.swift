@@ -8,11 +8,12 @@
 import Foundation
 import NovaBlendSalon
 import XCTest
+import SwiftData
 
 class SwiftDataSalonStoreTests: XCTestCase {
     
     func test_retrieve_deliversEmptyOnEmptyCache() async {
-        let sut = makeSUT()
+        let sut = await makeSUT()
         do {
             let result = try await sut.retrieve()
             XCTAssertEqual(result.salons, [])
@@ -22,7 +23,7 @@ class SwiftDataSalonStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectsOnEmptyCache() async {
-        let sut = makeSUT()
+        let sut = await makeSUT()
         do {
             var result = try await sut.retrieve()
             XCTAssertEqual(result.salons, [])
@@ -35,8 +36,11 @@ class SwiftDataSalonStoreTests: XCTestCase {
 
     //MARK: Helpers
 
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> SalonStore {
-        let sut = SwiftDataSalonStore()
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> SalonStore {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try! ModelContainer(for: ManagedSalonItem.self, configurations: config)
+        let mainContext = await container.mainContext
+        let sut = SwiftDataSalonStore(modelContext: mainContext)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
     }
