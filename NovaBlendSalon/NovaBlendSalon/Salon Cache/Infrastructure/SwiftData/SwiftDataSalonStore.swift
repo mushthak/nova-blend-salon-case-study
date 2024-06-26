@@ -15,10 +15,11 @@ public final class SwiftDataSalonStore: SalonStore {
         self.modelContext = modelContext
     }
     
-    public func retrieve() async throws -> NovaBlendSalon.CachedSalon? {
-        let descriptor = FetchDescriptor<ManagedSalonItem>()
-        let salons = try modelContext.fetch(descriptor)
-        return (salons: salons.compactMap{ $0.local }, timestamp: Date.init())
+    public func retrieve() async throws -> CachedSalon? {
+        let descriptor = FetchDescriptor<ManagedCache>()
+        let result = try modelContext.fetch(descriptor)
+        guard let cache = result.first else { return nil }
+        return (salons: cache.salons.compactMap{ $0.local }, timestamp: cache.timestamp)
     }
     
     public func deleteCachedSalons() async throws {
@@ -26,6 +27,8 @@ public final class SwiftDataSalonStore: SalonStore {
     }
     
     public func insert(_ salons: [NovaBlendSalon.LocalSalonItem], timestamp: Date) async throws {
-        
+        let salons = ManagedSalonItem.salons(from: salons)
+        let cache = ManagedCache(salons: salons, timestamp: timestamp)
+        modelContext.insert(cache)
     }
 }
