@@ -27,6 +27,6 @@ public final class SwiftDataSalonStore: SalonStore {
     public func insert(_ salons: [NovaBlendSalon.LocalSalonItem], timestamp: Date) async throws {
         let salons = ManagedSalonItem.salons(from: salons)
         let cache = ManagedCache(salons: salons, timestamp: timestamp)
-        modelContext.insert(cache)
+        try await ManagedCache.insertUniqueInstance(of: cache, in: modelContext)
     }
 }

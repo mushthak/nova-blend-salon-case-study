@@ -18,8 +18,17 @@ import SwiftData
         self.salons = salons
     }
     
+    //MARK: Helpers
+    
     static func find(in modelContext: ModelContext) throws -> ManagedCache? {
         let descriptor = FetchDescriptor<ManagedCache>()
         return try modelContext.fetch(descriptor).first
+    }
+    
+    static func insertUniqueInstance(of managedCache: ManagedCache,in modelContext: ModelContext) async throws {
+        if let managedCache = try ManagedCache.find(in: modelContext) {
+            modelContext.delete(managedCache)
+        }
+        modelContext.insert(managedCache)
     }
 }
