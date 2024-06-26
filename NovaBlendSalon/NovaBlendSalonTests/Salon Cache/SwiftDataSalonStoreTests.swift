@@ -82,7 +82,8 @@ class SwiftDataSalonStoreTests: XCTestCase {
             try await sut.insert(uniqueSalons().local, timestamp: Date.init())
             
             let uniqueTimeStamp = Date.init()
-            try await sut.insert(uniqueSalons().local, timestamp: uniqueTimeStamp)
+            let uniqueSalons = uniqueSalons().local
+            try await sut.insert(uniqueSalons, timestamp: uniqueTimeStamp)
             
             let result = try await sut.retrieve()
             XCTAssertEqual(result?.timestamp, uniqueTimeStamp)
@@ -96,8 +97,7 @@ class SwiftDataSalonStoreTests: XCTestCase {
     private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> SalonStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: ManagedSalonItem.self, configurations: config)
-        let mainContext = await container.mainContext
-        let sut = SwiftDataSalonStore(modelContext: mainContext)
+        let sut = SwiftDataSalonStore(modelContainer: container)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
     }

@@ -8,15 +8,11 @@
 import Foundation
 import SwiftData
 
-public final class SwiftDataSalonStore: SalonStore {
-    var modelContext: ModelContext
-    
-    public init(modelContext: ModelContext){
-        self.modelContext = modelContext
-    }
+@ModelActor
+public actor SwiftDataSalonStore: SalonStore {
     
     public func retrieve() async throws -> CachedSalon? {
-        guard let cache = try ManagedCache.find(in: modelContext) else { return nil }
+        guard let cache = try findCache() else { return nil }
         return (salons: cache.salons.compactMap{ $0.local }, timestamp: cache.timestamp)
     }
     
@@ -27,6 +23,19 @@ public final class SwiftDataSalonStore: SalonStore {
     public func insert(_ salons: [NovaBlendSalon.LocalSalonItem], timestamp: Date) async throws {
         let salons = ManagedSalonItem.salons(from: salons)
         let cache = ManagedCache(salons: salons, timestamp: timestamp)
-        try await ManagedCache.insertUniqueInstance(of: cache, in: modelContext)
+        try await insertUniqueInstance(of: cache)
+    }
+    
+    //MARK: Helpers
+    
+    private func findCache() throws -> ManagedCache? {
+        let descriptor = FetchDescriptor<ManagedCache>()
+        return try modelContext.fetch(descriptor).first
+    }
+    
+    private func insertUniqueInstance(of managedCache: ManagedCache) async throws {
+        try modelContext.delete(model: ManagedCache.self)
+        modelContext.insert(managedCache)
+        try modelContext.save()
     }
 }
