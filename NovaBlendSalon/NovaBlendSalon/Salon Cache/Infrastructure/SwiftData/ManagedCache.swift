@@ -26,9 +26,7 @@ import SwiftData
     }
     
     static func insertUniqueInstance(of managedCache: ManagedCache,in modelContext: ModelContext) async throws {
-        if let managedCache = try ManagedCache.find(in: modelContext) {
-            modelContext.delete(managedCache)
-        }
+        try modelContext.delete(model: ManagedCache.self)
         modelContext.insert(managedCache)
     }
 }
