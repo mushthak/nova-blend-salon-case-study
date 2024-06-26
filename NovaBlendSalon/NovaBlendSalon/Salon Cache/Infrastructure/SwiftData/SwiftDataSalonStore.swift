@@ -16,9 +16,7 @@ public final class SwiftDataSalonStore: SalonStore {
     }
     
     public func retrieve() async throws -> CachedSalon? {
-        let descriptor = FetchDescriptor<ManagedCache>()
-        let result = try modelContext.fetch(descriptor)
-        guard let cache = result.first else { return nil }
+        guard let cache = try ManagedCache.find(in: modelContext) else { return nil }
         return (salons: cache.salons.compactMap{ $0.local }, timestamp: cache.timestamp)
     }
     
