@@ -35,6 +35,7 @@
 		29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */; };
 		29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */; };
 		29EDA0AD2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */; };
+		29EE6A4B2C2BF293000D9C51 /* ManagedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EE6A4A2C2BF293000D9C51 /* ManagedCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheSalonUseCaseTests.swift; sourceTree = "<group>"; };
 		29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCacheTestHelpers.swift; sourceTree = "<group>"; };
 		29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateSalonFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		29EE6A4A2C2BF293000D9C51 /* ManagedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 			children = (
 				298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */,
 				298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */,
+				29EE6A4A2C2BF293000D9C51 /* ManagedCache.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				291F51032B7BC984000771BE /* LocalSalonLoader.swift in Sources */,
 				298856152C2AF2A2009BB335 /* ManagedSalonItem.swift in Sources */,
+				29EE6A4B2C2BF293000D9C51 /* ManagedCache.swift in Sources */,
 				29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */,
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
 				291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */,

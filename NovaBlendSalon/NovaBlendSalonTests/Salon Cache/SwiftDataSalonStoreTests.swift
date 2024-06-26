@@ -16,7 +16,8 @@ class SwiftDataSalonStoreTests: XCTestCase {
         let sut = await makeSUT()
         do {
             let result = try await sut.retrieve()
-            XCTAssertEqual(result?.salons, [])
+            
+            XCTAssertNil(result?.salons)
         } catch {
             XCTFail("Expected success but got \(error) intead")
         }
@@ -26,9 +27,25 @@ class SwiftDataSalonStoreTests: XCTestCase {
         let sut = await makeSUT()
         do {
             var result = try await sut.retrieve()
-            XCTAssertEqual(result?.salons, [])
+            XCTAssertNil(result?.salons)
             result = try await sut.retrieve()
-            XCTAssertEqual(result?.salons, [])
+            XCTAssertNil(result?.salons)
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+    }
+    
+    func test_retrive_deliversFoundValuesOnNonEmptyCache() async {
+        let sut = await makeSUT()
+        do {
+            let uniqueTimeStamp = Date.init()
+            let uniqueLocalSalons = uniqueSalons().local
+            try await sut.insert(uniqueLocalSalons, timestamp: uniqueTimeStamp)
+            
+            let result = try await sut.retrieve()
+            
+            XCTAssertEqual(result?.timestamp, uniqueTimeStamp)
+            XCTAssertEqual(result?.salons.count, uniqueLocalSalons.count)
         } catch {
             XCTFail("Expected success but got \(error) intead")
         }

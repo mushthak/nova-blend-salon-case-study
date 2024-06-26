@@ -15,6 +15,7 @@ import SwiftData
     let phone: String?
     let openTime: Float
     let closeTime: Float
+    var cache: ManagedCache?
     
     public init(id: UUID, name: String, location: String?, phone: String?, openTime: Float, closeTime: Float) {
         self.id = id
@@ -27,5 +28,11 @@ import SwiftData
     
     var local: LocalSalonItem {
         return LocalSalonItem(id: id, name: name, location: location, phone: phone, openTime: openTime, closeTime: closeTime)
+    }
+    
+    static func salons(from localSalons: [LocalSalonItem]) -> [ManagedSalonItem] {
+        return localSalons.map {
+            ManagedSalonItem(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone, openTime: $0.openTime, closeTime: $0.closeTime)
+        }
     }
 }
