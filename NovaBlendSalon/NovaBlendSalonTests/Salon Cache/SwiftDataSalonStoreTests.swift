@@ -62,6 +62,19 @@ class SwiftDataSalonStoreTests: XCTestCase {
             XCTFail("Expected success but got \(error) intead")
         }
     }
+    
+    func test_insert_deliversNoErrorNonOnEmptyCache() async {
+        let sut = await makeSUT()
+        do {
+            try await sut.insert(uniqueSalons().local, timestamp: Date.init())
+            let result = try await sut.retrieve()
+            XCTAssertNotNil(result)
+            
+            try await sut.insert(uniqueSalons().local, timestamp: Date.init())
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+    }
 
     //MARK: Helpers
 
