@@ -17,16 +17,4 @@ import SwiftData
         self.timestamp = timestamp
         self.salons = salons
     }
-    
-    //MARK: Helpers
-    
-    static func find(in modelContext: ModelContext) throws -> ManagedCache? {
-        let descriptor = FetchDescriptor<ManagedCache>()
-        return try modelContext.fetch(descriptor).first
-    }
-    
-    static func insertUniqueInstance(of managedCache: ManagedCache,in modelContext: ModelContext) async throws {
-        try modelContext.delete(model: ManagedCache.self)
-        modelContext.insert(managedCache)
-    }
 }
