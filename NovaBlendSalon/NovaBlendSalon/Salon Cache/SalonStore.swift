@@ -10,7 +10,7 @@ import Foundation
 public typealias CachedSalon = (salons: [LocalSalonItem], timestamp: Date)
 
 public protocol SalonStore {
-    func retrieve() async throws -> CachedSalon
+    func retrieve() async throws -> CachedSalon?
     func deleteCachedSalons() async throws
     func insert(_ salons: [LocalSalonItem], timestamp: Date) async throws
 }

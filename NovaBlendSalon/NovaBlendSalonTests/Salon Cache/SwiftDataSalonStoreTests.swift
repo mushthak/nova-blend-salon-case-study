@@ -16,7 +16,7 @@ class SwiftDataSalonStoreTests: XCTestCase {
         let sut = await makeSUT()
         do {
             let result = try await sut.retrieve()
-            XCTAssertEqual(result.salons, [])
+            XCTAssertEqual(result?.salons, [])
         } catch {
             XCTFail("Expected success but got \(error) intead")
         }
@@ -26,9 +26,9 @@ class SwiftDataSalonStoreTests: XCTestCase {
         let sut = await makeSUT()
         do {
             var result = try await sut.retrieve()
-            XCTAssertEqual(result.salons, [])
+            XCTAssertEqual(result?.salons, [])
             result = try await sut.retrieve()
-            XCTAssertEqual(result.salons, [])
+            XCTAssertEqual(result?.salons, [])
         } catch {
             XCTFail("Expected success but got \(error) intead")
         }

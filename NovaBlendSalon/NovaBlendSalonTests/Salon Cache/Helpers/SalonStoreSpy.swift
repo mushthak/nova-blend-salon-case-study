@@ -9,7 +9,7 @@ import Foundation
 import NovaBlendSalon
 
 class SalonStoreSpy: SalonStore {
-    typealias Result = Swift.Result<CachedSalon, SalonStoreSpy.Error>
+    typealias Result = Swift.Result<CachedSalon?, SalonStoreSpy.Error>
     
     enum ReceivedMessage: Equatable {
         case deleteCachedSalons
@@ -33,7 +33,7 @@ class SalonStoreSpy: SalonStore {
         self.deletionError = deletionError
     }
     
-    func retrieve() async throws -> CachedSalon {
+    func retrieve() async throws -> CachedSalon? {
         receivedMessages.append(.retrieve)
         return try result.get()
     }
