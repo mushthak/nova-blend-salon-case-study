@@ -45,7 +45,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     }
     
     func test_load_deliversEmptySalonsOnEmptyCache() async {
-        let (sut, _) = makeSUT(with: .success(([], Date())))
+        let (sut, _) = makeSUT(with: .success(.none))
         
         do {
             let result: [Salon] = try await sut.load()
@@ -99,7 +99,7 @@ final class LoadSalonFromCacheUseCaseTests: XCTestCase {
     }
     
     //MARK: Helpers
-    private func makeSUT(with result: SalonStoreSpy.Result = .success(([], Date())), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
+    private func makeSUT(with result: SalonStoreSpy.Result = .success(.none), currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalSalonLoader, store: SalonStoreSpy) {
         let store = SalonStoreSpy(result: result)
         let sut = LocalSalonLoader(store: store, currentDate: currentDate)
         trackForMemoryLeak(store)

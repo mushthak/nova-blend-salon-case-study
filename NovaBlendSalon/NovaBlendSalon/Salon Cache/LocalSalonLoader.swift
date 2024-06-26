@@ -26,7 +26,7 @@ public class LocalSalonLoader {
 extension LocalSalonLoader: SalonLoader {
     public func load() async throws -> [Salon] {
         do {
-            let cache: CachedSalon = try await store.retrieve()
+            guard let cache: CachedSalon = try await store.retrieve() else { return [] }
             if SalonCachePolicy.validate(cache.timestamp, against: currentDate()) {
                 return cache.salons.toModels()
             }
@@ -65,7 +65,7 @@ extension LocalSalonLoader: SalonCache {
 extension LocalSalonLoader {
     public func validateCache() async throws {
         do {
-            let cache = try await store.retrieve()
+            guard let cache = try await store.retrieve() else { return }
             if !SalonCachePolicy.validate(cache.timestamp, against: currentDate()) {
                 try await deleteCachedSalons()
             }

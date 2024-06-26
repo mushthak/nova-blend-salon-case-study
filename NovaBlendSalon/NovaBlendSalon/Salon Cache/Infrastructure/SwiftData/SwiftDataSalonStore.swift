@@ -15,7 +15,7 @@ public final class SwiftDataSalonStore: SalonStore {
         self.modelContext = modelContext
     }
     
-    public func retrieve() async throws -> NovaBlendSalon.CachedSalon {
+    public func retrieve() async throws -> NovaBlendSalon.CachedSalon? {
         let descriptor = FetchDescriptor<ManagedSalonItem>()
         let salons = try modelContext.fetch(descriptor)
         return (salons: salons.compactMap{ $0.local }, timestamp: Date.init())
