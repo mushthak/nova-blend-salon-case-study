@@ -17,7 +17,7 @@ public actor SwiftDataSalonStore: SalonStore {
     }
     
     public func deleteCachedSalons() async throws {
-        
+        try deleteCache()
     }
     
     public func insert(_ salons: [NovaBlendSalon.LocalSalonItem], timestamp: Date) async throws {
@@ -34,8 +34,12 @@ public actor SwiftDataSalonStore: SalonStore {
     }
     
     private func insertUniqueInstance(of managedCache: ManagedCache) async throws {
-        try modelContext.delete(model: ManagedCache.self)
+        try deleteCache()
         modelContext.insert(managedCache)
         try modelContext.save()
+    }
+    
+    private func deleteCache() throws {
+        try modelContext.delete(model: ManagedCache.self)
     }
 }
