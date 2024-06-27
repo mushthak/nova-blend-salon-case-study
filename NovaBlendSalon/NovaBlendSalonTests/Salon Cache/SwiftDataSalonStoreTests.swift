@@ -100,6 +100,21 @@ class SwiftDataSalonStoreTests: XCTestCase {
             XCTFail("Expected success but got \(error) intead")
         }
     }
+    
+    func test_delete_hasNoSideEffectsOnEmptyCache() async {
+        let sut = await makeSUT()
+        do {
+            var result = try await sut.retrieve()
+            XCTAssertNil(result?.salons)
+            
+            try await sut.deleteCachedSalons()
+            
+            result = try await sut.retrieve()
+            XCTAssertNil(result?.salons)
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+    }
 
     //MARK: Helpers
 
