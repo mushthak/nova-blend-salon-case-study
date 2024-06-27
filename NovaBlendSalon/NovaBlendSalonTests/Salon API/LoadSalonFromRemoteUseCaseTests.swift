@@ -45,10 +45,11 @@ final class LoadSalonFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversInvalidDataErrorOnNon200HTTPResponse() async throws {
         let samples = [199, 201, 300, 400, 500]
         samples.enumerated().forEach { index, code in
-            
+            let emptyListJSON = makeItemsJSON(items: [])
             Task {
+                
                 let response = HTTPURLResponse(url: anyURL(), statusCode: code, httpVersion: nil, headerFields: nil)!
-                let (sut,_) = makeSUT(with: .success((Data(), response)))
+                let (sut,_) = makeSUT(with: .success((emptyListJSON, response)))
                 
                 do {
                     _ = try await sut.load()
