@@ -27,6 +27,8 @@
 		2988560F2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */; };
 		298856132C2AEA81009BB335 /* SwiftDataSalonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */; };
 		298856152C2AF2A2009BB335 /* ManagedSalonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */; };
+		29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */; };
+		29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
@@ -40,6 +42,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		296576A72B6E5F7D005ECB8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29BDDD952B5C016F0026D484 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29BDDD9D2B5C016F0026D484;
+			remoteInfo = NovaBlendSalon;
+		};
+		29B503A22C2DA38A000A53A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29BDDD952B5C016F0026D484 /* Project object */;
 			proxyType = 1;
@@ -76,6 +85,8 @@
 		2988560E2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataSalonStoreTests.swift; sourceTree = "<group>"; };
 		298856122C2AEA81009BB335 /* SwiftDataSalonStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataSalonStore.swift; sourceTree = "<group>"; };
 		298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSalonItem.swift; sourceTree = "<group>"; };
+		29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		29B6B0172B9F61D00013C3AB /* SalonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCache.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +105,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				296576A62B6E5F7D005ECB8B /* NovaBlendSalon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B5039A2C2DA38A000A53A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +223,14 @@
 			path = SwiftData;
 			sourceTree = "<group>";
 		};
+		29B5039E2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */ = {
+			isa = PBXGroup;
+			children = (
+				29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */,
+			);
+			path = NovaBlendSalonCacheIntegrationTests;
+			sourceTree = "<group>";
+		};
 		29B6B01A2BA20F520013C3AB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +246,7 @@
 				29BDDDA02B5C016F0026D484 /* NovaBlendSalon */,
 				29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */,
 				296576A32B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests */,
+				29B5039E2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */,
 				29BDDD9F2B5C016F0026D484 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -229,6 +257,7 @@
 				29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */,
 				29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */,
 				296576A22B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.xctest */,
+				29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,6 +323,24 @@
 			productReference = 296576A22B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		29B5039C2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29B503A62C2DA38A000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonCacheIntegrationTests" */;
+			buildPhases = (
+				29B503992C2DA38A000A53A9 /* Sources */,
+				29B5039A2C2DA38A000A53A9 /* Frameworks */,
+				29B5039B2C2DA38A000A53A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29B503A32C2DA38A000A53A9 /* PBXTargetDependency */,
+			);
+			name = NovaBlendSalonCacheIntegrationTests;
+			productName = NovaBlendSalonCacheIntegrationTests;
+			productReference = 29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29BDDDB02B5C016F0026D484 /* Build configuration list for PBXNativeTarget "NovaBlendSalon" */;
@@ -337,11 +384,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					296576A12B6E5F7D005ECB8B = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					29B5039C2C2DA38A000A53A9 = {
+						CreatedOnToolsVersion = 15.2;
 					};
 					29BDDD9D2B5C016F0026D484 = {
 						CreatedOnToolsVersion = 15.0;
@@ -368,12 +418,20 @@
 				29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */,
 				29BDDDA52B5C016F0026D484 /* NovaBlendSalonTests */,
 				296576A12B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests */,
+				29B5039C2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		296576A02B6E5F7D005ECB8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B5039B2C2DA38A000A53A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -403,6 +461,14 @@
 			files = (
 				296576A52B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.swift in Sources */,
 				296576AD2B6FCCC0005ECB8B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B503992C2DA38A000A53A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +519,11 @@
 			target = 29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */;
 			targetProxy = 296576A72B6E5F7D005ECB8B /* PBXContainerItemProxy */;
 		};
+		29B503A32C2DA38A000A53A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */;
+			targetProxy = 29B503A22C2DA38A000A53A9 /* PBXContainerItemProxy */;
+		};
 		29BDDDA92B5C016F0026D484 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */;
@@ -483,6 +554,36 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		29B503A42C2DA38A000A53A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonCacheIntegrationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		29B503A52C2DA38A000A53A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonCacheIntegrationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -714,6 +815,15 @@
 			buildConfigurations = (
 				296576AA2B6E5F7D005ECB8B /* Debug */,
 				296576AB2B6E5F7D005ECB8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29B503A62C2DA38A000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonCacheIntegrationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29B503A42C2DA38A000A53A9 /* Debug */,
+				29B503A52C2DA38A000A53A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

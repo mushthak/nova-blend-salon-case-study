@@ -25,6 +25,13 @@
         "identifier" : "29BDDDA52B5C016F0026D484",
         "name" : "NovaBlendSalonTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "29B5039C2C2DA38A000A53A9",
+        "name" : "NovaBlendSalonCacheIntegrationTests"
+      }
     }
   ],
   "version" : 1
