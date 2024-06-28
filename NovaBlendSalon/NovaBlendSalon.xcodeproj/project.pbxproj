@@ -30,6 +30,7 @@
 		29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */; };
 		29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29B503A72C2EB1C7000A53A9 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
+		29B503A82C2EB495000A53A9 /* SalonCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
@@ -471,6 +472,7 @@
 			files = (
 				29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */,
 				29B503A72C2EB1C7000A53A9 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				29B503A82C2EB495000A53A9 /* SalonCacheTestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
