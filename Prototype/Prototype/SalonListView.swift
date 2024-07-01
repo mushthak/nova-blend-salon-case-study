@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct SalonListView: View {
+    let viewModel = SalonListViewModel()
+    
     var body: some View {
-        List(0 ..< 10) { item in
+        List(viewModel.salons, id: \.id) { salon in
             VStack {
-                Text("Nova alpha salon").font(.title2)
-                Text("3051 Lucky Duck Drive, Pittsburgh, Pennsylvania")
+                Text(salon.name).font(.title2)
+                Text(salon.location)
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                 HStack {
                     Image(systemName: "phone")
                         .imageScale(.large)
                         .foregroundStyle(.tint)
-                    Text("412-862-3526")
+                    Text(salon.phone)
                 }
-                Text("Today’s hours : 10am -7pm").font(.subheadline)
+                Text(salon.hours).font(.subheadline)
                 
             }.padding()
+        }.task {
+            viewModel.loadSalons()
         }
     }
 }
