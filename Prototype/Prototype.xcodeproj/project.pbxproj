@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29B503B62C32D7C0000A53A9 /* PrototypeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503B52C32D7C0000A53A9 /* PrototypeApp.swift */; };
-		29B503B82C32D7C0000A53A9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503B72C32D7C0000A53A9 /* ContentView.swift */; };
+		29B503B82C32D7C0000A53A9 /* SalonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503B72C32D7C0000A53A9 /* SalonListView.swift */; };
 		29B503BA2C32D7C1000A53A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B503B92C32D7C1000A53A9 /* Assets.xcassets */; };
 		29B503BD2C32D7C1000A53A9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B503BC2C32D7C1000A53A9 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		29B503B22C32D7C0000A53A9 /* Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B503B52C32D7C0000A53A9 /* PrototypeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeApp.swift; sourceTree = "<group>"; };
-		29B503B72C32D7C0000A53A9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		29B503B72C32D7C0000A53A9 /* SalonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonListView.swift; sourceTree = "<group>"; };
 		29B503B92C32D7C1000A53A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29B503BC2C32D7C1000A53A9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				29B503B52C32D7C0000A53A9 /* PrototypeApp.swift */,
-				29B503B72C32D7C0000A53A9 /* ContentView.swift */,
+				29B503B72C32D7C0000A53A9 /* SalonListView.swift */,
 				29B503B92C32D7C1000A53A9 /* Assets.xcassets */,
 				29B503BB2C32D7C1000A53A9 /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B503B82C32D7C0000A53A9 /* ContentView.swift in Sources */,
+				29B503B82C32D7C0000A53A9 /* SalonListView.swift in Sources */,
 				29B503B62C32D7C0000A53A9 /* PrototypeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

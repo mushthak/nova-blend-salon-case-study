@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SalonListView: View {
     var body: some View {
         List(0 ..< 10) { item in
             VStack {
@@ -29,5 +29,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    SalonListView()
 }
