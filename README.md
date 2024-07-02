@@ -140,7 +140,10 @@ Given the customer
 
 ## Flowchart
 
-![Salon Loading Feature](salon_flowchart.drawio.png)
+![NovaBlendSalon-Flowchart drawio](https://github.com/mushthak/nova-blend-salon-case-study/assets/11793859/279814bb-1bb3-49d1-afd2-f903f1e5b353)
+
+
+
 
 ## Model Specs
 
@@ -202,4 +205,5 @@ GET *url* (TBD)
 
 ## App Architecture
 
-![](architecture.png)
+![NovaBlendSalon-Architecture drawio](https://github.com/mushthak/nova-blend-salon-case-study/assets/11793859/ac115a42-2ea8-423a-b133-09a7befb4525)
+
