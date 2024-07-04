@@ -40,6 +40,7 @@
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
 		29BDDDB82B5C01E20026D484 /* Salon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB72B5C01E20026D484 /* Salon.swift */; };
 		29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDB92B5C03760026D484 /* SalonLoader.swift */; };
+		29E5F0932C370A570006E985 /* SalonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E5F0922C370A570006E985 /* SalonListViewModel.swift */; };
 		29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */; };
 		29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */; };
 		29EDA0AD2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */; };
@@ -111,6 +112,7 @@
 		29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSalonFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		29BDDDB72B5C01E20026D484 /* Salon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salon.swift; sourceTree = "<group>"; };
 		29BDDDB92B5C03760026D484 /* SalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoader.swift; sourceTree = "<group>"; };
+		29E5F0922C370A570006E985 /* SalonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonListViewModel.swift; sourceTree = "<group>"; };
 		29EDA0A82B7FC39F00764219 /* CacheSalonUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheSalonUseCaseTests.swift; sourceTree = "<group>"; };
 		29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCacheTestHelpers.swift; sourceTree = "<group>"; };
 		29EDA0AC2B89CA1400764219 /* ValidateSalonFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateSalonFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				29B503E02C370280000A53A9 /* SalonListView.swift */,
+				29E5F0922C370A570006E985 /* SalonListViewModel.swift */,
 			);
 			path = "Salon UI";
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E5F0932C370A570006E985 /* SalonListViewModel.swift in Sources */,
 				29B503E12C370280000A53A9 /* SalonListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
