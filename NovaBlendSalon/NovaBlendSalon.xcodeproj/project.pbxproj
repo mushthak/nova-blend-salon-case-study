@@ -34,6 +34,7 @@
 		29B503D22C370054000A53A9 /* NovaBlendSalonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B503CA2C370054000A53A9 /* NovaBlendSalonUI.framework */; };
 		29B503D72C370054000A53A9 /* NovaBlendSalonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */; };
 		29B503D82C370054000A53A9 /* NovaBlendSalonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29B503E12C370280000A53A9 /* SalonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503E02C370280000A53A9 /* SalonListView.swift */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29BDDDAC2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */; };
@@ -103,6 +104,7 @@
 		29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NovaBlendSalonUI.h; sourceTree = "<group>"; };
 		29B503D12C370054000A53A9 /* NovaBlendSalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonUITests.swift; sourceTree = "<group>"; };
+		29B503E02C370280000A53A9 /* SalonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonListView.swift; sourceTree = "<group>"; };
 		29B6B0172B9F61D00013C3AB /* SalonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCache.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +267,7 @@
 		29B503CB2C370054000A53A9 /* NovaBlendSalonUI */ = {
 			isa = PBXGroup;
 			children = (
+				29B503DF2C37022D000A53A9 /* Salon UI */,
 				29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */,
 			);
 			path = NovaBlendSalonUI;
@@ -276,6 +279,14 @@
 				29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */,
 			);
 			path = NovaBlendSalonUITests;
+			sourceTree = "<group>";
+		};
+		29B503DF2C37022D000A53A9 /* Salon UI */ = {
+			isa = PBXGroup;
+			children = (
+				29B503E02C370280000A53A9 /* SalonListView.swift */,
+			);
+			path = "Salon UI";
 			sourceTree = "<group>";
 		};
 		29B6B01A2BA20F520013C3AB /* Helpers */ = {
@@ -490,6 +501,7 @@
 					};
 					29B503C92C370054000A53A9 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1520;
 					};
 					29B503D02C370054000A53A9 = {
 						CreatedOnToolsVersion = 15.2;
@@ -595,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B503E12C370280000A53A9 /* SalonListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +745,7 @@
 		29B503D92C370054000A53A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -761,6 +775,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -769,6 +784,7 @@
 		29B503DA2C370054000A53A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -806,6 +822,7 @@
 		29B503DB2C370054000A53A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -825,6 +842,7 @@
 		29B503DC2C370054000A53A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
