@@ -1,6 +1,6 @@
 //
 //  SalonListView.swift
-//  NovaBlendSalonUI
+//  NovaBlendSalonView
 //
 //  Created by Mushthak Ebrahim on 04/07/24.
 //

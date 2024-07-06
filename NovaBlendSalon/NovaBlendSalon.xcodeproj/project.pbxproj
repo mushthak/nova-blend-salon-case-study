@@ -31,9 +31,8 @@
 		29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29B503A72C2EB1C7000A53A9 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
 		29B503A82C2EB495000A53A9 /* SalonCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EDA0AA2B81CA8600764219 /* SalonCacheTestHelpers.swift */; };
-		29B503D22C370054000A53A9 /* NovaBlendSalonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B503CA2C370054000A53A9 /* NovaBlendSalonUI.framework */; };
-		29B503D72C370054000A53A9 /* NovaBlendSalonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */; };
-		29B503D82C370054000A53A9 /* NovaBlendSalonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29B503D22C370054000A53A9 /* NovaBlendSalonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */; };
+		29B503D72C370054000A53A9 /* NovaBlendSalonViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503D62C370054000A53A9 /* NovaBlendSalonViewTests.swift */; };
 		29B503E12C370280000A53A9 /* SalonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B503E02C370280000A53A9 /* SalonListView.swift */; };
 		29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6B0172B9F61D00013C3AB /* SalonCache.swift */; };
 		29BDDDA72B5C016F0026D484 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
@@ -101,10 +100,9 @@
 		298856142C2AF2A2009BB335 /* ManagedSalonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedSalonItem.swift; sourceTree = "<group>"; };
 		29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonCacheIntegrationTests.swift; sourceTree = "<group>"; };
-		29B503CA2C370054000A53A9 /* NovaBlendSalonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NovaBlendSalonUI.h; sourceTree = "<group>"; };
-		29B503D12C370054000A53A9 /* NovaBlendSalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonUITests.swift; sourceTree = "<group>"; };
+		29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B503D12C370054000A53A9 /* NovaBlendSalonViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B503D62C370054000A53A9 /* NovaBlendSalonViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonViewTests.swift; sourceTree = "<group>"; };
 		29B503E02C370280000A53A9 /* SalonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonListView.swift; sourceTree = "<group>"; };
 		29B6B0172B9F61D00013C3AB /* SalonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonCache.swift; sourceTree = "<group>"; };
 		29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B503D22C370054000A53A9 /* NovaBlendSalonUI.framework in Frameworks */,
+				29B503D22C370054000A53A9 /* NovaBlendSalonView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,30 +264,29 @@
 			path = NovaBlendSalonCacheIntegrationTests;
 			sourceTree = "<group>";
 		};
-		29B503CB2C370054000A53A9 /* NovaBlendSalonUI */ = {
+		29B503CB2C370054000A53A9 /* NovaBlendSalonView */ = {
 			isa = PBXGroup;
 			children = (
-				29B503DF2C37022D000A53A9 /* Salon UI */,
-				29B503CC2C370054000A53A9 /* NovaBlendSalonUI.h */,
+				29B503DF2C37022D000A53A9 /* Salon View */,
 			);
-			path = NovaBlendSalonUI;
+			path = NovaBlendSalonView;
 			sourceTree = "<group>";
 		};
-		29B503D52C370054000A53A9 /* NovaBlendSalonUITests */ = {
+		29B503D52C370054000A53A9 /* NovaBlendSalonViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				29B503D62C370054000A53A9 /* NovaBlendSalonUITests.swift */,
+				29B503D62C370054000A53A9 /* NovaBlendSalonViewTests.swift */,
 			);
-			path = NovaBlendSalonUITests;
+			path = NovaBlendSalonViewTests;
 			sourceTree = "<group>";
 		};
-		29B503DF2C37022D000A53A9 /* Salon UI */ = {
+		29B503DF2C37022D000A53A9 /* Salon View */ = {
 			isa = PBXGroup;
 			children = (
 				29B503E02C370280000A53A9 /* SalonListView.swift */,
 				29E5F0922C370A570006E985 /* SalonListViewModel.swift */,
 			);
-			path = "Salon UI";
+			path = "Salon View";
 			sourceTree = "<group>";
 		};
 		29B6B01A2BA20F520013C3AB /* Helpers */ = {
@@ -308,8 +305,8 @@
 				29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */,
 				296576A32B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests */,
 				29B5039E2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */,
-				29B503CB2C370054000A53A9 /* NovaBlendSalonUI */,
-				29B503D52C370054000A53A9 /* NovaBlendSalonUITests */,
+				29B503CB2C370054000A53A9 /* NovaBlendSalonView */,
+				29B503D52C370054000A53A9 /* NovaBlendSalonViewTests */,
 				29BDDD9F2B5C016F0026D484 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -321,8 +318,8 @@
 				29BDDDA62B5C016F0026D484 /* NovaBlendSalonTests.xctest */,
 				296576A22B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests.xctest */,
 				29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */,
-				29B503CA2C370054000A53A9 /* NovaBlendSalonUI.framework */,
-				29B503D12C370054000A53A9 /* NovaBlendSalonUITests.xctest */,
+				29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */,
+				29B503D12C370054000A53A9 /* NovaBlendSalonViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,7 +361,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B503D82C370054000A53A9 /* NovaBlendSalonUI.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,9 +410,9 @@
 			productReference = 29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		29B503C92C370054000A53A9 /* NovaBlendSalonUI */ = {
+		29B503C92C370054000A53A9 /* NovaBlendSalonView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29B503DD2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonUI" */;
+			buildConfigurationList = 29B503DD2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonView" */;
 			buildPhases = (
 				29B503C52C370054000A53A9 /* Headers */,
 				29B503C62C370054000A53A9 /* Sources */,
@@ -427,14 +423,14 @@
 			);
 			dependencies = (
 			);
-			name = NovaBlendSalonUI;
+			name = NovaBlendSalonView;
 			productName = NovaBlendSalonUI;
-			productReference = 29B503CA2C370054000A53A9 /* NovaBlendSalonUI.framework */;
+			productReference = 29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		29B503D02C370054000A53A9 /* NovaBlendSalonUITests */ = {
+		29B503D02C370054000A53A9 /* NovaBlendSalonViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29B503DE2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonUITests" */;
+			buildConfigurationList = 29B503DE2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonViewTests" */;
 			buildPhases = (
 				29B503CD2C370054000A53A9 /* Sources */,
 				29B503CE2C370054000A53A9 /* Frameworks */,
@@ -445,9 +441,9 @@
 			dependencies = (
 				29B503D42C370054000A53A9 /* PBXTargetDependency */,
 			);
-			name = NovaBlendSalonUITests;
+			name = NovaBlendSalonViewTests;
 			productName = NovaBlendSalonUITests;
-			productReference = 29B503D12C370054000A53A9 /* NovaBlendSalonUITests.xctest */;
+			productReference = 29B503D12C370054000A53A9 /* NovaBlendSalonViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		29BDDD9D2B5C016F0026D484 /* NovaBlendSalon */ = {
@@ -535,8 +531,8 @@
 				29BDDDA52B5C016F0026D484 /* NovaBlendSalonTests */,
 				296576A12B6E5F7D005ECB8B /* NovaBlendSalonAPIEndToEndTests */,
 				29B5039C2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */,
-				29B503C92C370054000A53A9 /* NovaBlendSalonUI */,
-				29B503D02C370054000A53A9 /* NovaBlendSalonUITests */,
+				29B503C92C370054000A53A9 /* NovaBlendSalonView */,
+				29B503D02C370054000A53A9 /* NovaBlendSalonViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -619,7 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B503D72C370054000A53A9 /* NovaBlendSalonUITests.swift in Sources */,
+				29B503D72C370054000A53A9 /* NovaBlendSalonViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +673,7 @@
 		};
 		29B503D42C370054000A53A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 29B503C92C370054000A53A9 /* NovaBlendSalonUI */;
+			target = 29B503C92C370054000A53A9 /* NovaBlendSalonView */;
 			targetProxy = 29B503D32C370054000A53A9 /* PBXContainerItemProxy */;
 		};
 		29BDDDA92B5C016F0026D484 /* PBXTargetDependency */ = {
@@ -773,7 +769,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
@@ -812,7 +808,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonUI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonView;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
 				SKIP_INSTALL = YES;
@@ -833,7 +829,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -853,7 +849,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendSalonViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -1101,7 +1097,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29B503DD2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonUI" */ = {
+		29B503DD2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29B503D92C370054000A53A9 /* Debug */,
@@ -1110,7 +1106,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29B503DE2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonUITests" */ = {
+		29B503DE2C370054000A53A9 /* Build configuration list for PBXNativeTarget "NovaBlendSalonViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29B503DB2C370054000A53A9 /* Debug */,
