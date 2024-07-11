@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import NovaBlendSalon
 
 struct SalonListView: View {
-    let viewModel = SalonListViewModel()
+    @State var viewModel: SalonListViewModel
     
     var body: some View {
         List(viewModel.salons, id: \.id) { salon in
@@ -27,11 +28,35 @@ struct SalonListView: View {
                 
             }.padding()
         }.task {
-            viewModel.loadSalons()
+            await viewModel.loadSalons()
         }
     }
 }
 
 #Preview {
-    SalonListView()
+    return SalonListView(viewModel: PreviewHelper.salonListViewModelPreview)
 }
+
+#if DEBUG
+struct PreviewHelper {
+    static let salonListViewModelPreview: SalonListViewModel = {
+        struct LoaderSpy: SalonLoader {
+            func load() async throws -> [Salon] {
+                return [
+                    Salon(
+                        id: UUID(),
+                        name: "Nova alpha salon",
+                        location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania",
+                        phone: "412-862-3526",
+                        openTime: 10.0,
+                        closeTime: 19.0)]
+            }
+        }
+        
+        let loader = LoaderSpy()
+        let salonListViewModelAdapter = SalonListViewModelAdapter(loader: loader)
+        let salonListViewModel = SalonListViewModel(salonListViewModelAdapter: salonListViewModelAdapter)
+        return salonListViewModel
+    }()
+}
+#endif

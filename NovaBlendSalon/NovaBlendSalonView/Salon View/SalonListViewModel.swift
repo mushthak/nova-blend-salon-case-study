@@ -27,42 +27,13 @@ public struct SalonViewModel: Equatable {
 class SalonListViewModel {
     var salons = [SalonViewModel]()
     
-    func loadSalons() {
-        salons = SalonListViewModel.prototypeSalons
+    let salonListViewModelAdapter: SalonListViewModelAdapter
+    
+    init(salonListViewModelAdapter: SalonListViewModelAdapter) {
+        self.salonListViewModelAdapter = salonListViewModelAdapter
     }
-}
-
-extension SalonListViewModel {
-    static var prototypeSalons: [SalonViewModel] {
-        return [
-            SalonViewModel(
-                id: UUID(),
-                name: "Nova alpha salon",
-                location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania",
-                phone: "412-862-3526",
-                hours: "Today’s hours : 10am -7pm"
-            ),
-            SalonViewModel(
-                id: UUID(),
-                name: "Nova beta salon",
-                location: "214 Whitetail Lane, Richardson, Texas",
-                phone: "312-862-3526",
-                hours: "Today’s hours : 10am -7pm"
-            ),
-            SalonViewModel(
-                id: UUID(),
-                name: "Nova gamma salon",
-                location: "4998 Yorkie Lane, Ellabelle, Georgia",
-                phone: "212-862-3526",
-                hours: "Today’s hours : 10am -7pm"
-            ),
-            SalonViewModel(
-                id: UUID(),
-                name: "Nova salon kids",
-                location: "3300 Main Street, Bothell, Washington",
-                phone: "112-862-3526",
-                hours: "Today’s hours : 10am -7pm"
-            ),
-        ]
+    
+    func loadSalons() async {
+        salons = (try? await salonListViewModelAdapter.load()) ?? []
     }
 }
