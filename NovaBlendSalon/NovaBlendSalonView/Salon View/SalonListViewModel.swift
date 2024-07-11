@@ -7,17 +7,24 @@
 
 import Foundation
 
+public struct SalonViewModel: Equatable {
+    let id: UUID
+    let name: String
+    let location: String
+    let phone: String
+    let hours: String
+    
+    public init(id: UUID, name: String, location: String, phone: String, hours: String) {
+        self.id = id
+        self.name = name
+        self.location = location
+        self.phone = phone
+        self.hours = hours
+    }
+}
+
 @Observable
 class SalonListViewModel {
-    
-    struct SalonViewModel {
-        let id: UUID
-        let name: String
-        let location: String
-        let phone: String
-        let hours: String
-    }
-    
     var salons = [SalonViewModel]()
     
     func loadSalons() {
