@@ -13,20 +13,7 @@ struct SalonListView: View {
     
     var body: some View {
         List(viewModel.salons, id: \.id) { salon in
-            VStack {
-                Text(salon.name).font(.title2)
-                Text(salon.location)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                HStack {
-                    Image(systemName: "phone")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text(salon.phone)
-                }
-                Text(salon.hours).font(.subheadline)
-                
-            }.padding()
+            SalonRowView(salon: salon)
         }.task {
             await viewModel.loadSalons()
         }
@@ -57,6 +44,10 @@ struct PreviewHelper {
         let salonListViewModelAdapter = SalonListViewModelAdapter(loader: loader)
         let salonListViewModel = SalonListViewModel(salonListViewModelAdapter: salonListViewModelAdapter)
         return salonListViewModel
+    }()
+    
+    static let SalonViewModelPreview: SalonViewModel = {
+        SalonViewModel(id: UUID(), name: "Nova alpha salon", location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania", phone: "412-862-3526", hours: "Today’s hours : 10:00 AM - 7:00 PM")
     }()
 }
 #endif
