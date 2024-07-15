@@ -1,0 +1,45 @@
+{
+  "configurations" : [
+    {
+      "id" : "50A50F1F-7F55-4CE2-9E54-A072E4E16782",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "29BDDDA52B5C016F0026D484",
+        "name" : "NovaBlendSalonTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "296576A12B6E5F7D005ECB8B",
+        "name" : "NovaBlendSalonAPIEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "29B5039C2C2DA38A000A53A9",
+        "name" : "NovaBlendSalonCacheIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendSalon.xcodeproj",
+        "identifier" : "29B503D02C370054000A53A9",
+        "name" : "NovaBlendSalonViewTests"
+      }
+    }
+  ],
+  "version" : 1
+}

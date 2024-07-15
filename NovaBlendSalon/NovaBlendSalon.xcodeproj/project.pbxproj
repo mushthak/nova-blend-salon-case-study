@@ -106,6 +106,7 @@
 		293CE0652C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		293CE0672C42B621003FA8C0 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
 		293CE0692C436DFA003FA8C0 /* SalonListSnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalonListSnapshotTests.swift; sourceTree = "<group>"; };
+		293CE06B2C450446003FA8C0 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		296576882B641001005ECB8B /* SalonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonMapper.swift; sourceTree = "<group>"; };
@@ -340,6 +341,7 @@
 		29BDDD942B5C016F0026D484 = {
 			isa = PBXGroup;
 			children = (
+				293CE06B2C450446003FA8C0 /* CI_iOS.xctestplan */,
 				291F50FA2B73E9A0000771BE /* CI_macOS.xctestplan */,
 				29BDDDA02B5C016F0026D484 /* NovaBlendSalon */,
 				29BDDDAA2B5C016F0026D484 /* NovaBlendSalonTests */,

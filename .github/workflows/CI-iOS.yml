@@ -1,5 +1,5 @@
 
-name: CI-macOS
+name: CI-iOS
 
 # Controls when the action will run. 
 # Triggers the workflow on pull request events but only for the master branch.
@@ -30,4 +30,4 @@ jobs:
       run: /usr/bin/xcodebuild -version
       
     - name: Build and Test
-      run: xcodebuild -scheme "CI_macOS" clean build test -project NovaBlendSalon/NovaBlendSalon.xcodeproj -testPlan CI_macOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk macosx -destination "platform=macOS" ONLY_ACTIVE_ARCH=YES
+      run: xcodebuild -scheme "CI_iOS" clean build test -project NovaBlendSalon/NovaBlendSalon.xcodeproj -testPlan CI_iOS CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.5" ONLY_ACTIVE_ARCH=YES
