@@ -20,7 +20,14 @@ struct PreviewHelper {
                         location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania",
                         phone: "412-862-3526",
                         openTime: 10.0,
-                        closeTime: 19.0)]
+                        closeTime: 19.0),
+                    Salon(
+                        id: UUID(),
+                        name: "Nova beta salon",
+                        location: "214 Whitetail Lane, Richardson, Texas",
+                        phone: "412-862-3512",
+                        openTime: 10.30,
+                        closeTime: 20.30)]
             }
         }
         

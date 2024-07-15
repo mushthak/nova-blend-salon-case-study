@@ -15,6 +15,9 @@
 		291F51092B7BCABA000771BE /* SalonStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291F51082B7BCABA000771BE /* SalonStoreSpy.swift */; };
 		293CE0582C40ED14003FA8C0 /* SalonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE0572C40ED14003FA8C0 /* SalonRowView.swift */; };
 		293CE05A2C412A89003FA8C0 /* PreviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE0592C412A89003FA8C0 /* PreviewHelper.swift */; };
+		293CE0662C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE0652C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift */; };
+		293CE0682C42B621003FA8C0 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE0672C42B621003FA8C0 /* UIViewController+Snapshot.swift */; };
+		293CE06A2C436DFA003FA8C0 /* SalonListSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE0692C436DFA003FA8C0 /* SalonListSnapshotTests.swift */; };
 		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
 		296576872B615163005ECB8B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576862B615162005ECB8B /* HTTPClient.swift */; };
 		296576892B641001005ECB8B /* SalonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576882B641001005ECB8B /* SalonMapper.swift */; };
@@ -100,6 +103,9 @@
 		291F51082B7BCABA000771BE /* SalonStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonStoreSpy.swift; sourceTree = "<group>"; };
 		293CE0572C40ED14003FA8C0 /* SalonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonRowView.swift; sourceTree = "<group>"; };
 		293CE0592C412A89003FA8C0 /* PreviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelper.swift; sourceTree = "<group>"; };
+		293CE0652C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
+		293CE0672C42B621003FA8C0 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		293CE0692C436DFA003FA8C0 /* SalonListSnapshotTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalonListSnapshotTests.swift; sourceTree = "<group>"; };
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		296576882B641001005ECB8B /* SalonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonMapper.swift; sourceTree = "<group>"; };
@@ -210,6 +216,15 @@
 			path = "Salon Cache";
 			sourceTree = "<group>";
 		};
+		293CE0642C42B4E8003FA8C0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				293CE0652C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift */,
+				293CE0672C42B621003FA8C0 /* UIViewController+Snapshot.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		296576832B5CDD24005ECB8B /* Salon API */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,8 +309,10 @@
 		29B503D52C370054000A53A9 /* NovaBlendSalonViewTests */ = {
 			isa = PBXGroup;
 			children = (
+				293CE0642C42B4E8003FA8C0 /* Helpers */,
 				29E5F0A02C3EB7810006E985 /* SalonListViewModelAdapterTests.swift */,
 				29E5F0A22C3FA1650006E985 /* TimeFormatterTests.swift */,
+				293CE0692C436DFA003FA8C0 /* SalonListSnapshotTests.swift */,
 			);
 			path = NovaBlendSalonViewTests;
 			sourceTree = "<group>";
@@ -660,7 +677,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				293CE06A2C436DFA003FA8C0 /* SalonListSnapshotTests.swift in Sources */,
+				293CE0682C42B621003FA8C0 /* UIViewController+Snapshot.swift in Sources */,
 				29E5F0A12C3EB7810006E985 /* SalonListViewModelAdapterTests.swift in Sources */,
+				293CE0662C42B4F7003FA8C0 /* XCTestCase+Snapshot.swift in Sources */,
 				29E5F0A32C3FA1650006E985 /* TimeFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
