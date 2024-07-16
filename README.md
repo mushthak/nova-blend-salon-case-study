@@ -1,7 +1,7 @@
 # NovaBlendSalon App Case Study
 
 [![CI-macOS](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-macOS.yml/badge.svg)](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-macOS.yml)
-
+[![CI-iOS](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-iOS.yml/badge.svg)](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-iOS.yml)
 ## Salon list Feature Specs
 
 ### Story: Customer requests to see available salons
