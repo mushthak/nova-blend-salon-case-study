@@ -16,12 +16,12 @@ internal enum SalonMapper {
     private struct RemoteSalonItem: Decodable {
         public let id: UUID
         public let name: String
-        public let location: String?
+        public let location: String
         public let phone: String?
         public let open_time: Float
         public let close_time: Float
         
-        init(id: UUID, name: String, location: String?, phone: String?, open_time: Float, close_time: Float) {
+        init(id: UUID, name: String, location: String, phone: String?, open_time: Float, close_time: Float) {
             self.id = id
             self.name = name
             self.location = location

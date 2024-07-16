@@ -27,7 +27,7 @@ Given the customer has connectivity
 ### Narrative #2
 
 ```
-As customer
+As an offline customer
 I want the app to show the latest saved salons
 So I can always see the salon details 
 ```
@@ -35,7 +35,7 @@ So I can always see the salon details
 #### Scenarios (Acceptance criteria)
 
 ```
-Given the customer
+Given the customer doesn't have connectivity
   And there’s a cached version of the salons
   And the cache is less than seven days old
  When the customer requests to see the salons
@@ -43,7 +43,7 @@ Given the customer
  ```
 
  ```
-Given the customer
+Given the customer doesn't have connectivity
   And there’s a cached version of the salons
   And the cache is older than seven days old
  When the customer requests to see the salons
@@ -51,7 +51,7 @@ Given the customer
  ```
 
   ```
-Given the customer
+Given the customer doesn't have connectivity
   And the cache is empty
  When the customer requests to see the salons
  Then the app should show empty list
@@ -70,9 +70,6 @@ Given the customer
 2. System downloads data from the URL.
 3. System validates downloaded data.
 4. System delivers salon data.
-
-#### Cancel course:
-1. System does not deliver data nor error.
 
 #### Invalid data – error course (sad path):
 1. System delivers invalid data error.

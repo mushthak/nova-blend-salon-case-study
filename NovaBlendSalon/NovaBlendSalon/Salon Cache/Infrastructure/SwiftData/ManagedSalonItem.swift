@@ -11,13 +11,13 @@ import SwiftData
 @Model public class ManagedSalonItem {
     public let id: UUID
     let name: String
-    let location: String?
+    let location: String
     let phone: String?
     let openTime: Float
     let closeTime: Float
     var cache: ManagedCache?
     
-    public init(id: UUID, name: String, location: String?, phone: String?, openTime: Float, closeTime: Float) {
+    public init(id: UUID, name: String, location: String, phone: String?, openTime: Float, closeTime: Float) {
         self.id = id
         self.name = name
         self.location = location

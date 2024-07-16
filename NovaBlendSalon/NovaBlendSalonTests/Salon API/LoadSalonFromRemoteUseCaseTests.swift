@@ -89,14 +89,14 @@ final class LoadSalonFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversItemsArrayOn200HTTPResponseWithJSONList() async throws {
         let item1 = makeItem(id: UUID(),
                              name: "a name",
-                             location: nil,
+                             location: "a location",
                              phone: nil,
                              openTime: 0.0,
                              closeTime: 1.0)
         
         let item2 = makeItem(id: UUID(),
                              name: "another name",
-                             location: "a location",
+                             location: "another location",
                              phone: "a phone",
                              openTime: 2.0,
                              closeTime: 3.0)
@@ -126,7 +126,7 @@ final class LoadSalonFromRemoteUseCaseTests: XCTestCase {
         return .success((Data.init(_: "{\"salons\": []}".utf8), anyValidHTTPResponse()))
     }
     
-    private func makeItem(id: UUID, name: String, location: String? = nil, phone: String? = nil, openTime: Float, closeTime: Float) -> (model: Salon, json: [String: Any]) {
+    private func makeItem(id: UUID, name: String, location: String, phone: String? = nil, openTime: Float, closeTime: Float) -> (model: Salon, json: [String: Any]) {
         let model = Salon(id: id,
                           name: name,
                           location: location,
