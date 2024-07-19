@@ -11,7 +11,26 @@
 		293CE1072C4A99AE003FA8C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1062C4A99AE003FA8C0 /* ContentView.swift */; };
 		293CE1092C4A99AF003FA8C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE1082C4A99AF003FA8C0 /* Assets.xcassets */; };
 		293CE10C2C4A99AF003FA8C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE10B2C4A99AF003FA8C0 /* Preview Assets.xcassets */; };
+		293CE1152C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */; };
+		293CE1162C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		293CE1172C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; };
+		293CE1182C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		293CE1192C4A9DE7003FA8C0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				293CE1162C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Embed Frameworks */,
+				293CE1182C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovaBlendApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +38,8 @@
 		293CE1062C4A99AE003FA8C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		293CE1082C4A99AF003FA8C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		293CE10B2C4A99AF003FA8C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				293CE1152C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Frameworks */,
+				293CE1172C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +60,7 @@
 			children = (
 				293CE1032C4A99AE003FA8C0 /* NovaBlendApp */,
 				293CE1022C4A99AE003FA8C0 /* Products */,
+				293CE1122C4A9DE7003FA8C0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +91,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		293CE1122C4A9DE7003FA8C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */,
+				293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,6 +110,7 @@
 				293CE0FD2C4A99AE003FA8C0 /* Sources */,
 				293CE0FE2C4A99AE003FA8C0 /* Frameworks */,
 				293CE0FF2C4A99AE003FA8C0 /* Resources */,
+				293CE1192C4A9DE7003FA8C0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
