@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct NovaBlendAppApp: App {
+struct NovaBlendApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
