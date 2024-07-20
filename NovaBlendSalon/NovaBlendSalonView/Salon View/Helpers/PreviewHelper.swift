@@ -9,8 +9,8 @@ import Foundation
 import NovaBlendSalon
 
 #if DEBUG
-struct PreviewHelper {
-    static let salonListViewModelPreview: SalonListViewModel = {
+public struct PreviewHelper {
+    public static let salonListViewModelPreview: SalonListViewModel = {
         struct LoaderSpy: SalonLoader {
             func load() async throws -> [Salon] {
                 return [
