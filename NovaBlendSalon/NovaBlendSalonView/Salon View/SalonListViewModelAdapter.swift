@@ -17,7 +17,7 @@ public class SalonListViewModelAdapter {
     
     public func load() async throws -> [SalonViewModel]  {
         let result = try await loader.load()
-        return result.map { SalonViewModel(id: $0.id, name: $0.name, location: $0.location ?? "", phone: $0.phone ?? "", hours: prepareShopHours(openTime: $0.openTime, closeTime: $0.closeTime)) }
+        return result.map { SalonViewModel(id: $0.id, name: $0.name, location: $0.location, phone: $0.phone ?? "", hours: prepareShopHours(openTime: $0.openTime, closeTime: $0.closeTime)) }
     }
     
     //MARK: Helpers

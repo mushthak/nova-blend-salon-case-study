@@ -38,7 +38,7 @@ final class SalonListViewModelAdapterTests: XCTestCase {
     //MARK: Helpers
     func uniqueSalon(with hours:(open: Float, close: Float), hoursString: String) -> (model: Salon, viewModel: SalonViewModel) {
         let model = uniqueSalon(with: hours)
-        let viewModel = SalonViewModel(id: model.id, name: model.name, location: model.location ?? "", phone: model.phone ?? "", hours: hoursString)
+        let viewModel = SalonViewModel(id: model.id, name: model.name, location: model.location, phone: model.phone ?? "", hours: hoursString)
         return (model, viewModel)
     }
     

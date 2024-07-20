@@ -24,16 +24,16 @@ public struct SalonViewModel: Equatable {
 }
 
 @Observable
-class SalonListViewModel {
+public class SalonListViewModel {
     var salons = [SalonViewModel]()
     
     let salonListViewModelAdapter: SalonListViewModelAdapter
     
-    init(salonListViewModelAdapter: SalonListViewModelAdapter) {
+    public init(salonListViewModelAdapter: SalonListViewModelAdapter) {
         self.salonListViewModelAdapter = salonListViewModelAdapter
     }
     
-    func loadSalons() async {
+    public func loadSalons() async {
         salons = (try? await salonListViewModelAdapter.load()) ?? []
     }
 }

@@ -7,7 +7,7 @@
 
 import XCTest
 import SwiftUI
-@testable import NovaBlendSalonView
+import NovaBlendSalonView
 
 final class SalonListSnapshotTests: XCTestCase {
     
