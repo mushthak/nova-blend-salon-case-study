@@ -15,7 +15,18 @@
 		293CE1162C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		293CE1172C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; };
 		293CE1182C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2992AE732C4E942500ED8DB8 /* NovaBlendAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2992AE742C4E942500ED8DB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 293CE0F92C4A99AE003FA8C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 293CE1002C4A99AE003FA8C0;
+			remoteInfo = NovaBlendApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		293CE1192C4A9DE7003FA8C0 /* Embed Frameworks */ = {
@@ -40,6 +51,8 @@
 		293CE10B2C4A99AF003FA8C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2992AE702C4E942500ED8DB8 /* NovaBlendAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendAppTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +65,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2992AE6D2C4E942500ED8DB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				293CE1032C4A99AE003FA8C0 /* NovaBlendApp */,
+				2992AE712C4E942500ED8DB8 /* NovaBlendAppTests */,
 				293CE1022C4A99AE003FA8C0 /* Products */,
 				293CE1122C4A9DE7003FA8C0 /* Frameworks */,
 			);
@@ -68,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */,
+				2992AE702C4E942500ED8DB8 /* NovaBlendAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +122,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2992AE712C4E942500ED8DB8 /* NovaBlendAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */,
+			);
+			path = NovaBlendAppTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +151,24 @@
 			productReference = 293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2992AE6F2C4E942500ED8DB8 /* NovaBlendAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2992AE762C4E942500ED8DB8 /* Build configuration list for PBXNativeTarget "NovaBlendAppTests" */;
+			buildPhases = (
+				2992AE6C2C4E942500ED8DB8 /* Sources */,
+				2992AE6D2C4E942500ED8DB8 /* Frameworks */,
+				2992AE6E2C4E942500ED8DB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2992AE752C4E942500ED8DB8 /* PBXTargetDependency */,
+			);
+			name = NovaBlendAppTests;
+			productName = NovaBlendAppTests;
+			productReference = 2992AE702C4E942500ED8DB8 /* NovaBlendAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -133,6 +181,10 @@
 				TargetAttributes = {
 					293CE1002C4A99AE003FA8C0 = {
 						CreatedOnToolsVersion = 15.4;
+					};
+					2992AE6F2C4E942500ED8DB8 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 293CE1002C4A99AE003FA8C0;
 					};
 				};
 			};
@@ -150,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				293CE1002C4A99AE003FA8C0 /* NovaBlendApp */,
+				2992AE6F2C4E942500ED8DB8 /* NovaBlendAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -161,6 +214,13 @@
 			files = (
 				293CE10C2C4A99AF003FA8C0 /* Preview Assets.xcassets in Resources */,
 				293CE1092C4A99AF003FA8C0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2992AE6E2C4E942500ED8DB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +236,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2992AE6C2C4E942500ED8DB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2992AE732C4E942500ED8DB8 /* NovaBlendAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2992AE752C4E942500ED8DB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 293CE1002C4A99AE003FA8C0 /* NovaBlendApp */;
+			targetProxy = 2992AE742C4E942500ED8DB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		293CE10D2C4A99AF003FA8C0 /* Debug */ = {
@@ -354,6 +430,40 @@
 			};
 			name = Release;
 		};
+		2992AE772C4E942500ED8DB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NovaBlendApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NovaBlendApp";
+			};
+			name = Debug;
+		};
+		2992AE782C4E942500ED8DB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NovaBlendApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NovaBlendApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -371,6 +481,15 @@
 			buildConfigurations = (
 				293CE1102C4A99AF003FA8C0 /* Debug */,
 				293CE1112C4A99AF003FA8C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2992AE762C4E942500ED8DB8 /* Build configuration list for PBXNativeTarget "NovaBlendAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2992AE772C4E942500ED8DB8 /* Debug */,
+				2992AE782C4E942500ED8DB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
