@@ -11,13 +11,19 @@ import NovaBlendSalon
 class SalonLoaderWithFallbackComposite: SalonLoader {
     
     private let primary: SalonLoader
+    private let fallback: SalonLoader
     
     init(primary: SalonLoader, fallback: SalonLoader) {
         self.primary = primary
+        self.fallback = fallback
     }
     
     func load() async throws -> [NovaBlendSalon.Salon] {
-        try await primary.load()
+        do {
+            return try await primary.load()
+        } catch {
+            return try await fallback.load()
+        }
     }
 }
 
@@ -27,7 +33,7 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
         do {
             let primarySalon = [uniqueSalon()]
             let fallbackSalon = [uniqueSalon()]
-            let sut = makeSUT(primaryResult: primarySalon, fallbackResult: fallbackSalon)
+            let sut = makeSUT(primaryResult: .success(primarySalon), fallbackResult: .success(fallbackSalon))
             
             let result = try await sut.load()
             XCTAssertEqual(result, primarySalon)
@@ -37,9 +43,21 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
         
     }
     
+    func test_load_deliversFallbackFeedOnPrimaryLoaderFailure() async {
+        do {
+            let fallbackSalon = [uniqueSalon()]
+            let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackSalon))
+            
+            let result = try await sut.load()
+            XCTAssertEqual(result, fallbackSalon)
+        } catch {
+            XCTFail("Expected to receive items array but got \(error) instead")
+        }
+    }
+    
     //MARK: Helpers
     
-    private func makeSUT(primaryResult: [Salon], fallbackResult: [Salon], file: StaticString = #file, line: UInt = #line) -> SalonLoaderWithFallbackComposite {
+    private func makeSUT(primaryResult: Result<[Salon], Error>, fallbackResult: Result<[Salon], Error>, file: StaticString = #file, line: UInt = #line) -> SalonLoaderWithFallbackComposite {
         let primaryLoader = LoaderStub(result: primaryResult)
         let fallbackLoader = LoaderStub(result: fallbackResult)
         let sut = SalonLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
@@ -59,15 +77,19 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
         return Salon(id: UUID(), name: "any", location: "any", phone: "any", openTime: 0.0, closeTime: 0.0)
     }
     
+    private func anyNSError() -> NSError {
+        return NSError(domain: "any error", code: 0)
+    }
+    
     private class LoaderStub: SalonLoader {
-        private let result: [Salon]
+        private let result: Result<[Salon], Error>
         
-        init(result: [Salon]) {
+        init(result: Result<[Salon], Error>) {
             self.result = result
         }
         
         func load() async throws -> [Salon] {
-            return result
+            return try result.get()
         }
     }
 }
