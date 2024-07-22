@@ -26,10 +26,8 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
     func test_load_deliversPrimarySalonsOnPrimaryLoaderSuccess() async {
         do {
             let primarySalon = [uniqueSalon()]
-            let secondarySalon = [uniqueSalon()]
-            let primaryLoader = LoaderStub(result: primarySalon)
-            let secondaryLoader = LoaderStub(result: secondarySalon)
-            let sut = SalonLoaderWithFallbackComposite(primary: primaryLoader, fallback: secondaryLoader)
+            let fallbackSalon = [uniqueSalon()]
+            let sut = makeSUT(primaryResult: primarySalon, fallbackResult: fallbackSalon)
             
             let result = try await sut.load()
             XCTAssertEqual(result, primarySalon)
@@ -37,6 +35,24 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
             XCTFail("Expected to receive items array but got \(error) instead")
         }
         
+    }
+    
+    //MARK: Helpers
+    
+    private func makeSUT(primaryResult: [Salon], fallbackResult: [Salon], file: StaticString = #file, line: UInt = #line) -> SalonLoaderWithFallbackComposite {
+        let primaryLoader = LoaderStub(result: primaryResult)
+        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let sut = SalonLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        trackForMemoryLeaks(primaryLoader, file: file, line: line)
+        trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
     }
     
     private func uniqueSalon() -> Salon {
