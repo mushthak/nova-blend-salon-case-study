@@ -55,6 +55,17 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
         }
     }
     
+    func test_load_deliversErrorOnBothPrimaryAndFallbackLoaderFailure() async {
+        do {
+            let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .failure(anyNSError()))
+            
+            let result = try await sut.load()
+            XCTFail("Expected to throw error items array but got \(result) instead")
+        } catch {
+            XCTAssertEqual(error as NSError, anyNSError())
+        }
+    }
+    
     //MARK: Helpers
     
     private func makeSUT(primaryResult: Result<[Salon], Error>, fallbackResult: Result<[Salon], Error>, file: StaticString = #file, line: UInt = #line) -> SalonLoaderWithFallbackComposite {
