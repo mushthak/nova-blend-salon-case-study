@@ -39,6 +39,13 @@
         "identifier" : "29B503D02C370054000A53A9",
         "name" : "NovaBlendSalonViewTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/NovaBlendApp\/NovaBlendApp.xcodeproj",
+        "identifier" : "2992AE6F2C4E942500ED8DB8",
+        "name" : "NovaBlendAppTests"
+      }
     }
   ],
   "version" : 1
