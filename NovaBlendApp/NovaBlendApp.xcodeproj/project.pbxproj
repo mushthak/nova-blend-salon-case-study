@@ -15,7 +15,7 @@
 		293CE1162C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		293CE1172C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; };
 		293CE1182C4A9DE7003FA8C0 /* NovaBlendSalonView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2992AE732C4E942500ED8DB8 /* NovaBlendAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */; };
+		2992AE732C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AE722C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift */; };
 		2992AE7A2C4FEFD100ED8DB8 /* SalonLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992AE792C4FEFD100ED8DB8 /* SalonLoaderWithFallbackComposite.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		293CE1142C4A9DE7003FA8C0 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2992AE702C4E942500ED8DB8 /* NovaBlendAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendAppTests.swift; sourceTree = "<group>"; };
+		2992AE722C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
 		2992AE792C4FEFD100ED8DB8 /* SalonLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +128,7 @@
 		2992AE712C4E942500ED8DB8 /* NovaBlendAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				2992AE722C4E942500ED8DB8 /* NovaBlendAppTests.swift */,
+				2992AE722C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift */,
 			);
 			path = NovaBlendAppTests;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2992AE732C4E942500ED8DB8 /* NovaBlendAppTests.swift in Sources */,
+				2992AE732C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
