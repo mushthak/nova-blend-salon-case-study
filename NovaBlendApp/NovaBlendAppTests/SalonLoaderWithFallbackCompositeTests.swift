@@ -51,8 +51,8 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
     //MARK: Helpers
     
     private func makeSUT(primaryResult: Result<[Salon], Error>, fallbackResult: Result<[Salon], Error>, file: StaticString = #file, line: UInt = #line) -> SalonLoaderWithFallbackComposite {
-        let primaryLoader = LoaderStub(result: primaryResult)
-        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let primaryLoader = SalonLoaderStub(result: primaryResult)
+        let fallbackLoader = SalonLoaderStub(result: fallbackResult)
         let sut = SalonLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
         trackForMemoryLeaks(primaryLoader, file: file, line: line)
         trackForMemoryLeaks(fallbackLoader, file: file, line: line)
@@ -72,17 +72,5 @@ final class SalonLoaderWithFallbackCompositeTests: XCTestCase {
     
     private func anyNSError() -> NSError {
         return NSError(domain: "any error", code: 0)
-    }
-    
-    private class LoaderStub: SalonLoader {
-        private let result: Result<[Salon], Error>
-        
-        init(result: Result<[Salon], Error>) {
-            self.result = result
-        }
-        
-        func load() async throws -> [Salon] {
-            return try result.get()
-        }
     }
 }
