@@ -24,7 +24,7 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
     
     func test_load_deliversSalonsOnLoaderSuccess() async {
         let salon = uniqueSalon()
-        let loader = LoaderStub(result: .success([salon]))
+        let loader = SalonLoaderStub(result: .success([salon]))
         let sut = SalonLoaderCacheDecorator(decoratee: loader)
         
         do {
@@ -36,7 +36,7 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
     }
     
     func test_load_deliversErrorOnLoaderFailure() async {
-        let loader = LoaderStub(result: .failure(anyNSError()))
+        let loader = SalonLoaderStub(result: .failure(anyNSError()))
         let sut = SalonLoaderCacheDecorator(decoratee: loader)
         
         do {
@@ -49,18 +49,6 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
 }
 
 //MARK: Helpers
-private class LoaderStub: SalonLoader {
-    private let result: Result<[Salon], Error>
-    
-    init(result: Result<[Salon], Error>) {
-        self.result = result
-    }
-    
-    func load() async throws -> [Salon] {
-        return try result.get()
-    }
-}
-
 private func uniqueSalon() -> Salon {
     return Salon(id: UUID(), name: "any", location: "any", phone: "any", openTime: 0.0, closeTime: 0.0)
 }
