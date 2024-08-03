@@ -7,4 +7,7 @@
    <FileRef
       location = "container:NovaBlendApp.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:NovaBlendApp.xctestplan">
+   </FileRef>
 </Workspace>
