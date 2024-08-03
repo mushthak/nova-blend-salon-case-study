@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "935E1250-A8E8-472F-940E-3A0F06BFD05A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:NovaBlendApp.xcodeproj",
+      "identifier" : "293CE1002C4A99AE003FA8C0",
+      "name" : "NovaBlendApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendApp.xcodeproj",
+        "identifier" : "2992AE6F2C4E942500ED8DB8",
+        "name" : "NovaBlendAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}
