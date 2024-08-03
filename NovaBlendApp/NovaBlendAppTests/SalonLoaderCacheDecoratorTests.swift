@@ -24,8 +24,7 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
     
     func test_load_deliversSalonsOnLoaderSuccess() async {
         let salon = uniqueSalon()
-        let loader = SalonLoaderStub(result: .success([salon]))
-        let sut = SalonLoaderCacheDecorator(decoratee: loader)
+        let sut = makeSUT(result: .success([salon]))
         
         do {
             let result = try await sut.load()
@@ -36,14 +35,27 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
     }
     
     func test_load_deliversErrorOnLoaderFailure() async {
-        let loader = SalonLoaderStub(result: .failure(anyNSError()))
-        let sut = SalonLoaderCacheDecorator(decoratee: loader)
+        let sut = makeSUT(result: .failure(anyNSError()))
         
         do {
             let result = try await sut.load()
             XCTFail("Expected to throw error items array but got \(result) instead")
         } catch  {
             XCTAssertEqual(error as NSError, anyNSError())
+        }
+    }
+    
+    private func makeSUT(result: Result<[Salon], Error>, file: StaticString = #file, line: UInt = #line) -> SalonLoaderCacheDecorator {
+        let loader = SalonLoaderStub(result: result)
+        let sut = SalonLoaderCacheDecorator(decoratee: loader)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
         }
     }
 }
