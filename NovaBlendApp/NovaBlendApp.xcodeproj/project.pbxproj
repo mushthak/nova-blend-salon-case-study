@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		29069FD12C5E1EEB0041C0FA /* SalonLoaderCacheDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD02C5E1EEB0041C0FA /* SalonLoaderCacheDecoratorTests.swift */; };
 		29069FD42C5E22990041C0FA /* SalonLoaderStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD32C5E22990041C0FA /* SalonLoaderStub.swift */; };
+		29069FD62C5E24140041C0FA /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD52C5E24140041C0FA /* SharedTestHelpers.swift */; };
 		293CE1052C4A99AE003FA8C0 /* NovaBlendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */; };
 		293CE1072C4A99AE003FA8C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1062C4A99AE003FA8C0 /* ContentView.swift */; };
 		293CE1092C4A99AF003FA8C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE1082C4A99AF003FA8C0 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		29069FD02C5E1EEB0041C0FA /* SalonLoaderCacheDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoaderCacheDecoratorTests.swift; sourceTree = "<group>"; };
 		29069FD32C5E22990041C0FA /* SalonLoaderStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoaderStub.swift; sourceTree = "<group>"; };
+		29069FD52C5E24140041C0FA /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovaBlendApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendApp.swift; sourceTree = "<group>"; };
 		293CE1062C4A99AE003FA8C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				29069FD32C5E22990041C0FA /* SalonLoaderStub.swift */,
+				29069FD52C5E24140041C0FA /* SharedTestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29069FD62C5E24140041C0FA /* SharedTestHelpers.swift in Sources */,
 				29069FD42C5E22990041C0FA /* SalonLoaderStub.swift in Sources */,
 				2992AE732C4E942500ED8DB8 /* SalonLoaderWithFallbackCompositeTests.swift in Sources */,
 				29069FD12C5E1EEB0041C0FA /* SalonLoaderCacheDecoratorTests.swift in Sources */,

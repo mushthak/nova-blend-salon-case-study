@@ -47,12 +47,3 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
         }
     }
 }
-
-//MARK: Helpers
-private func uniqueSalon() -> Salon {
-    return Salon(id: UUID(), name: "any", location: "any", phone: "any", openTime: 0.0, closeTime: 0.0)
-}
-
-private func anyNSError() -> NSError {
-    return NSError(domain: "any error", code: 0)
-}
