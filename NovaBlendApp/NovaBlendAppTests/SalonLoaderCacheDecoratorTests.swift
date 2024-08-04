@@ -10,13 +10,17 @@ import NovaBlendSalon
 
 class SalonLoaderCacheDecorator {
     private let decoratee: SalonLoader
+    private let cache: SalonCache
     
-    init(decoratee: SalonLoader) {
+    init(decoratee: SalonLoader, cache: SalonCache) {
         self.decoratee = decoratee
+        self.cache = cache
     }
     
     func load() async throws -> [Salon] {
-        return try await decoratee.load()
+        let result = try await decoratee.load()
+        try await cache.save(result)
+        return result
     }
 }
 
@@ -45,11 +49,36 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
         }
     }
     
-    private func makeSUT(result: Result<[Salon], Error>, file: StaticString = #file, line: UInt = #line) -> SalonLoaderCacheDecorator {
+    func test_load_cachesLoadedSalonsOnLoaderSuccess() async {
+        let salons = [uniqueSalon()]
+        let cache = CacheSpy()
+        let sut = makeSUT(result: .success(salons),cache: cache)
+        
+        do {
+            let result = try await sut.load()
+            XCTAssertEqual(cache.messages , [.save(salons)])
+        } catch  {
+            XCTFail("Expected to receive items array but got \(error) instead")
+        }
+    }
+    
+    //MARK: Helpers
+    private func makeSUT(result: Result<[Salon], Error>, cache: CacheSpy = .init(), file: StaticString = #file, line: UInt = #line) -> SalonLoaderCacheDecorator {
         let loader = SalonLoaderStub(result: result)
-        let sut = SalonLoaderCacheDecorator(decoratee: loader)
+        let sut = SalonLoaderCacheDecorator(decoratee: loader, cache: cache)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
+    
+    private class CacheSpy: SalonCache {
+        private(set) var messages = [Message]()
+        
+        enum Message: Equatable {
+            case save([Salon])
+        }
+        
+        func save(_ salons: [Salon]) async throws {
+            messages.append(.save(salons))
+        }}
 }
