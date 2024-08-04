@@ -16,11 +16,13 @@ struct SalonRowView: View {
             Text(salon.location)
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
-            HStack {
-                Image(systemName: "phone")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text(salon.phone)
+            if (!salon.phone.isEmpty){
+                HStack {
+                    Image(systemName: "phone")
+                        .imageScale(.large)
+                        .foregroundStyle(.tint)
+                    Text(salon.phone)
+                }
             }
             Text(salon.hours).font(.subheadline)
             
@@ -30,4 +32,8 @@ struct SalonRowView: View {
 
 #Preview(traits: .sizeThatFitsLayout) {
     SalonRowView(salon: PreviewHelper.SalonViewModelPreview)
+}
+
+#Preview(traits: .sizeThatFitsLayout) {
+    SalonRowView(salon: PreviewHelper.SalonViewModelPreview2)
 }
