@@ -14,7 +14,6 @@
 		29069FDA2C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD92C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift */; };
 		2906A0262C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906A0252C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift */; };
 		293CE1052C4A99AE003FA8C0 /* NovaBlendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */; };
-		293CE1072C4A99AE003FA8C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1062C4A99AE003FA8C0 /* ContentView.swift */; };
 		293CE1092C4A99AF003FA8C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE1082C4A99AF003FA8C0 /* Assets.xcassets */; };
 		293CE10C2C4A99AF003FA8C0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE10B2C4A99AF003FA8C0 /* Preview Assets.xcassets */; };
 		293CE1152C4A9DE7003FA8C0 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */; };
@@ -67,7 +66,6 @@
 		2906A0252C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendAppUIAcceptanceTests.swift; sourceTree = "<group>"; };
 		293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovaBlendApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendApp.swift; sourceTree = "<group>"; };
-		293CE1062C4A99AE003FA8C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		293CE1082C4A99AF003FA8C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		293CE10B2C4A99AF003FA8C0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		293CE1132C4A9DE7003FA8C0 /* NovaBlendSalon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NovaBlendSalon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */,
-				293CE1062C4A99AE003FA8C0 /* ContentView.swift */,
 				2992AE792C4FEFD100ED8DB8 /* SalonLoaderWithFallbackComposite.swift */,
 				29069FD92C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift */,
 				293CE1082C4A99AF003FA8C0 /* Assets.xcassets */,
@@ -322,7 +319,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				293CE1072C4A99AE003FA8C0 /* ContentView.swift in Sources */,
 				29069FDA2C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift in Sources */,
 				2992AE7A2C4FEFD100ED8DB8 /* SalonLoaderWithFallbackComposite.swift in Sources */,
 				293CE1052C4A99AE003FA8C0 /* NovaBlendApp.swift in Sources */,

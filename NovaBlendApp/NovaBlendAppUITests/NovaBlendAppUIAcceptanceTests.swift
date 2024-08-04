@@ -8,5 +8,11 @@
 import XCTest
 
 final class NovaBlendAppUIAcceptanceTests: XCTestCase {
-    
+    func test_onLaunch_displaysRemoteSalonsWhenCustomerHasConnectivity() {
+        let app = XCUIApplication()
+        
+        app.launch()
+        
+        XCTAssertEqual(app.cells.count, 4)
+    }
 }
