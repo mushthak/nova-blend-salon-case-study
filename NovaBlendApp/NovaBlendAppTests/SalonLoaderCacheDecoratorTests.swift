@@ -62,6 +62,18 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
         }
     }
     
+    func test_load_doesNotCacheOnLoaderFailure() async {
+        let cache = CacheSpy()
+        let sut = makeSUT(result: .failure(anyNSError()),cache: cache)
+        
+        do {
+            let result = try await sut.load()
+            XCTFail("Expected to throw error items array but got \(result) instead")
+        } catch  {
+            XCTAssertEqual(cache.messages , [])
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(result: Result<[Salon], Error>, cache: CacheSpy = .init(), file: StaticString = #file, line: UInt = #line) -> SalonLoaderCacheDecorator {
         let loader = SalonLoaderStub(result: result)
