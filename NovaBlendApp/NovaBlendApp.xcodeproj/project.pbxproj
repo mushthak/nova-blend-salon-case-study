@@ -12,6 +12,7 @@
 		29069FD62C5E24140041C0FA /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD52C5E24140041C0FA /* SharedTestHelpers.swift */; };
 		29069FD82C5E27FA0041C0FA /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD72C5E27FA0041C0FA /* XCTestCase+MemoryLeakTracking.swift */; };
 		29069FDA2C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29069FD92C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift */; };
+		2906A0262C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2906A0252C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift */; };
 		293CE1052C4A99AE003FA8C0 /* NovaBlendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */; };
 		293CE1072C4A99AE003FA8C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293CE1062C4A99AE003FA8C0 /* ContentView.swift */; };
 		293CE1092C4A99AF003FA8C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 293CE1082C4A99AF003FA8C0 /* Assets.xcassets */; };
@@ -25,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2906A0202C5FEEC10041C0FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 293CE0F92C4A99AE003FA8C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 293CE1002C4A99AE003FA8C0;
+			remoteInfo = NovaBlendApp;
+		};
 		2992AE742C4E942500ED8DB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 293CE0F92C4A99AE003FA8C0 /* Project object */;
@@ -55,6 +63,8 @@
 		29069FD52C5E24140041C0FA /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		29069FD72C5E27FA0041C0FA /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		29069FD92C5F41EE0041C0FA /* SalonLoaderCacheDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonLoaderCacheDecorator.swift; sourceTree = "<group>"; };
+		2906A01A2C5FEEC10041C0FA /* NovaBlendAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2906A0252C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendAppUIAcceptanceTests.swift; sourceTree = "<group>"; };
 		293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NovaBlendApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		293CE1042C4A99AE003FA8C0 /* NovaBlendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendApp.swift; sourceTree = "<group>"; };
 		293CE1062C4A99AE003FA8C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +78,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2906A0172C5FEEC10041C0FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		293CE0FE2C4A99AE003FA8C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,11 +114,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		2906A01B2C5FEEC10041C0FA /* NovaBlendAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2906A0252C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift */,
+			);
+			path = NovaBlendAppUITests;
+			sourceTree = "<group>";
+		};
 		293CE0F82C4A99AE003FA8C0 = {
 			isa = PBXGroup;
 			children = (
 				293CE1032C4A99AE003FA8C0 /* NovaBlendApp */,
 				2992AE712C4E942500ED8DB8 /* NovaBlendAppTests */,
+				2906A01B2C5FEEC10041C0FA /* NovaBlendAppUITests */,
 				293CE1022C4A99AE003FA8C0 /* Products */,
 				293CE1122C4A9DE7003FA8C0 /* Frameworks */,
 			);
@@ -112,6 +138,7 @@
 			children = (
 				293CE1012C4A99AE003FA8C0 /* NovaBlendApp.app */,
 				2992AE702C4E942500ED8DB8 /* NovaBlendAppTests.xctest */,
+				2906A01A2C5FEEC10041C0FA /* NovaBlendAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +186,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2906A0192C5FEEC10041C0FA /* NovaBlendAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2906A0242C5FEEC10041C0FA /* Build configuration list for PBXNativeTarget "NovaBlendAppUITests" */;
+			buildPhases = (
+				2906A0162C5FEEC10041C0FA /* Sources */,
+				2906A0172C5FEEC10041C0FA /* Frameworks */,
+				2906A0182C5FEEC10041C0FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2906A0212C5FEEC10041C0FA /* PBXTargetDependency */,
+			);
+			name = NovaBlendAppUITests;
+			productName = NovaBlendAppUITests;
+			productReference = 2906A01A2C5FEEC10041C0FA /* NovaBlendAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		293CE1002C4A99AE003FA8C0 /* NovaBlendApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 293CE10F2C4A99AF003FA8C0 /* Build configuration list for PBXNativeTarget "NovaBlendApp" */;
@@ -205,6 +250,10 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					2906A0192C5FEEC10041C0FA = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 293CE1002C4A99AE003FA8C0;
+					};
 					293CE1002C4A99AE003FA8C0 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -229,11 +278,19 @@
 			targets = (
 				293CE1002C4A99AE003FA8C0 /* NovaBlendApp */,
 				2992AE6F2C4E942500ED8DB8 /* NovaBlendAppTests */,
+				2906A0192C5FEEC10041C0FA /* NovaBlendAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2906A0182C5FEEC10041C0FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		293CE0FF2C4A99AE003FA8C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +310,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2906A0162C5FEEC10041C0FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2906A0262C5FF6190041C0FA /* NovaBlendAppUIAcceptanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		293CE0FD2C4A99AE003FA8C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -279,6 +344,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2906A0212C5FEEC10041C0FA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 293CE1002C4A99AE003FA8C0 /* NovaBlendApp */;
+			targetProxy = 2906A0202C5FEEC10041C0FA /* PBXContainerItemProxy */;
+		};
 		2992AE752C4E942500ED8DB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 293CE1002C4A99AE003FA8C0 /* NovaBlendApp */;
@@ -287,6 +357,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2906A0222C5FEEC10041C0FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NovaBlendApp;
+			};
+			name = Debug;
+		};
+		2906A0232C5FEEC10041C0FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.musdevpro.NovaBlendAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NovaBlendApp;
+			};
+			name = Release;
+		};
 		293CE10D2C4A99AF003FA8C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -499,6 +601,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2906A0242C5FEEC10041C0FA /* Build configuration list for PBXNativeTarget "NovaBlendAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2906A0222C5FEEC10041C0FA /* Debug */,
+				2906A0232C5FEEC10041C0FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		293CE0FC2C4A99AE003FA8C0 /* Build configuration list for PBXProject "NovaBlendApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -34,6 +34,19 @@
             default = "YES">
          </TestPlanReference>
       </TestPlans>
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2906A0192C5FEEC10041C0FA"
+               BuildableName = "NovaBlendAppUITests.xctest"
+               BlueprintName = "NovaBlendAppUITests"
+               ReferencedContainer = "container:NovaBlendApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
