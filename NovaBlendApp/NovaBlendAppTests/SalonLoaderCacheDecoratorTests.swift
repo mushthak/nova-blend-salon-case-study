@@ -55,7 +55,7 @@ final class SalonLoaderCacheDecoratorTests: XCTestCase {
         let sut = makeSUT(result: .success(salons),cache: cache)
         
         do {
-            let result = try await sut.load()
+            _ = try await sut.load()
             XCTAssertEqual(cache.messages , [.save(salons)])
         } catch  {
             XCTFail("Expected to receive items array but got \(error) instead")
