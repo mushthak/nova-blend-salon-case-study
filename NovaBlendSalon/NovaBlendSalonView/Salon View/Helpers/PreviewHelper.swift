@@ -40,5 +40,9 @@ public struct PreviewHelper {
     static let SalonViewModelPreview: SalonViewModel = {
         SalonViewModel(id: UUID(), name: "Nova alpha salon", location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania", phone: "412-862-3526", hours: "Today’s hours : 10:00 AM - 7:00 PM")
     }()
+    
+    static let SalonViewModelPreview2: SalonViewModel = {
+        SalonViewModel(id: UUID(), name: "Nova alpha salon", location: "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania", phone: "", hours: "Today’s hours : 10:00 AM - 7:00 PM")
+    }()
 }
 #endif
