@@ -7,22 +7,7 @@
 
 import XCTest
 import NovaBlendSalon
-
-class SalonLoaderCacheDecorator {
-    private let decoratee: SalonLoader
-    private let cache: SalonCache
-    
-    init(decoratee: SalonLoader, cache: SalonCache) {
-        self.decoratee = decoratee
-        self.cache = cache
-    }
-    
-    func load() async throws -> [Salon] {
-        let result = try await decoratee.load()
-        try await cache.save(result)
-        return result
-    }
-}
+@testable import NovaBlendApp
 
 final class SalonLoaderCacheDecoratorTests: XCTestCase {
     
