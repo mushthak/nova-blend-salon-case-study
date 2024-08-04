@@ -23,6 +23,13 @@
         "identifier" : "2992AE6F2C4E942500ED8DB8",
         "name" : "NovaBlendAppTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NovaBlendApp.xcodeproj",
+        "identifier" : "2906A0192C5FEEC10041C0FA",
+        "name" : "NovaBlendAppUITests"
+      }
     }
   ],
   "version" : 1
