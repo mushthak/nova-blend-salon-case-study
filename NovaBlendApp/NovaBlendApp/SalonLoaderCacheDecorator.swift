@@ -8,7 +8,7 @@
 import Foundation
 import NovaBlendSalon
 
-class SalonLoaderCacheDecorator {
+class SalonLoaderCacheDecorator : SalonLoader {
     private let decoratee: SalonLoader
     private let cache: SalonCache
     
