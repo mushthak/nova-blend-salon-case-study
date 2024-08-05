@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-@Model class ManagedCache {
+@Model public class ManagedCache {
     var timestamp: Date
     @Relationship(deleteRule: .cascade, inverse: \ManagedSalonItem.cache)
     var salons = [ManagedSalonItem]()

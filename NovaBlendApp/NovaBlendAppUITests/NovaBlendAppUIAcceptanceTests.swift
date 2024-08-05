@@ -26,4 +26,12 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         
         XCTAssertEqual(offlineApp.cells.count, 4)
     }
+    
+    func test_onLaunch_displaysEmptySalonsWhenCustomerHasNoConnectivityAndNoCache() {
+        let app = XCUIApplication()
+        app.launchArguments = ["-reset", "-connectivity", "offline"]
+        app.launch()
+        
+        XCTAssertEqual(app.cells.count, 0)
+    }
 }
