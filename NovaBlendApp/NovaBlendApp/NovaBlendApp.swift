@@ -47,6 +47,11 @@ struct NovaBlendApp: App {
     }
     
     private func getContainer() -> ModelContainer {
-        return try! ModelContainer(for: ManagedSalonItem.self)
+        let container =  try! ModelContainer(for: ManagedCache.self)
+        if CommandLine.arguments.contains("-reset") {
+            let modelContext = ModelContext(container)
+            try! modelContext.delete(model: ManagedCache.self)
+        }
+        return container
     }
 }
