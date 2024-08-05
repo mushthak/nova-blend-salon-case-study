@@ -11,6 +11,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
     func test_onLaunch_displaysRemoteSalonsWhenCustomerHasConnectivity() {
         let app = XCUIApplication()
         
+        app.launchArguments = ["-reset"]
         app.launch()
         
         XCTAssertEqual(app.cells.count, 4)
@@ -18,6 +19,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
     
     func test_onLaunch_displaysCachedRemoteSalonsWhenCustomerHasNoConnectivity() {
         let onlineApp = XCUIApplication()
+        onlineApp.launchArguments = ["-reset"]
         onlineApp.launch()
         
         let offlineApp = XCUIApplication()
