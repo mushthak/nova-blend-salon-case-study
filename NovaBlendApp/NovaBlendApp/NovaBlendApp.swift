@@ -31,27 +31,30 @@ struct NovaBlendApp: App {
     
     //MARK: Helpers
     private func makeRemoteClient() -> HTTPClient {
-        switch UserDefaults.standard.string(forKey: "connectivity") {
-        case "offline":
+#if DEBUG
+        if UserDefaults.standard.string(forKey: "connectivity") == "offline" {
             return AlwaysFailingHTTPClient()
-            
-        default:
-            return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
         }
+#endif
+        return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }
     
+#if DEBUG
     private class AlwaysFailingHTTPClient: HTTPClient {
         func getFrom(url: URL) async throws -> (Data, HTTPURLResponse) {
             throw NSError(domain: "offline", code: 0)
         }
     }
+#endif
     
     private func getContainer() -> ModelContainer {
         let container =  try! ModelContainer(for: ManagedCache.self)
+#if DEBUG
         if CommandLine.arguments.contains("-reset") {
             let modelContext = ModelContext(container)
             try! modelContext.delete(model: ManagedCache.self)
         }
+#endif
         return container
     }
 }
