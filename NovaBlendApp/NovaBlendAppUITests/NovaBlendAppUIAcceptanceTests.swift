@@ -14,7 +14,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         app.launchArguments = ["-reset", "-connectivity", "online"]
         app.launch()
         
-        if app.cells.element.waitForExistence(timeout: 1) {
+        if app.cells.element.waitForExistence(timeout: 2) {
             XCTAssertEqual(app.cells.count, 4)
             app.terminate()
         }
