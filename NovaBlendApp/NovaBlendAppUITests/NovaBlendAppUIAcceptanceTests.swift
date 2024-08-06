@@ -28,6 +28,9 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         offlineApp.launchArguments = ["-connectivity", "offline"]
         offlineApp.launch()
         
+        if offlineApp.cells.element.waitForExistence(timeout: 2) {
+            XCTAssertEqual(offlineApp.cells.count, 4)
+        }
         XCTAssertEqual(offlineApp.cells.count, 4)
     }
     
