@@ -21,6 +21,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         let onlineApp = XCUIApplication()
         onlineApp.launchArguments = ["-reset", "-connectivity", "online"]
         onlineApp.launch()
+        onlineApp.terminate()
         
         let offlineApp = XCUIApplication()
         offlineApp.launchArguments = ["-connectivity", "offline"]
