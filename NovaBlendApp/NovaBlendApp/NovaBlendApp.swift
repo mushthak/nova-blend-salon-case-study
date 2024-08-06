@@ -32,17 +32,57 @@ struct NovaBlendApp: App {
     //MARK: Helpers
     private func makeRemoteClient() -> HTTPClient {
 #if DEBUG
-        if UserDefaults.standard.string(forKey: "connectivity") == "offline" {
-            return AlwaysFailingHTTPClient()
+        if let connectivity = UserDefaults.standard.string(forKey: "connectivity") {
+            return DebuggingHTTPClient(connectivity: connectivity)
         }
 #endif
         return URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }
     
 #if DEBUG
-    private class AlwaysFailingHTTPClient: HTTPClient {
+    private class DebuggingHTTPClient: HTTPClient {
+        
+        private let connectivity: String
+        
+        init(connectivity: String) {
+            self.connectivity = connectivity
+        }
+        
         func getFrom(url: URL) async throws -> (Data, HTTPURLResponse) {
-            throw NSError(domain: "offline", code: 0)
+            guard connectivity == "online" else {
+                throw NSError(domain: "offline", code: 0)}
+            return makeSuccessfulResponse(for: url)
+        }
+        
+        private func makeSuccessfulResponse(for url: URL) -> (Data, HTTPURLResponse) {
+            let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (makeFeedData(), response)
+        }
+        
+        private func makeFeedData() -> Data {
+            return try! JSONSerialization.data(withJSONObject: ["salons": [
+                ["id": UUID().uuidString,
+                 "name": "Nova alpha salon",
+                 "location": "3051 Lucky Duck Drive, Pittsburgh, Pennsylvania",
+                 "phone": "4128623526",
+                 "open_time": 10.00,
+                 "close_time": 22.00],
+                ["id": UUID().uuidString,
+                 "name": "Nova beta salon",
+                 "location": "214 Whitetail Lane, Richardson, Texas",
+                 "open_time": 10.30,
+                 "close_time": 20.30],
+                ["id": UUID().uuidString,
+                 "name": "Nova gamma salon",
+                 "location": "4998 Yorkie Lane, Ellabelle, Georgia",
+                 "open_time": 8.00,
+                 "close_time": 14.00],
+                ["id": UUID().uuidString,
+                 "name": "Nova salon kids",
+                 "location": "3300 Main Street, Bothell, Washington",
+                 "open_time": 11.00,
+                 "close_time": 16.00]
+            ]])
         }
     }
 #endif
