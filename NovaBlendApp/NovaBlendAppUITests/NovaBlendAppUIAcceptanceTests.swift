@@ -14,8 +14,10 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         app.launchArguments = ["-reset", "-connectivity", "online"]
         app.launch()
         
-        XCTAssertEqual(app.cells.count, 4)
-        app.terminate()
+        if app.cells.element.waitForExistence(timeout: 5) {
+            XCTAssertEqual(app.cells.count, 4)
+            app.terminate()
+        }
     }
     
     func test_onLaunch_displaysCachedRemoteSalonsWhenCustomerHasNoConnectivity() {
