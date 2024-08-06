@@ -15,6 +15,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         app.launch()
         
         XCTAssertEqual(app.cells.count, 4)
+        app.terminate()
     }
     
     func test_onLaunch_displaysCachedRemoteSalonsWhenCustomerHasNoConnectivity() {
@@ -28,6 +29,7 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         offlineApp.launch()
         
         XCTAssertEqual(offlineApp.cells.count, 4)
+        offlineApp.terminate()
     }
     
     func test_onLaunch_displaysEmptySalonsWhenCustomerHasNoConnectivityAndNoCache() {
@@ -36,5 +38,6 @@ final class NovaBlendAppUIAcceptanceTests: XCTestCase {
         app.launch()
         
         XCTAssertEqual(app.cells.count, 0)
+        app.terminate()
     }
 }
