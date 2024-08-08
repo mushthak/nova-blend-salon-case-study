@@ -16,7 +16,7 @@ final class SalonListSnapshotTests: XCTestCase {
         let view = SalonListView(viewModel: vm)
         let sut =  await UIHostingController(rootView: view)
         await vm.loadSalons()
-        
+        sleep(3)
         await assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "SALON_LIST_WITH_CONTENT_light")
         await assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "SALON_LIST_WITH_CONTENT_dark")
         await assert(snapshot: sut.snapshot(for: .iPhone(style: .light, contentSize: .extraExtraExtraLarge)), named: "SALON_LIST_WITH_CONTENT_light_extraExtraExtraLarge")
