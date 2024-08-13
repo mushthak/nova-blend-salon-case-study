@@ -44,18 +44,23 @@ final class LoadSalonFromRemoteUseCaseTests: XCTestCase {
     
     func test_load_deliversInvalidDataErrorOnNon200HTTPResponse() async throws {
         let samples = [199, 201, 300, 400, 500]
-        samples.enumerated().forEach { index, code in
-            let emptyListJSON = makeItemsJSON(items: [])
-            Task {
-                
-                let response = HTTPURLResponse(url: anyURL(), statusCode: code, httpVersion: nil, headerFields: nil)!
-                let (sut,_) = makeSUT(with: .success((emptyListJSON, response)))
-                
-                do {
-                    _ = try await sut.load()
-                    XCTFail("Expected to throw \(RemoteSalonLoader.Error.invalidData) but got success instead")
-                } catch {
+        let emptyListJSON = makeItemsJSON(items: [])
+        await withThrowingTaskGroup(of: [Salon].self) { group in
+            for statusCode in samples {
+                group.addTask {
+                    let response = HTTPURLResponse(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+                    let (sut,_) = self.makeSUT(with: .success((emptyListJSON, response)))
+                    
+                    return try await sut.load()
+                }
+            }
+            
+            while let nextResult = await group.nextResult() {
+                switch nextResult {
+                case .failure(let error):
                     XCTAssertEqual(error as? RemoteSalonLoader.Error, .invalidData)
+                case .success:
+                    XCTFail("Expected to throw \(RemoteSalonLoader.Error.invalidData) but got success instead")
                 }
             }
         }
