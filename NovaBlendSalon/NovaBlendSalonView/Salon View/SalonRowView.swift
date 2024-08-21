@@ -30,6 +30,11 @@ struct SalonRowView: View {
                 
             }.padding()
             Spacer()
+        }.alignmentGuide(.listRowSeparatorLeading) { d in
+            d[.leading]
+        }
+        .alignmentGuide(.listRowSeparatorTrailing) { d in
+            d[.trailing]
         }
     }
 }
