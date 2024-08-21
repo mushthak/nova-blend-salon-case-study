@@ -11,22 +11,26 @@ struct SalonRowView: View {
     let salon: SalonViewModel
     
     var body: some View {
-        VStack {
-            Text(salon.name).font(.title2)
-            Text(salon.location)
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-            if (!salon.phone.isEmpty){
-                HStack {
-                    Image(systemName: "phone")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
-                    Text(salon.phone)
+        HStack {
+            Spacer()
+            VStack {
+                Text(salon.name).font(.title2)
+                Text(salon.location)
+                    .font(.subheadline)
+                    .multilineTextAlignment(.center)
+                if (!salon.phone.isEmpty){
+                    HStack {
+                        Image(systemName: "phone")
+                            .imageScale(.large)
+                            .foregroundStyle(.tint)
+                        Text(salon.phone)
+                    }
                 }
-            }
-            Text(salon.hours).font(.subheadline)
-            
-        }.padding()
+                Text(salon.hours).font(.subheadline)
+                
+            }.padding()
+            Spacer()
+        }
     }
 }
 
