@@ -2,9 +2,9 @@
 
 [![CI-macOS](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-macOS.yml/badge.svg)](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-macOS.yml)
 [![CI-iOS](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-iOS.yml/badge.svg)](https://github.com/mushthak/nova-blend-salon-case-study/actions/workflows/CI-iOS.yml)
-## Salon list Feature Specs
+# Salon list Feature Specs
 
-### Story: Customer requests to see available salons
+## 1. Story: Customer requests to see available salons
 
 ### Narrative #1
 
@@ -204,3 +204,30 @@ GET *url* (TBD)
 
 ![NovaBlendSalon-Architecture drawio](https://github.com/mushthak/nova-blend-salon-case-study/assets/11793859/ac115a42-2ea8-423a-b133-09a7befb4525)
 
+## 2. Story: Customer requests an appointment with a salon
+
+### Narrative #1
+
+```
+As customer
+I want the book an appointment with a salon on my preferred date and time slot
+so that I can secure a convenient time for my service.
+```
+
+#### Scenarios (Acceptance criteria)
+
+```
+Given the customer has connectivity
+  And customer selects a preferred date and time slot
+When the customer requests to book an appointment with a salon  
+Then the app should confirm the availability of the selected salon and time slot from the remote
+ And book the appointment for the customer
+ And update the cache with the new appointment details
+ ```
+
+ ```
+ Given the customer does not have connectivity
+	And the customer selects a preferred date and time slot
+ When the customer attempts to book an appointment with a salon
+	Then the app should display an error message indicating that booking requires an internet connection
+ ```
