@@ -390,6 +390,7 @@
 				296576AC2B6FCC90005ECB8B /* Helpers */,
 				296576902B66A6B8005ECB8B /* Salon API */,
 				291F50FC2B771FF4000771BE /* Salon Cache */,
+				29CEFDB12C7B7CBA00AC4FEB /* Salon Appointment */,
 			);
 			path = NovaBlendSalonTests;
 			sourceTree = "<group>";
@@ -412,6 +413,13 @@
 				29CEFD262C690EB300AC4FEB /* SALON_LIST_WITH_CONTENT_light.png */,
 			);
 			path = snapshots;
+			sourceTree = "<group>";
+		};
+		29CEFDB12C7B7CBA00AC4FEB /* Salon Appointment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Salon Appointment";
 			sourceTree = "<group>";
 		};
 		29E5F09A2C3EB6250006E985 /* Frameworks */ = {
