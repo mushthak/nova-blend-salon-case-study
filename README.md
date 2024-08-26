@@ -198,11 +198,6 @@ GET *url* (TBD)
 }
 ```
 
----
-
-## App Architecture
-
-![NovaBlendSalon-Architecture drawio](https://github.com/mushthak/nova-blend-salon-case-study/assets/11793859/ac115a42-2ea8-423a-b133-09a7befb4525)
 
 ## 2. Story: Customer requests an appointment with a salon
 
@@ -231,3 +226,34 @@ Then the app should confirm the availability of the selected salon and time slot
  When the customer attempts to book an appointment with a salon
 	Then the app should display an error message indicating that booking requires an internet connection
  ```
+## Model Specs 
+### SalonAppointment
+
+| Property      | Type                |
+|---------------|---------------------|
+| `id`          | `UUID`              |
+| `time`        | `Date`              |
+| `phone`       | `String`            |
+| `email`       | `String` (optional) |
+| `note`        | `String` (optional) |
+
+### Payload contract
+
+```
+POST *url* (TBD)
+
+REQUEST
+
+{
+  "salonId": "a UUID",
+  "phone": "a phone number",
+  "email": "an email id",
+  "note": "a note",
+}
+
+201 RESPONSE
+```
+---
+
+## App Architecture
+![image description](architecture.svg)
