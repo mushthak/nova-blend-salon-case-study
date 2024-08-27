@@ -16,13 +16,19 @@ private class RemoteAppointmentBooker {
     private let url: URL
     private let client: HTTPClient
     
+    public enum Error: Swift.Error {
+        case connectivity
+    }
+    
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    func bookAppointment() async {
-        _ = try! await client.postTo(url: url)
+    func bookAppointment() async throws {
+        guard let (_, _) = try? await client.postTo(url: url) else {
+            throw Error.connectivity
+        }
     }
 }
 
@@ -36,10 +42,24 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_sendsAppointmentRequestToURL() async {
         let (sut, client) = makeSUT()
-        await sut.bookAppointment()
+        try? await sut.bookAppointment()
         
         XCTAssertFalse(client.requestedURLs.isEmpty)
     }
+    
+    func test_bookAppointment_deliversConnectivityErrorOnClientError() async throws {
+        let error = anyError()
+        let (sut,_) = makeSUT(with: .failure(error))
+        
+        do {
+            _ = try await sut.bookAppointment()
+            XCTFail("Expected to throw \(RemoteAppointmentBooker.Error.connectivity) error. But got success instead")
+        } catch {
+            XCTAssertEqual(error as? RemoteAppointmentBooker.Error, .connectivity)
+        }
+    }
+    
+    
     
     //MARK: Helper
     private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((anyData(), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteAppointmentBooker, client: HTTPClientSpy) {
