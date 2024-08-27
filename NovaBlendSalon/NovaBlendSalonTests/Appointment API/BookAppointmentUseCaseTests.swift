@@ -18,6 +18,7 @@ private class RemoteAppointmentBooker {
     
     public enum Error: Swift.Error {
         case connectivity
+        case AppointmentFailure
     }
     
     init(url: URL, client: HTTPClient) {
@@ -26,8 +27,11 @@ private class RemoteAppointmentBooker {
     }
     
     func bookAppointment() async throws {
-        guard let (_, _) = try? await client.postTo(url: url) else {
+        guard let (_, response) = try? await client.postTo(url: url) else {
             throw Error.connectivity
+        }
+        if response.statusCode != 201 {
+            throw Error.AppointmentFailure
         }
     }
 }
@@ -59,6 +63,28 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         }
     }
     
+    func test_bookAppointment_deliversAppointmentFailureErrorOnNon201HTTPResponse() async {
+        let samples = [199, 200, 300, 400, 500]
+        await withThrowingTaskGroup(of: Void.self) { group in
+            for statusCode in samples {
+                group.addTask {
+                    let response = HTTPURLResponse(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+                    let (sut,_) = self.makeSUT(with: .success((anyData(), response)))
+                    
+                    try await sut.bookAppointment()
+                }
+            }
+            
+            while let nextResult = await group.nextResult() {
+                switch nextResult {
+                case .failure(let error):
+                    XCTAssertEqual(error as? RemoteAppointmentBooker.Error, .AppointmentFailure)
+                case .success:
+                    XCTFail("Expected to throw \(RemoteAppointmentBooker.Error.AppointmentFailure) but got success instead")
+                }
+            }
+        }
+    }
     
     
     //MARK: Helper
