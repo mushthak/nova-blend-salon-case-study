@@ -86,6 +86,17 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         }
     }
     
+    func test_bookAppointment_succeedsOn201HTTPResponse() async {
+        do {
+            let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
+            let (sut,_) = self.makeSUT(with: .success((anyData(), response)))
+            
+            try await sut.bookAppointment()
+        } catch {
+            XCTFail("Expect to succeed but got \(error) instead")
+        }
+    }
+    
     
     //MARK: Helper
     private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((anyData(), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteAppointmentBooker, client: HTTPClientSpy) {
