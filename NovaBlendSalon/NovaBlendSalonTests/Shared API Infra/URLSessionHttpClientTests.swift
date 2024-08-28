@@ -111,4 +111,17 @@ extension URLSessionHttpClientTests {
             XCTAssertEqual(receivedError.domain, responseError.domain)
         }
     }
+    
+    func test_postToURL_failsOnNonHTTPURLResponse() async throws {
+        do {
+            let data = anyData()
+            let response = nonHTTPURLResponse()
+            URLProtocolStub.stub(error: nil, data: data, response: response)
+            _ = try await makeSUT().postTo(url: anyURL())
+            XCTFail("Expected to throw error but got success instead")
+        } catch  {
+            XCTAssertNotNil(error)
+        }
+    }
+
 }
