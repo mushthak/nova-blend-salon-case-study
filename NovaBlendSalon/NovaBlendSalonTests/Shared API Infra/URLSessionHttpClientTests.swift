@@ -97,4 +97,18 @@ extension URLSessionHttpClientTests {
             XCTFail("Expected to perform a GET request with url \(url) with but got \(error) instead")
         }
     }
+    
+    func test_postToURL_failsOnRequestError() async throws {
+        let url = anyURL()
+        let responseError = anyNSError()
+        do {
+            URLProtocolStub.stub(error: responseError, data: nil, response: nil)
+            _ = try await makeSUT().postTo(url: url)
+            XCTFail("Expected to throw error \(responseError) but got success instead")
+        } catch  {
+            let receivedError = error as NSError
+            XCTAssertEqual(receivedError.code, responseError.code)
+            XCTAssertEqual(receivedError.domain, responseError.domain)
+        }
+    }
 }
