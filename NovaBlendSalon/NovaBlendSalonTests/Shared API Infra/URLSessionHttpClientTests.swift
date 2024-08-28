@@ -80,7 +80,7 @@ final class URLSessionHttpClientTests: XCTestCase {
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
     }
-
+    
 }
 
 
@@ -123,5 +123,18 @@ extension URLSessionHttpClientTests {
             XCTAssertNotNil(error)
         }
     }
-
+    
+    func test_postToURL_succeedsOnHTTPURLResponseWithData() async throws {
+        do {
+            let data = anyData()
+            let response = anyHTTPURLResponse()
+            URLProtocolStub.stub(error: nil, data: data, response: response)
+            let (receivedData, receivedResponse) = try await makeSUT().postTo(url: anyURL())
+            XCTAssertEqual(receivedData, data)
+            XCTAssertEqual(receivedResponse.url, response.url)
+            XCTAssertEqual(receivedResponse.statusCode, response.statusCode)
+        } catch  {
+            XCTFail("Expected to succeed but thrown error \(error) instead")
+        }
+    }
 }
