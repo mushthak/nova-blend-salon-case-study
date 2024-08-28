@@ -250,9 +250,7 @@
 		296576902B66A6B8005ECB8B /* Salon API */ = {
 			isa = PBXGroup;
 			children = (
-				296576952B66A7CD005ECB8B /* Helpers */,
 				29BDDDAB2B5C016F0026D484 /* LoadSalonFromRemoteUseCaseTests.swift */,
-				296576932B66A74E005ECB8B /* URLSessionHttpClientTests.swift */,
 			);
 			path = "Salon API";
 			sourceTree = "<group>";
@@ -393,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				296576AC2B6FCC90005ECB8B /* Helpers */,
+				29D70FD82C7F2C57006C83B3 /* Shared API Infra */,
 				296576902B66A6B8005ECB8B /* Salon API */,
 				291F50FC2B771FF4000771BE /* Salon Cache */,
 				29CEFDB12C7B7CBA00AC4FEB /* Appointment API */,
@@ -426,6 +425,15 @@
 				29CEFDB42C7DB75600AC4FEB /* BookAppointmentUseCaseTests.swift */,
 			);
 			path = "Appointment API";
+			sourceTree = "<group>";
+		};
+		29D70FD82C7F2C57006C83B3 /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				296576952B66A7CD005ECB8B /* Helpers */,
+				296576932B66A74E005ECB8B /* URLSessionHttpClientTests.swift */,
+			);
+			path = "Shared API Infra";
 			sourceTree = "<group>";
 		};
 		29E5F09A2C3EB6250006E985 /* Frameworks */ = {
