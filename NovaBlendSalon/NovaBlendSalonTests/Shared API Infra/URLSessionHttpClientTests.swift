@@ -88,7 +88,7 @@ extension URLSessionHttpClientTests {
     func test_postToURL_performsPOSTRequestToURL() async throws {
         let url = anyURL()
         do {
-            _ = try await makeSUT().postTo(url: url)
+            _ = try await makeSUT().postTo(url: url, data: anyData())
             
             let request = URLProtocolStub.urlRequest
             XCTAssertEqual(request?.url, url)
@@ -103,7 +103,7 @@ extension URLSessionHttpClientTests {
         let responseError = anyNSError()
         do {
             URLProtocolStub.stub(error: responseError, data: nil, response: nil)
-            _ = try await makeSUT().postTo(url: url)
+            _ = try await makeSUT().postTo(url: url, data: anyData())
             XCTFail("Expected to throw error \(responseError) but got success instead")
         } catch  {
             let receivedError = error as NSError
@@ -117,7 +117,7 @@ extension URLSessionHttpClientTests {
             let data = anyData()
             let response = nonHTTPURLResponse()
             URLProtocolStub.stub(error: nil, data: data, response: response)
-            _ = try await makeSUT().postTo(url: anyURL())
+            _ = try await makeSUT().postTo(url: anyURL(), data: anyData())
             XCTFail("Expected to throw error but got success instead")
         } catch  {
             XCTAssertNotNil(error)
@@ -129,7 +129,7 @@ extension URLSessionHttpClientTests {
             let data = anyData()
             let response = anyHTTPURLResponse()
             URLProtocolStub.stub(error: nil, data: data, response: response)
-            let (receivedData, receivedResponse) = try await makeSUT().postTo(url: anyURL())
+            let (receivedData, receivedResponse) = try await makeSUT().postTo(url: anyURL(), data: anyData())
             XCTAssertEqual(receivedData, data)
             XCTAssertEqual(receivedResponse.url, response.url)
             XCTAssertEqual(receivedResponse.statusCode, response.statusCode)

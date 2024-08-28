@@ -24,7 +24,7 @@ public final class URLSessionHTTPClient: HTTPClient {
         return (data, response)
     }
     
-    public func postTo(url: URL) async throws -> (Data, HTTPURLResponse) {
+    public func postTo(url: URL, data: Data) async throws -> (Data, HTTPURLResponse) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let (data, response) = try await session.data(for: request)
