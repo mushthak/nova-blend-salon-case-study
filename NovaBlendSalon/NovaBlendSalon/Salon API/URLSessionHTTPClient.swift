@@ -24,4 +24,10 @@ public final class URLSessionHTTPClient: HTTPClient {
         return (data, response)
     }
     
+    public func postTo(url: URL) async throws {
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        _ = try await session.data(for: request)
+    }
+    
 }
