@@ -7,21 +7,18 @@
 
 import Foundation
 import XCTest
-
-private protocol HTTPClient {
-    func postTo(url: URL) async throws -> (Data, HTTPURLResponse)
-}
+import NovaBlendSalon
 
 private class RemoteAppointmentBooker {
     private let url: URL
-    private let client: HTTPClient
+    private let client: HTTPPOSTClient
     
     public enum Error: Swift.Error {
         case connectivity
         case AppointmentFailure
     }
     
-    init(url: URL, client: HTTPClient) {
+    init(url: URL, client: HTTPPOSTClient) {
         self.url = url
         self.client = client
     }
@@ -105,20 +102,6 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         trackForMemoryLeak(sut)
         trackForMemoryLeak(client)
         return(sut, client)
-    }
-}
-
-private class HTTPClientSpy: HTTPClient {
-    private(set) var requestedURLs = [URL]()
-    let result: Result<(Data, HTTPURLResponse), Error>
-    
-    init(result: Result<(Data, HTTPURLResponse), Error>) {
-        self.result = result
-    }
-    
-    func postTo(url: URL) async throws -> (Data, HTTPURLResponse) {
-        requestedURLs.append(url)
-        return try result.get()
     }
 }
 
