@@ -8,7 +8,7 @@
 import Foundation
 import NovaBlendSalon
 
-class HTTPClientSpy: HTTPClient & HTTPPOSTClient {
+class HTTPClientSpy: HTTPClient {
     private(set) var requestedURLs = [URL]()
     let result: Result<(Data, HTTPURLResponse), Error>
     

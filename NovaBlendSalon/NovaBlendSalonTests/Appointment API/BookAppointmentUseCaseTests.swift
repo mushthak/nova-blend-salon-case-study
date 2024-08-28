@@ -11,14 +11,14 @@ import NovaBlendSalon
 
 private class RemoteAppointmentBooker {
     private let url: URL
-    private let client: HTTPPOSTClient
+    private let client: HTTPClient
     
     public enum Error: Swift.Error {
         case connectivity
         case AppointmentFailure
     }
     
-    init(url: URL, client: HTTPPOSTClient) {
+    init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
