@@ -242,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */,
-				296576862B615162005ECB8B /* HTTPClient.swift */,
 				296576882B641001005ECB8B /* SalonMapper.swift */,
 				2965769C2B6BC9D5005ECB8B /* URLSessionHTTPClient.swift */,
 			);
@@ -382,6 +381,7 @@
 		29BDDDA02B5C016F0026D484 /* NovaBlendSalon */ = {
 			isa = PBXGroup;
 			children = (
+				29D70FDD2C7F3580006C83B3 /* Shared API */,
 				29BDDDB62B5C01B60026D484 /* Salon Feature */,
 				296576832B5CDD24005ECB8B /* Salon API */,
 				291F50FF2B7BC8F0000771BE /* Salon Cache */,
@@ -445,6 +445,14 @@
 				29D70FDB2C7F3490006C83B3 /* RemoteAppointmentBooker.swift */,
 			);
 			path = "Appointment API";
+			sourceTree = "<group>";
+		};
+		29D70FDD2C7F3580006C83B3 /* Shared API */ = {
+			isa = PBXGroup;
+			children = (
+				296576862B615162005ECB8B /* HTTPClient.swift */,
+			);
+			path = "Shared API";
 			sourceTree = "<group>";
 		};
 		29E5F09A2C3EB6250006E985 /* Frameworks */ = {
