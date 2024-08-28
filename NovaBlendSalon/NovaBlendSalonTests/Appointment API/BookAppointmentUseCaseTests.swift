@@ -9,30 +9,6 @@ import Foundation
 import XCTest
 import NovaBlendSalon
 
-private class RemoteAppointmentBooker {
-    private let url: URL
-    private let client: HTTPClient
-    
-    public enum Error: Swift.Error {
-        case connectivity
-        case AppointmentFailure
-    }
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func bookAppointment() async throws {
-        guard let (_, response) = try? await client.postTo(url: url) else {
-            throw Error.connectivity
-        }
-        if response.statusCode != 201 {
-            throw Error.AppointmentFailure
-        }
-    }
-}
-
 final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_init_doesNotRequestAppointment() {
