@@ -82,3 +82,19 @@ final class URLSessionHttpClientTests: XCTestCase {
     }
 
 }
+
+
+extension URLSessionHttpClientTests {
+    func test_postToURL_performsPOSTRequestToURL() async throws {
+        let url = anyURL()
+        do {
+            _ = try await makeSUT().postTo(url: url)
+            
+            let request = URLProtocolStub.urlRequest
+            XCTAssertEqual(request?.url, url)
+            XCTAssertEqual(request?.httpMethod, "POST")
+        } catch  {
+            XCTFail("Expected to perform a GET request with url \(url) with but got \(error) instead")
+        }
+    }
+}
