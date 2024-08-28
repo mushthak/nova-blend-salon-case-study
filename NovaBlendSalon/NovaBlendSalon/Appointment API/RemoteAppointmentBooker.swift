@@ -21,8 +21,11 @@ public class RemoteAppointmentBooker {
         self.client = client
     }
     
-    public func bookAppointment() async throws {
-        guard let (_, response) = try? await client.postTo(url: url) else {
+    public func bookAppointment(appointment: SalonAppointment) async throws {
+        
+        let appointmentData = try! JSONEncoder().encode(appointment)
+        
+        guard let (_, response) = try? await client.postTo(url: url, data: appointmentData) else {
             throw Error.connectivity
         }
         if response.statusCode != 201 {

@@ -9,5 +9,5 @@ import Foundation
 
 public protocol HTTPClient {
     func getFrom(url: URL) async throws -> (Data, HTTPURLResponse)
-    func postTo(url: URL) async throws -> (Data, HTTPURLResponse)
+    func postTo(url: URL, data: Data) async throws -> (Data, HTTPURLResponse)
 }
