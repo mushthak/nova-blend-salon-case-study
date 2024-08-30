@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RemoteAppointmentBooker {
+public class RemoteAppointmentBooker: SalonAppointmentBooker {
     private let url: URL
     private let client: HTTPClient
     
