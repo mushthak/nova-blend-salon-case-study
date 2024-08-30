@@ -246,6 +246,7 @@ REQUEST
 
 {
   "salonId": "a UUID",
+  "appointmentTime" : "an iso8601 date",
   "phone": "a phone number",
   "email": "an email id",
   "note": "a note",

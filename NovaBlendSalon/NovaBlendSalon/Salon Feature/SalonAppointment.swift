@@ -11,10 +11,10 @@ public struct SalonAppointment: Encodable {
     let id: UUID
     let time: Date
     let phone: String
-    let email: String
-    let notes: String
+    let email: String?
+    let notes: String?
     
-    public init(id: UUID, time: Date, phone: String, email: String, notes: String) {
+    public init(id: UUID, time: Date, phone: String, email: String?, notes: String?) {
         self.id = id
         self.time = time
         self.phone = phone
