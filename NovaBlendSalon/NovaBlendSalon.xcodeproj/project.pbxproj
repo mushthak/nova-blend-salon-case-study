@@ -391,6 +391,7 @@
 				29BDDDB62B5C01B60026D484 /* Salon Feature */,
 				296576832B5CDD24005ECB8B /* Salon API */,
 				291F50FF2B7BC8F0000771BE /* Salon Cache */,
+				29D70FE52C8203C4006C83B3 /* Appointment Feature */,
 				29D70FDA2C7F3475006C83B3 /* Appointment API */,
 			);
 			path = NovaBlendSalon;
@@ -414,8 +415,6 @@
 				29BDDDB72B5C01E20026D484 /* Salon.swift */,
 				29BDDDB92B5C03760026D484 /* SalonLoader.swift */,
 				29B6B0172B9F61D00013C3AB /* SalonCache.swift */,
-				29D70FDF2C7F73EB006C83B3 /* SalonAppointment.swift */,
-				29D70FE32C8202CB006C83B3 /* SalonAppointmentBooker.swift */,
 			);
 			path = "Salon Feature";
 			sourceTree = "<group>";
@@ -470,6 +469,15 @@
 				2965769C2B6BC9D5005ECB8B /* URLSessionHTTPClient.swift */,
 			);
 			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
+		29D70FE52C8203C4006C83B3 /* Appointment Feature */ = {
+			isa = PBXGroup;
+			children = (
+				29D70FDF2C7F73EB006C83B3 /* SalonAppointment.swift */,
+				29D70FE32C8202CB006C83B3 /* SalonAppointmentBooker.swift */,
+			);
+			path = "Appointment Feature";
 			sourceTree = "<group>";
 		};
 		29E5F09A2C3EB6250006E985 /* Frameworks */ = {
