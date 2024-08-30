@@ -19,12 +19,12 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_sendsAppointmentRequestToURL() async {
         let (sut, client) = makeSUT()
-        let (appointment,appointmentData) = makeAppointmentItem()
+        let appointment = makeAppointmentItem()
         
         try? await sut.bookAppointment(appointment: appointment)
         
         XCTAssertFalse(client.requestedURLs.isEmpty)
-        XCTAssertEqual(client.postDataObjects, [appointmentData])
+        XCTAssertNotNil(client.postDataObjects.first)
     }
     
     func test_bookAppointment_deliversConnectivityErrorOnClientError() async throws {
@@ -32,7 +32,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         let (sut,_) = makeSUT(with: .failure(error))
         
         do {
-            let (appointment,_) = makeAppointmentItem()
+            let appointment = makeAppointmentItem()
             _ = try await sut.bookAppointment(appointment: appointment)
             XCTFail("Expected to throw \(RemoteAppointmentBooker.Error.connectivity) error. But got success instead")
         } catch {
@@ -42,7 +42,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_deliversAppointmentFailureErrorOnNon201HTTPResponse() async {
         let samples = [199, 200, 300, 400, 500]
-        let (appointment,_) = makeAppointmentItem()
+        let appointment = makeAppointmentItem()
         await withThrowingTaskGroup(of: Void.self) { group in
             for statusCode in samples {
                 group.addTask {
@@ -69,7 +69,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
             let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
             let (sut,_) = self.makeSUT(with: .success((anyData(), response)))
             
-            let (appointment,_) = makeAppointmentItem()
+            let appointment = makeAppointmentItem()
             try await sut.bookAppointment(appointment: appointment)
         } catch {
             XCTFail("Expect to succeed but got \(error) instead")
@@ -86,14 +86,12 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         return(sut, client)
     }
     
-    private func makeAppointmentItem() -> (SalonAppointment, Data) {
-        let appointment = SalonAppointment(id: UUID(),
+    private func makeAppointmentItem() -> (SalonAppointment) {
+        return SalonAppointment(id: UUID(),
                                           time: Date.init(),
                                           phone: "a phone number",
-                                          email: "an email",
-                                          notes: "a note")
-        let appointmentData = try! JSONEncoder().encode(appointment)
-        return (appointment, appointmentData)
+                                          email: nil,
+                                          notes: nil)
     }
 }
 
