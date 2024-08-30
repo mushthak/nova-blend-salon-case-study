@@ -54,6 +54,11 @@ struct NovaBlendApp: App {
             return makeSuccessfulResponse(for: url)
         }
         
+        func postTo(url: URL, data: Data) async throws -> (Data, HTTPURLResponse) {
+            //TODO: Implement this when composing post functionality
+            throw NSError(domain: "implementation pending", code: 0)
+        }
+        
         private func makeSuccessfulResponse(for url: URL) -> (Data, HTTPURLResponse) {
             let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
             return (makeFeedData(), response)
