@@ -91,3 +91,27 @@ final class NovaBlendSalonAPIEndToEndTests: XCTestCase {
         ][index]
     }
 }
+
+
+extension NovaBlendSalonAPIEndToEndTests {
+    func test_endToEndTestServerBookApppointment_matchesFixedTestAppointmentBookedResponse() async {
+        let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+        let booker = RemoteAppointmentBooker(url: URL(string: "https://run.mocky.io/v3/8b7ead4d-40c2-44e8-a697-f0c90be1c20f")!, client: client)
+        trackForMemoryLeak(client)
+        trackForMemoryLeak(booker)
+        do {
+            try await booker.bookAppointment(appointment: makeAppointmentItem())
+        }catch {
+            XCTFail("Expected successfull result but got \(error) instead")
+        }
+    }
+    
+    //MARK: Helpers
+    private func makeAppointmentItem() -> (SalonAppointment) {
+        return SalonAppointment(id: UUID(),
+                                          time: Date.init(),
+                                          phone: "a phone number",
+                                          email: nil,
+                                          notes: nil)
+    }
+}
