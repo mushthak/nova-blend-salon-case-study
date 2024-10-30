@@ -14,6 +14,7 @@ public class RemoteAppointmentBooker: SalonAppointmentBooker {
     public enum Error: Swift.Error {
         case connectivity
         case AppointmentFailure
+        case invalidData
     }
     
     public init(url: URL, client: HTTPClient) {
@@ -21,13 +22,11 @@ public class RemoteAppointmentBooker: SalonAppointmentBooker {
         self.client = client
     }
     
-    public func bookAppointment(appointment: SalonAppointment) async throws {
+    public func bookAppointment(appointment: SalonAppointment) async throws -> SalonAppointment {
         let remoteAppointmentData = try RemoteAppointmentMapper.map(appointment: appointment)
-        guard let (_, response) = try? await client.postTo(url: url, data: remoteAppointmentData) else {
+        guard let (data, response) = try? await client.postTo(url: url, data: remoteAppointmentData) else {
             throw Error.connectivity
         }
-        if response.statusCode != 201 {
-            throw Error.AppointmentFailure
-        }
+        return try RemoteAppointmentMapper.map(data, from: response)
     }
 }
