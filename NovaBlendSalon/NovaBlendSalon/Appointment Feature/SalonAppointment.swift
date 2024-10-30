@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct SalonAppointment: Encodable {
-    let id: UUID
-    let time: Date
-    let phone: String
-    let email: String?
-    let notes: String?
+public struct SalonAppointment: Equatable, Encodable {
+    public let id: UUID
+    public let time: Date
+    public let phone: String
+    public let email: String?
+    public let notes: String?
     
     public init(id: UUID, time: Date, phone: String, email: String?, notes: String?) {
         self.id = id

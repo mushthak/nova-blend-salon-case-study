@@ -19,9 +19,9 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_sendsAppointmentRequestToURL() async {
         let (sut, client) = makeSUT()
-        let appointment = makeAppointmentItem()
+        let appointment = makeAppointmentItem().model
         
-        try? await sut.bookAppointment(appointment: appointment)
+        _ = try? await sut.bookAppointment(appointment: appointment)
         
         XCTAssertFalse(client.requestedURLs.isEmpty)
         XCTAssertNotNil(client.postDataObjects.first)
@@ -32,7 +32,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         let (sut,_) = makeSUT(with: .failure(error))
         
         do {
-            let appointment = makeAppointmentItem()
+            let appointment = makeAppointmentItem().model
             _ = try await sut.bookAppointment(appointment: appointment)
             XCTFail("Expected to throw \(RemoteAppointmentBooker.Error.connectivity) error. But got success instead")
         } catch {
@@ -42,14 +42,14 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_deliversAppointmentFailureErrorOnNon201HTTPResponse() async {
         let samples = [199, 200, 300, 400, 500]
-        let appointment = makeAppointmentItem()
+        let appointment = makeAppointmentItem().model
         await withThrowingTaskGroup(of: Void.self) { group in
             for statusCode in samples {
                 group.addTask {
                     let response = HTTPURLResponse(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
                     let (sut,_) = self.makeSUT(with: .success((anyData(), response)))
                     
-                    try await sut.bookAppointment(appointment: appointment)
+                    _ = try await sut.bookAppointment(appointment: appointment)
                 }
             }
             
@@ -64,13 +64,30 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         }
     }
     
-    func test_bookAppointment_succeedsOn201HTTPResponse() async {
+    func test_load_deliversInvalidDataErrorOn201HTTPResponseWithInvalidJSON() async throws {
         do {
-            let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
-            let (sut,_) = self.makeSUT(with: .success((anyData(), response)))
-            
             let appointment = makeAppointmentItem()
-            try await sut.bookAppointment(appointment: appointment)
+            let invalidJSON = Data.init(_: "invalid json".utf8)
+            let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
+            let (sut,_) = self.makeSUT(with: .success((invalidJSON, response)))
+            
+            let bookedAppointment = try await sut.bookAppointment(appointment: appointment.model)
+            XCTAssertEqual(bookedAppointment, appointment.model)
+            XCTFail("Expect to throw \(RemoteAppointmentBooker.Error.invalidData) but got success instead")
+        } catch {
+            XCTAssertEqual(error as? RemoteAppointmentBooker.Error, .invalidData)
+        }
+    }
+    
+    func test_bookAppointment_succeedsOn201HTTPResponseWithValidJSON() async {
+        do {
+            let appointment = makeAppointmentItem()
+            let appointmentData = makeItemJSON(item: appointment.json)
+            let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
+            let (sut,_) = self.makeSUT(with: .success((appointmentData, response)))
+            
+            let bookedAppointment = try await sut.bookAppointment(appointment: appointment.model)
+            XCTAssertEqual(bookedAppointment, appointment.model)
         } catch {
             XCTFail("Expect to succeed but got \(error) instead")
         }
@@ -86,15 +103,34 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         return(sut, client)
     }
     
-    private func makeAppointmentItem() -> (SalonAppointment) {
-        return SalonAppointment(id: UUID(),
-                                          time: Date.init(),
-                                          phone: "a phone number",
-                                          email: nil,
-                                          notes: nil)
+    private func makeAppointmentItem() -> (model: SalonAppointment, json: [String: Any]) {
+        let model = SalonAppointment(id: UUID(),
+                                     time: Date.init().roundedToSeconds(),
+                                     phone: "a phone number",
+                                     email: nil,
+                                     notes: nil)
+        let json: [String: Any?] = [
+            "id" : model.id.uuidString,
+            "appointmentTime": ISO8601DateFormatter().string(from: model.time),
+            "phone": model.phone,
+            "email": model.email,
+            "notes": model.notes
+        ]
+        return (model, json.compactMapValues { $0 })
+    }
+    
+    private func makeItemJSON(item: [String : Any]) -> Data {
+        return try! JSONSerialization.data(withJSONObject: item)
     }
 }
 
+
+private extension Date {
+    func roundedToSeconds() -> Date {
+        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
+        return Date(timeIntervalSince1970: timeInterval)
+    }
+}
 
 
 

@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol SalonAppointmentBooker {
-    func bookAppointment(appointment: SalonAppointment) async throws
+    func bookAppointment(appointment: SalonAppointment) async throws -> SalonAppointment
 }

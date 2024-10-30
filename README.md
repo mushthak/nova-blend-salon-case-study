@@ -232,7 +232,7 @@ Then the app should confirm the availability of the selected salon and time slot
 | Property      | Type                |
 |---------------|---------------------|
 | `id`          | `UUID`              |
-| `time`        | `Date`              |
+| `time`        | `Date` (ISO8601)    |
 | `phone`       | `String`            |
 | `email`       | `String` (optional) |
 | `note`        | `String` (optional) |
@@ -246,13 +246,21 @@ REQUEST
 
 {
   "salonId": "a UUID",
-  "appointmentTime" : "an iso8601 date",
+  "appointmentTime" : "2024-10-20T11:24:59+0000",
   "phone": "a phone number",
   "email": "an email id",
-  "note": "a note",
+  "notes": "a note",
 }
 
 201 RESPONSE
+
+{
+  "salonId": "a UUID",
+  "appointmentTime" : "2024-10-20T11:24:59+0000",
+  "phone": "a phone number",
+  "email": "an email id",
+  "notes": "a note",
+}
 ```
 ---
 
