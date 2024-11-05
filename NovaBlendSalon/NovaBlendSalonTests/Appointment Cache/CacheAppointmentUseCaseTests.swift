@@ -11,17 +11,25 @@ import NovaBlendSalon
 
 private class AppointmentStoreSpy {
     var receivedMessages = 0
+    var error: Error?
 }
 
 private class LocalAppointmentLoader {
     let store: AppointmentStoreSpy
     
+    enum Error: Swift.Error {
+        case insertion
+    }
+    
     init(store: AppointmentStoreSpy) {
         self.store = store
     }
     
-    func save(_ appointment: SalonAppointment) {
+    func save(_ appointment: SalonAppointment) throws{
         store.receivedMessages += 1
+        if store.error != nil {
+            throw Error.insertion
+        }
     }
 }
 
@@ -38,8 +46,27 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         
         let appointment = makeAppointmentItem()
         
-        sut.save(appointment)
-        XCTAssertEqual(store.receivedMessages, 1)
+        do {
+            try sut.save(appointment)
+            XCTAssertEqual(store.receivedMessages, 1)
+        } catch  {
+            XCTFail("Expect to succeed but got \(error) instead")
+        }
+    }
+    
+    func test_save_failsOnInsertionError() async {
+        let store = AppointmentStoreSpy()
+        store.error = anyError()
+        let sut = LocalAppointmentLoader(store: store)
+        
+        let appointment = makeAppointmentItem()
+        
+        do {
+            try sut.save(appointment)
+            XCTFail("Expect to throw \(LocalAppointmentLoader.Error.insertion) but got success instead")
+        } catch  {
+            XCTAssertEqual(error as? LocalAppointmentLoader.Error, .insertion)
+        }        
     }
     
     //MARK: Helpers
