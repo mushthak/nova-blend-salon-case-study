@@ -20,6 +20,13 @@ private class AppointmentStoreSpy {
     enum Error: Swift.Error {
         case insertionError
     }
+    
+    func insert(_ appointment: SalonAppointment) throws {
+        receivedMessages += 1
+        if let error {
+            throw error
+        }
+    }
 }
 
 private class LocalAppointmentLoader {
@@ -34,8 +41,9 @@ private class LocalAppointmentLoader {
     }
     
     func save(_ appointment: SalonAppointment) throws{
-        store.receivedMessages += 1
-        if store.error != nil {
+        do {
+            try store.insert(appointment)
+        } catch {
             throw Error.insertion
         }
     }
