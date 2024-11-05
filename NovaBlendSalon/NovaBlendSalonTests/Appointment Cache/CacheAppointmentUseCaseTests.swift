@@ -69,6 +69,19 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         }        
     }
     
+    func test_save_succeedsOnSuccessfullCacheInsertion() async {
+        let store = AppointmentStoreSpy()
+        let sut = LocalAppointmentLoader(store: store)
+        
+        let appointment = makeAppointmentItem()
+        
+        do {
+            try sut.save(appointment)
+        } catch  {
+            XCTFail("Expect to succeed but got \(error) instead")
+        }
+    }
+    
     //MARK: Helpers
     private func makeAppointmentItem() -> SalonAppointment {
         return SalonAppointment(id: UUID(),
