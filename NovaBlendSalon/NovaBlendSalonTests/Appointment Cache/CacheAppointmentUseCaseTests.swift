@@ -11,7 +11,15 @@ import NovaBlendSalon
 
 private class AppointmentStoreSpy {
     var receivedMessages = 0
-    var error: Error?
+    var error: AppointmentStoreSpy.Error?
+    
+    init(error: Error? = nil) {
+        self.error = error
+    }
+    
+    enum Error: Swift.Error {
+        case insertionError
+    }
 }
 
 private class LocalAppointmentLoader {
@@ -35,15 +43,12 @@ private class LocalAppointmentLoader {
 
 final class CacheAppointmentUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
-        let store = AppointmentStoreSpy()
-        let _ = LocalAppointmentLoader(store: store)
+        let (_, store) = makeSUT()
         XCTAssertEqual(store.receivedMessages, 0)
     }
     
     func test_save_requestsNewCacheInsertion() {
-        let store = AppointmentStoreSpy()
-        let sut = LocalAppointmentLoader(store: store)
-        
+        let (sut, store) = makeSUT()
         let appointment = makeAppointmentItem()
         
         do {
@@ -55,10 +60,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
     }
     
     func test_save_failsOnInsertionError() async {
-        let store = AppointmentStoreSpy()
-        store.error = anyError()
-        let sut = LocalAppointmentLoader(store: store)
-        
+        let (sut, _) = makeSUT(with: insetionError())
         let appointment = makeAppointmentItem()
         
         do {
@@ -70,9 +72,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
     }
     
     func test_save_succeedsOnSuccessfullCacheInsertion() async {
-        let store = AppointmentStoreSpy()
-        let sut = LocalAppointmentLoader(store: store)
-        
+        let (sut, _) = makeSUT()
         let appointment = makeAppointmentItem()
         
         do {
@@ -83,12 +83,21 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
     }
     
     //MARK: Helpers
+    private func makeSUT(with error: AppointmentStoreSpy.Error? = nil) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
+        let store = AppointmentStoreSpy(error: error)
+        return (sut: LocalAppointmentLoader(store: store), store: store)
+    }
+    
     private func makeAppointmentItem() -> SalonAppointment {
         return SalonAppointment(id: UUID(),
                                 time: Date.init().roundedToSeconds(),
                                 phone: "a phone number",
                                 email: nil,
                                 notes: nil)
+    }
+    
+    private func insetionError() -> AppointmentStoreSpy.Error {
+        return .insertionError
     }
 }
 
