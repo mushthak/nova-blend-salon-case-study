@@ -29,26 +29,6 @@ private class AppointmentStoreSpy: AppointmentStore {
     }
 }
 
-private class LocalAppointmentLoader: SalonAppointmentCache {
-    let store: AppointmentStoreSpy
-    
-    enum Error: Swift.Error {
-        case insertion
-    }
-    
-    init(store: AppointmentStoreSpy) {
-        self.store = store
-    }
-    
-    func save(_ appointment: SalonAppointment) throws{
-        do {
-            try store.insert(appointment)
-        } catch {
-            throw Error.insertion
-        }
-    }
-}
-
 final class CacheAppointmentUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
