@@ -9,6 +9,10 @@ import Foundation
 import XCTest
 import NovaBlendSalon
 
+private protocol SalonAppointmentCache {
+    func save(_ appointment: SalonAppointment) throws
+}
+
 private class AppointmentStoreSpy {
     var receivedMessages = 0
     var error: AppointmentStoreSpy.Error?
@@ -29,7 +33,7 @@ private class AppointmentStoreSpy {
     }
 }
 
-private class LocalAppointmentLoader {
+private class LocalAppointmentLoader: SalonAppointmentCache {
     let store: AppointmentStoreSpy
     
     enum Error: Swift.Error {
