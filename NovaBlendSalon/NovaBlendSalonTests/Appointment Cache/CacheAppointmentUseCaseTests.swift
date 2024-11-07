@@ -13,7 +13,11 @@ private protocol SalonAppointmentCache {
     func save(_ appointment: SalonAppointment) throws
 }
 
-private class AppointmentStoreSpy {
+private protocol AppointmentStore {
+    func insert(_ appointment: SalonAppointment) throws
+}
+
+private class AppointmentStoreSpy: AppointmentStore {
     var receivedMessages = 0
     var error: AppointmentStoreSpy.Error?
     
