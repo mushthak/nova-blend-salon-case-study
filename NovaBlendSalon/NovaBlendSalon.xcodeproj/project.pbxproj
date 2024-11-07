@@ -36,6 +36,7 @@
 		298CEDA72CDC9AC00051B714 /* AppointmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */; };
 		298CEDA92CDC9BA10051B714 /* LocalAppointmentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */; };
 		298CEDAC2CDCA2410051B714 /* AppointmentStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDAB2CDCA2410051B714 /* AppointmentStoreSpy.swift */; };
+		298CEDAE2CDCB6BA0051B714 /* LocalSalonAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */; };
 		29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */; };
 		29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29B503A72C2EB1C7000A53A9 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -138,6 +139,7 @@
 		298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentStore.swift; sourceTree = "<group>"; };
 		298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAppointmentLoader.swift; sourceTree = "<group>"; };
 		298CEDAB2CDCA2410051B714 /* AppointmentStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentStoreSpy.swift; sourceTree = "<group>"; };
+		298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSalonAppointment.swift; sourceTree = "<group>"; };
 		29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -319,6 +321,7 @@
 		298CEDA52CDC9A9E0051B714 /* Appointment Cache */ = {
 			isa = PBXGroup;
 			children = (
+				298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */,
 				298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */,
 				298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */,
 			);
@@ -825,6 +828,7 @@
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
 				291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */,
 				29D70FE22C82023D006C83B3 /* RemoteAppointmentMapper.swift in Sources */,
+				298CEDAE2CDCB6BA0051B714 /* LocalSalonAppointment.swift in Sources */,
 				296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */,
 				29D70FDC2C7F3490006C83B3 /* RemoteAppointmentBooker.swift in Sources */,
 				296576892B641001005ECB8B /* SalonMapper.swift in Sources */,
