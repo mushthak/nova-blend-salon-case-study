@@ -9,26 +9,6 @@ import Foundation
 import XCTest
 import NovaBlendSalon
 
-private class AppointmentStoreSpy: AppointmentStore {
-    var receivedMessages = 0
-    var error: AppointmentStoreSpy.Error?
-    
-    init(error: Error? = nil) {
-        self.error = error
-    }
-    
-    enum Error: Swift.Error {
-        case insertionError
-    }
-    
-    func insert(_ appointment: SalonAppointment) throws {
-        receivedMessages += 1
-        if let error {
-            throw error
-        }
-    }
-}
-
 final class CacheAppointmentUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
