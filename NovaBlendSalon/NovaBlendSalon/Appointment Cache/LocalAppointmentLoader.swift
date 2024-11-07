@@ -20,9 +20,15 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
     
     public func save(_ appointment: SalonAppointment) throws{
         do {
-            try store.insert(appointment)
+            try store.insert(appointment.toLocal())
         } catch {
             throw Error.insertion
         }
+    }
+}
+
+private extension SalonAppointment {
+    func toLocal() -> LocalAppointmentItem {
+        return LocalAppointmentItem(id: id, time: time, phone: phone, email: email, notes: notes)
     }
 }
