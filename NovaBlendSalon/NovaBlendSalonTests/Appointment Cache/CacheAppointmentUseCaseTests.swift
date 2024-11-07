@@ -9,10 +9,6 @@ import Foundation
 import XCTest
 import NovaBlendSalon
 
-private protocol SalonAppointmentCache {
-    func save(_ appointment: SalonAppointment) throws
-}
-
 private protocol AppointmentStore {
     func insert(_ appointment: SalonAppointment) throws
 }
