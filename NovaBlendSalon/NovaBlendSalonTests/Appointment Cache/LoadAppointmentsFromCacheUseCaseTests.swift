@@ -56,6 +56,19 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         
     }
     
+    func test_load_deliversCachedAppointmentsOnNonEmptyCache() async {
+        let appointment = makeAppointmentItem()
+        let (sut, _) = makeSUT(with: .success([getLocalAppointment(from: appointment)]))
+        
+        do {
+            let result: [SalonAppointment] = try sut.load()
+            XCTAssertEqual(result, [appointment])
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+        
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: AppointmentStoreSpy.Result = .success(.none)) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
         let store = AppointmentStoreSpy(result: result)
@@ -64,5 +77,29 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
     
     private func retrievalError() -> AppointmentStoreSpy.Result {
         return .failure(.retrievalError)
+    }
+    
+    private func makeAppointmentItem() -> SalonAppointment {
+        return SalonAppointment(id: UUID(),
+                                time: Date.init().roundedToSeconds(),
+                                phone: "a phone number",
+                                email: nil,
+                                notes: nil)
+    }
+    
+    private func getLocalAppointment(from model: SalonAppointment) -> LocalAppointmentItem {
+        return LocalAppointmentItem(id: model.id,
+                                    time: model.time,
+                                    phone: model.phone,
+                                    email: model.email,
+                                    notes: model.notes)
+    }
+}
+
+
+private extension Date {
+    func roundedToSeconds() -> Date {
+        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
+        return Date(timeIntervalSince1970: timeInterval)
     }
 }
