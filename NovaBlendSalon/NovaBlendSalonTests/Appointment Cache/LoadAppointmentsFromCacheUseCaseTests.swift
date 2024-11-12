@@ -74,32 +74,6 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let store = AppointmentStoreSpy(result: result)
         return (sut: LocalAppointmentLoader(store: store), store: store)
     }
-    
-    private func retrievalError() -> AppointmentStoreSpy.Result {
-        return .failure(.retrievalError)
-    }
-    
-    private func makeAppointmentItem() -> SalonAppointment {
-        return SalonAppointment(id: UUID(),
-                                time: Date.init().roundedToSeconds(),
-                                phone: "a phone number",
-                                email: nil,
-                                notes: nil)
-    }
-    
-    private func getLocalAppointment(from model: SalonAppointment) -> LocalAppointmentItem {
-        return LocalAppointmentItem(id: model.id,
-                                    time: model.time,
-                                    phone: model.phone,
-                                    email: model.email,
-                                    notes: model.notes)
-    }
 }
 
 
-private extension Date {
-    func roundedToSeconds() -> Date {
-        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
-        return Date(timeIntervalSince1970: timeInterval)
-    }
-}
