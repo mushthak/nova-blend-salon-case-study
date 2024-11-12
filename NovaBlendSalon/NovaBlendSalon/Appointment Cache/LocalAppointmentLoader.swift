@@ -12,6 +12,7 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
     
     public enum Error: Swift.Error {
         case insertion
+        case retrieval
     }
     
     public init(store: AppointmentStore) {
@@ -26,8 +27,12 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
         }
     }
     
-    public func load() {
-        store.retrieve()
+    public func load() throws {
+        do {
+            try store.retrieve()
+        } catch  {
+            throw Error.retrieval
+        }
     }
 }
 

@@ -9,5 +9,5 @@ import Foundation
 
 public protocol AppointmentStore {
     func insert(_ appointment: LocalAppointmentItem) throws
-    func retrieve()
+    func retrieve() throws
 }

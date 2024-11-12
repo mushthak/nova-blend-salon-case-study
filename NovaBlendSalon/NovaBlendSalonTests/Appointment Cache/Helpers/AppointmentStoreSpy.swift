@@ -18,6 +18,7 @@ class AppointmentStoreSpy: AppointmentStore {
     
     enum Error: Swift.Error {
         case insertionError
+        case retrievalError
     }
     
     enum ReceivedMessage: Equatable {
@@ -32,7 +33,10 @@ class AppointmentStoreSpy: AppointmentStore {
         }
     }
     
-    func retrieve() {
+    func retrieve() throws {
         receivedMessages.append(.retrieve)
+        if let error {
+            throw error
+        }
     }
 }
