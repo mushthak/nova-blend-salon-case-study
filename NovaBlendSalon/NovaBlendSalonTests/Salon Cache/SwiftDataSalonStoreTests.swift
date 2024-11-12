@@ -142,7 +142,7 @@ class SwiftDataSalonStoreTests: XCTestCase {
 
     private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> SalonStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try! ModelContainer(for: ManagedSalonItem.self, configurations: config)
+        let container = try! ModelContainer(for: ManagedCache.self, configurations: config)
         let sut = SwiftDataSalonStore(modelContainer: container)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
