@@ -52,8 +52,8 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
     }
     
     //MARK: Helpers
-    private func makeSUT(with error: AppointmentStoreSpy.Error? = nil) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
-        let store = AppointmentStoreSpy(error: error)
+    private func makeSUT(with result: AppointmentStoreSpy.Result = .success(.none)) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
+        let store = AppointmentStoreSpy(result: result)
         return (sut: LocalAppointmentLoader(store: store), store: store)
     }
     
@@ -65,8 +65,8 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
                                 notes: nil)
     }
     
-    private func insetionError() -> AppointmentStoreSpy.Error {
-        return .insertionError
+    private func insetionError() -> AppointmentStoreSpy.Result {
+        return .failure(.insertionError)
     }
     
     private func getLocalAppointment(from model: SalonAppointment) -> LocalAppointmentItem {

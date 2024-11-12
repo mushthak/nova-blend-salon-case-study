@@ -18,7 +18,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
     func test_load_requestsCacheRetrival() async throws {
         let (sut, store) = makeSUT()
         
-        try sut.load()
+        _ = try sut.load()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -26,8 +26,8 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
     func test_load_twice_requestsCacheRetrivalTwice() async throws {
         let (sut, store) = makeSUT()
         
-        try sut.load()
-        try sut.load()
+        _ = try sut.load()
+        _ = try sut.load()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve, .retrieve])
     }
@@ -36,7 +36,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: retrievalError())
         
         do {
-            try sut.load()
+            _ = try sut.load()
             XCTFail("Expected to throw error but got success intead")
         } catch {
             XCTAssertEqual(error as? LocalAppointmentLoader.Error, .retrieval)
@@ -44,13 +44,25 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         
     }
     
+    func test_load_deliversEmptyAppointmentsOnEmptyCache() async {
+        let (sut, _) = makeSUT(with: .success(.none))
+        
+        do {
+            let result: [SalonAppointment] = try sut.load()
+            XCTAssertEqual(result, [])
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+        
+    }
+    
     //MARK: Helpers
-    private func makeSUT(with error: AppointmentStoreSpy.Error? = nil) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
-        let store = AppointmentStoreSpy(error: error)
+    private func makeSUT(with result: AppointmentStoreSpy.Result = .success(.none)) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
+        let store = AppointmentStoreSpy(result: result)
         return (sut: LocalAppointmentLoader(store: store), store: store)
     }
     
-    private func retrievalError() -> AppointmentStoreSpy.Error {
-        return .retrievalError
+    private func retrievalError() -> AppointmentStoreSpy.Result {
+        return .failure(.retrievalError)
     }
 }

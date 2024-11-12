@@ -27,9 +27,9 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
         }
     }
     
-    public func load() throws {
+    public func load() throws -> [SalonAppointment]{
         do {
-            try store.retrieve()
+            return try store.retrieve().toModels()
         } catch  {
             throw Error.retrieval
         }
@@ -39,5 +39,11 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
 private extension SalonAppointment {
     func toLocal() -> LocalAppointmentItem {
         return LocalAppointmentItem(id: id, time: time, phone: phone, email: email, notes: notes)
+    }
+}
+
+private extension Array where Element == LocalAppointmentItem {
+    func toModels() -> [SalonAppointment] {
+        return map{SalonAppointment(id: $0.id, time: $0.time, phone: $0.phone, email: $0.email, notes: $0.notes)}
     }
 }
