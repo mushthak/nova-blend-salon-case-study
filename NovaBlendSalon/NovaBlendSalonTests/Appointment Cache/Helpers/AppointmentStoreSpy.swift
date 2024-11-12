@@ -9,11 +9,13 @@ import Foundation
 import NovaBlendSalon
 
 class AppointmentStoreSpy: AppointmentStore {
-    var receivedMessages: [ReceivedMessage] = []
-    var error: AppointmentStoreSpy.Error?
+    typealias Result = Swift.Result<[LocalAppointmentItem]?, AppointmentStoreSpy.Error>
     
-    init(error: Error? = nil) {
-        self.error = error
+    let result: Result
+    var receivedMessages: [ReceivedMessage] = []
+    
+    init(result: Result) {
+        self.result = result
     }
     
     enum Error: Swift.Error {
@@ -28,15 +30,11 @@ class AppointmentStoreSpy: AppointmentStore {
     
     func insert(_ appointment: LocalAppointmentItem) throws {
         receivedMessages.append(.insert(appointment))
-        if let error {
-            throw error
-        }
+        _ = try result.get()
     }
     
-    func retrieve() throws {
+    func retrieve() throws -> [LocalAppointmentItem] {
         receivedMessages.append(.retrieve)
-        if let error {
-            throw error
-        }
+        return try result.get() ?? []
     }
 }
