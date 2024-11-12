@@ -12,19 +12,7 @@ import NovaBlendSalon
 final class CacheAppointmentUseCaseTests: XCTestCase {
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
-        XCTAssertEqual(store.receivedMessages, 0)
-    }
-    
-    func test_save_requestsNewCacheInsertion() {
-        let (sut, store) = makeSUT()
-        let appointment = makeAppointmentItem()
-        
-        do {
-            try sut.save(appointment)
-            XCTAssertEqual(store.receivedMessages, 1)
-        } catch  {
-            XCTFail("Expect to succeed but got \(error) instead")
-        }
+        XCTAssertEqual(store.receivedMessages, [])
     }
     
     func test_save_failsOnInsertionError() async {
@@ -57,7 +45,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         
         do {
             try sut.save(appointment)
-            XCTAssertEqual(store.appointments, [localAppointment])
+            XCTAssertEqual(store.receivedMessages, [.insert(localAppointment)])
         } catch  {
             XCTFail("Expect to succeed but got \(error) instead")
         }
