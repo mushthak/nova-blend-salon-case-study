@@ -23,6 +23,15 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
+    func test_load_twice_requestsCacheRetrivalTwice() async throws {
+        let (sut, store) = makeSUT()
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve, .retrieve])
+    }
+    
     //MARK: Helpers
     private func makeSUT(with error: AppointmentStoreSpy.Error? = nil) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
         let store = AppointmentStoreSpy(error: error)
