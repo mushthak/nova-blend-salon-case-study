@@ -12,7 +12,15 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
 
     func test_init_doesNotMessageStoreUponCreation() {
         let (_, store) = makeSUT()
-        XCTAssertEqual(store.receivedMessages, 0)
+        XCTAssertEqual(store.receivedMessages, [])
+    }
+    
+    func test_load_requestsCacheRetrival() async throws {
+        let (sut, store) = makeSUT()
+        
+        sut.load()
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
     
     //MARK: Helpers

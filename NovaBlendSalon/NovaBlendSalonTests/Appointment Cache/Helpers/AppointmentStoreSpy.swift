@@ -9,9 +9,8 @@ import Foundation
 import NovaBlendSalon
 
 class AppointmentStoreSpy: AppointmentStore {
-    var receivedMessages = 0
+    var receivedMessages: [ReceivedMessage] = []
     var error: AppointmentStoreSpy.Error?
-    var appointments: [LocalAppointmentItem] = []
     
     init(error: Error? = nil) {
         self.error = error
@@ -21,11 +20,19 @@ class AppointmentStoreSpy: AppointmentStore {
         case insertionError
     }
     
+    enum ReceivedMessage: Equatable {
+        case retrieve
+        case insert(LocalAppointmentItem)
+    }
+    
     func insert(_ appointment: LocalAppointmentItem) throws {
-        receivedMessages += 1
-        appointments.append(appointment)
+        receivedMessages.append(.insert(appointment))
         if let error {
             throw error
         }
+    }
+    
+    func retrieve() {
+        receivedMessages.append(.retrieve)
     }
 }

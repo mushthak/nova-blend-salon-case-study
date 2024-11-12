@@ -25,6 +25,10 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
             throw Error.insertion
         }
     }
+    
+    public func load() {
+        store.retrieve()
+    }
 }
 
 private extension SalonAppointment {
