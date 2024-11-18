@@ -18,7 +18,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
     func test_load_requestsCacheRetrival() async throws {
         let (sut, store) = makeSUT()
         
-        _ = try sut.load()
+        _ = try await sut.load()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve])
     }
@@ -26,8 +26,8 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
     func test_load_twice_requestsCacheRetrivalTwice() async throws {
         let (sut, store) = makeSUT()
         
-        _ = try sut.load()
-        _ = try sut.load()
+        _ = try await sut.load()
+        _ = try await sut.load()
         
         XCTAssertEqual(store.receivedMessages, [.retrieve, .retrieve])
     }
@@ -36,7 +36,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: retrievalError())
         
         do {
-            _ = try sut.load()
+            _ = try await sut.load()
             XCTFail("Expected to throw error but got success intead")
         } catch {
             XCTAssertEqual(error as? LocalAppointmentLoader.Error, .retrieval)
@@ -48,7 +48,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: .success(.none))
         
         do {
-            let result: [SalonAppointment] = try sut.load()
+            let result: [SalonAppointment] = try await sut.load()
             XCTAssertEqual(result, [])
         } catch {
             XCTFail("Expected success but got \(error) intead")
@@ -61,7 +61,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: .success([getLocalAppointment(from: appointment)]))
         
         do {
-            let result: [SalonAppointment] = try sut.load()
+            let result: [SalonAppointment] = try await sut.load()
             XCTAssertEqual(result, [appointment])
         } catch {
             XCTFail("Expected success but got \(error) intead")

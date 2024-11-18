@@ -19,17 +19,17 @@ public class LocalAppointmentLoader: SalonAppointmentCache {
         self.store = store
     }
     
-    public func save(_ appointment: SalonAppointment) throws{
+    public func save(_ appointment: SalonAppointment) async throws{
         do {
-            try store.insert(appointment.toLocal())
+            try await store.insert(appointment.toLocal())
         } catch {
             throw Error.insertion
         }
     }
     
-    public func load() throws -> [SalonAppointment]{
+    public func load() async throws -> [SalonAppointment]{
         do {
-            return try store.retrieve().toModels()
+            return try await store.retrieve().toModels()
         } catch  {
             throw Error.retrieval
         }

@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol AppointmentStore {
-    func insert(_ appointment: LocalAppointmentItem) throws
-    func retrieve() throws -> [LocalAppointmentItem] 
+    func insert(_ appointment: LocalAppointmentItem) async throws
+    func retrieve() async throws -> [LocalAppointmentItem] 
 }
