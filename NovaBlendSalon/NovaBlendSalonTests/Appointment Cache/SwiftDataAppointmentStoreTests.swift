@@ -21,6 +21,18 @@ final class SwiftDataAppointmentStoreTests: XCTestCase {
         }
     }
     
+    func test_retrieve_hasNoSideEffectsOnEmptyCache() async {
+        let sut = await makeSUT()
+        do {
+            var result = try await sut.retrieve()
+            XCTAssertTrue(result.isEmpty)
+            result = try await sut.retrieve()
+            XCTAssertTrue(result.isEmpty)
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> AppointmentStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
