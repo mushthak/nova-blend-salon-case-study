@@ -20,7 +20,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         let appointment = makeAppointmentItem()
         
         do {
-            try sut.save(appointment)
+            try await sut.save(appointment)
             XCTFail("Expect to throw \(LocalAppointmentLoader.Error.insertion) but got success instead")
         } catch  {
             XCTAssertEqual(error as? LocalAppointmentLoader.Error, .insertion)
@@ -32,7 +32,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         let appointment = makeAppointmentItem()
         
         do {
-            try sut.save(appointment)
+            try await sut.save(appointment)
         } catch  {
             XCTFail("Expect to succeed but got \(error) instead")
         }
@@ -44,7 +44,7 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         let localAppointment = getLocalAppointment(from: appointment)
         
         do {
-            try sut.save(appointment)
+            try await sut.save(appointment)
             XCTAssertEqual(store.receivedMessages, [.insert(localAppointment)])
         } catch  {
             XCTFail("Expect to succeed but got \(error) instead")

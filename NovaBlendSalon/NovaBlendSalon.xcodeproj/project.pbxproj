@@ -36,9 +36,12 @@
 		298CEDA72CDC9AC00051B714 /* AppointmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */; };
 		298CEDA92CDC9BA10051B714 /* LocalAppointmentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */; };
 		298CEDAC2CDCA2410051B714 /* AppointmentStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDAB2CDCA2410051B714 /* AppointmentStoreSpy.swift */; };
-		298CEDAE2CDCB6BA0051B714 /* LocalSalonAppointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */; };
+		298CEDAE2CDCB6BA0051B714 /* LocalAppointmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CEDAD2CDCB6BA0051B714 /* LocalAppointmentItem.swift */; };
 		2994DB102CE341D900BD265C /* LoadAppointmentsFromCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994DB0F2CE341D900BD265C /* LoadAppointmentsFromCacheUseCaseTests.swift */; };
 		2994DB122CE37D7E00BD265C /* AppointmentCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994DB112CE37D7E00BD265C /* AppointmentCacheTestHelpers.swift */; };
+		2994DB142CE47F5200BD265C /* SwiftDataAppointmentStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994DB132CE47F5200BD265C /* SwiftDataAppointmentStoreTests.swift */; };
+		2994DB182CE481A500BD265C /* SwiftDataSalonStore+AppointmentStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994DB172CE481A500BD265C /* SwiftDataSalonStore+AppointmentStore.swift */; };
+		2994DB1A2CE4826300BD265C /* ManagedAppointmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2994DB192CE4826300BD265C /* ManagedAppointmentItem.swift */; };
 		29B503A02C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */; };
 		29B503A12C2DA38A000A53A9 /* NovaBlendSalon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29BDDD9E2B5C016F0026D484 /* NovaBlendSalon.framework */; };
 		29B503A72C2EB1C7000A53A9 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2965769A2B681675005ECB8B /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -141,9 +144,12 @@
 		298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentStore.swift; sourceTree = "<group>"; };
 		298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAppointmentLoader.swift; sourceTree = "<group>"; };
 		298CEDAB2CDCA2410051B714 /* AppointmentStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentStoreSpy.swift; sourceTree = "<group>"; };
-		298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSalonAppointment.swift; sourceTree = "<group>"; };
+		298CEDAD2CDCB6BA0051B714 /* LocalAppointmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAppointmentItem.swift; sourceTree = "<group>"; };
 		2994DB0F2CE341D900BD265C /* LoadAppointmentsFromCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAppointmentsFromCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		2994DB112CE37D7E00BD265C /* AppointmentCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCacheTestHelpers.swift; sourceTree = "<group>"; };
+		2994DB132CE47F5200BD265C /* SwiftDataAppointmentStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataAppointmentStoreTests.swift; sourceTree = "<group>"; };
+		2994DB172CE481A500BD265C /* SwiftDataSalonStore+AppointmentStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftDataSalonStore+AppointmentStore.swift"; sourceTree = "<group>"; };
+		2994DB192CE4826300BD265C /* ManagedAppointmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedAppointmentItem.swift; sourceTree = "<group>"; };
 		29B5039D2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NovaBlendSalonCacheIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B5039F2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaBlendSalonCacheIntegrationTests.swift; sourceTree = "<group>"; };
 		29B503CA2C370054000A53A9 /* NovaBlendSalonView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NovaBlendSalonView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,7 +331,8 @@
 		298CEDA52CDC9A9E0051B714 /* Appointment Cache */ = {
 			isa = PBXGroup;
 			children = (
-				298CEDAD2CDCB6BA0051B714 /* LocalSalonAppointment.swift */,
+				2994DB152CE480FF00BD265C /* Infrastructure */,
+				298CEDAD2CDCB6BA0051B714 /* LocalAppointmentItem.swift */,
 				298CEDA82CDC9BA10051B714 /* LocalAppointmentLoader.swift */,
 				298CEDA62CDC9AC00051B714 /* AppointmentStore.swift */,
 			);
@@ -339,6 +346,23 @@
 				2994DB112CE37D7E00BD265C /* AppointmentCacheTestHelpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2994DB152CE480FF00BD265C /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				2994DB162CE4811000BD265C /* SwiftData */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		2994DB162CE4811000BD265C /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				2994DB172CE481A500BD265C /* SwiftDataSalonStore+AppointmentStore.swift */,
+				2994DB192CE4826300BD265C /* ManagedAppointmentItem.swift */,
+			);
+			path = SwiftData;
 			sourceTree = "<group>";
 		};
 		29B5039E2C2DA38A000A53A9 /* NovaBlendSalonCacheIntegrationTests */ = {
@@ -524,6 +548,7 @@
 				298CEDAA2CDCA2390051B714 /* Helpers */,
 				29D70FE72C8C928A006C83B3 /* CacheAppointmentUseCaseTests.swift */,
 				2994DB0F2CE341D900BD265C /* LoadAppointmentsFromCacheUseCaseTests.swift */,
+				2994DB132CE47F5200BD265C /* SwiftDataAppointmentStoreTests.swift */,
 			);
 			path = "Appointment Cache";
 			sourceTree = "<group>";
@@ -827,6 +852,7 @@
 			files = (
 				291F51032B7BC984000771BE /* LocalSalonLoader.swift in Sources */,
 				298856152C2AF2A2009BB335 /* ManagedSalonItem.swift in Sources */,
+				2994DB1A2CE4826300BD265C /* ManagedAppointmentItem.swift in Sources */,
 				29EE6A4B2C2BF293000D9C51 /* ManagedCache.swift in Sources */,
 				29D70FE42C8202CB006C83B3 /* SalonAppointmentBooker.swift in Sources */,
 				29B6B0182B9F61D00013C3AB /* SalonCache.swift in Sources */,
@@ -834,13 +860,14 @@
 				29BDDDBA2B5C03760026D484 /* SalonLoader.swift in Sources */,
 				291F51072B7BC9D2000771BE /* SalonCachePolicy.swift in Sources */,
 				29D70FE22C82023D006C83B3 /* RemoteAppointmentMapper.swift in Sources */,
-				298CEDAE2CDCB6BA0051B714 /* LocalSalonAppointment.swift in Sources */,
+				298CEDAE2CDCB6BA0051B714 /* LocalAppointmentItem.swift in Sources */,
 				296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */,
 				29D70FDC2C7F3490006C83B3 /* RemoteAppointmentBooker.swift in Sources */,
 				296576892B641001005ECB8B /* SalonMapper.swift in Sources */,
 				296576872B615163005ECB8B /* HTTPClient.swift in Sources */,
 				291F51052B7BC9AF000771BE /* SalonStore.swift in Sources */,
 				291F51012B7BC90F000771BE /* LocalSalonItem.swift in Sources */,
+				2994DB182CE481A500BD265C /* SwiftDataSalonStore+AppointmentStore.swift in Sources */,
 				298856132C2AEA81009BB335 /* SwiftDataSalonStore.swift in Sources */,
 				298CEDA92CDC9BA10051B714 /* LocalAppointmentLoader.swift in Sources */,
 				29D70FE02C7F73EB006C83B3 /* SalonAppointment.swift in Sources */,
@@ -865,6 +892,7 @@
 				29EDA0A92B7FC39F00764219 /* CacheSalonUseCaseTests.swift in Sources */,
 				2994DB122CE37D7E00BD265C /* AppointmentCacheTestHelpers.swift in Sources */,
 				29CEFDB52C7DB75600AC4FEB /* BookAppointmentUseCaseTests.swift in Sources */,
+				2994DB142CE47F5200BD265C /* SwiftDataAppointmentStoreTests.swift in Sources */,
 				2988560F2C29AB28009BB335 /* SwiftDataSalonStoreTests.swift in Sources */,
 				29EDA0AB2B81CA8600764219 /* SalonCacheTestHelpers.swift in Sources */,
 				2994DB102CE341D900BD265C /* LoadAppointmentsFromCacheUseCaseTests.swift in Sources */,
