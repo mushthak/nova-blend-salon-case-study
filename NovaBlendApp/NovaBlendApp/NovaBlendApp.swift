@@ -17,7 +17,7 @@ struct NovaBlendApp: App {
         let remoteClient = makeRemoteClient()
         let remoteSalonLoader = RemoteSalonLoader(url: remoteURL, client: remoteClient)
         
-        let store = SwiftDataSalonStore(modelContainer: getContainer())
+        let store = SwiftDataStore(modelContainer: getContainer())
         let localSalonLoader = LocalSalonLoader(store: store, currentDate: Date.init)
         
         let salonLoader = SalonLoaderWithFallbackComposite(primary: SalonLoaderCacheDecorator(decoratee: remoteSalonLoader, cache: localSalonLoader), fallback: localSalonLoader)

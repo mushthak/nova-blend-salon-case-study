@@ -80,7 +80,7 @@ final class SwiftDataAppointmentStoreTests: XCTestCase {
     private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> AppointmentStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: ManagedAppointmentItem.self, configurations: config)
-        let sut = SwiftDataSalonStore(modelContainer: container)
+        let sut = SwiftDataStore(modelContainer: container)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
     }
