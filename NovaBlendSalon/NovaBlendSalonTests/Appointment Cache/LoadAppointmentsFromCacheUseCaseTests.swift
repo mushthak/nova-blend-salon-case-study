@@ -48,7 +48,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: .success(.none))
         
         do {
-            let result: [SalonAppointment] = try await sut.load()
+            let result: [Appointment] = try await sut.load()
             XCTAssertEqual(result, [])
         } catch {
             XCTFail("Expected success but got \(error) intead")
@@ -61,7 +61,7 @@ final class LoadAppointmentsFromCacheUseCaseTests: XCTestCase {
         let (sut, _) = makeSUT(with: .success([getLocalAppointment(from: appointment)]))
         
         do {
-            let result: [SalonAppointment] = try await sut.load()
+            let result: [Appointment] = try await sut.load()
             XCTAssertEqual(result, [appointment])
         } catch {
             XCTFail("Expected success but got \(error) intead")

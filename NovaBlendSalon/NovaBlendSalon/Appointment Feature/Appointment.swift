@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SalonAppointment: Equatable, Encodable {
+public struct Appointment: Equatable, Encodable {
     public let id: UUID
     public let time: Date
     public let phone: String

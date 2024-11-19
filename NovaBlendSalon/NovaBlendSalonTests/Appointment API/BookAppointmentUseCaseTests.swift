@@ -103,8 +103,8 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         return(sut, client)
     }
     
-    private func makeAppointmentItem() -> (model: SalonAppointment, json: [String: Any]) {
-        let model = SalonAppointment(id: UUID(),
+    private func makeAppointmentItem() -> (model: Appointment, json: [String: Any]) {
+        let model = Appointment(id: UUID(),
                                      time: Date.init().roundedToSeconds(),
                                      phone: "a phone number",
                                      email: nil,
