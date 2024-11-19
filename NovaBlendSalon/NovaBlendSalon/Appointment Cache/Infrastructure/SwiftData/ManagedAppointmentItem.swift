@@ -8,8 +8,8 @@
 import Foundation
 import SwiftData
 
-@Model class ManagedAppointmentItem {
-     let id: UUID
+@Model public class ManagedAppointmentItem {
+     public let id: UUID
      let time: Date
      let phone: String
      let email: String?
@@ -25,5 +25,9 @@ import SwiftData
     
     var local: LocalAppointmentItem {
         return LocalAppointmentItem(id: id, time: time, phone: phone, email: email, notes: notes)
+    }
+    
+    static func appointment(from appointment: LocalAppointmentItem) -> ManagedAppointmentItem {
+        return ManagedAppointmentItem(id: appointment.id, time: appointment.time, phone: appointment.phone, email: appointment.email, notes: appointment.notes)
     }
 }
