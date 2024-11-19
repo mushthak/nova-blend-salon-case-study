@@ -33,10 +33,25 @@ final class SwiftDataAppointmentStoreTests: XCTestCase {
         }
     }
     
+    func test_retrive_deliversFoundValuesOnNonEmptyCache() async {
+        let sut = await makeSUT()
+        do {
+            let appointment = makeAppointmentItem()
+            let localAppointment = getLocalAppointment(from: appointment)
+            try await sut.insert(localAppointment)
+            
+            let result = try await sut.retrieve()
+            
+            XCTAssertEqual(result, [localAppointment])
+        } catch {
+            XCTFail("Expected success but got \(error) intead")
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(file: StaticString = #file, line: UInt = #line) async -> AppointmentStore {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try! ModelContainer(for: ManagedCache.self, configurations: config)
+        let container = try! ModelContainer(for: ManagedAppointmentItem.self, configurations: config)
         let sut = SwiftDataSalonStore(modelContainer: container)
         trackForMemoryLeak(sut, file: file, line: line)
         return sut
