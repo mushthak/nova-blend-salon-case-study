@@ -8,8 +8,8 @@
 import Foundation
 import NovaBlendSalon
 
-func makeAppointmentItem() -> SalonAppointment {
-    return SalonAppointment(id: UUID(),
+func makeAppointmentItem() -> Appointment {
+    return Appointment(id: UUID(),
                             time: Date.init().roundedToSeconds(),
                             phone: "a phone number",
                             email: nil,
@@ -24,7 +24,7 @@ func retrievalError() -> AppointmentStoreSpy.Result {
     return .failure(.retrievalError)
 }
 
-func getLocalAppointment(from model: SalonAppointment) -> LocalAppointmentItem {
+func getLocalAppointment(from model: Appointment) -> LocalAppointmentItem {
     return LocalAppointmentItem(id: model.id,
                                 time: model.time,
                                 phone: model.phone,

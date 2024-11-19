@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RemoteAppointmentBooker: SalonAppointmentBooker {
+public class RemoteAppointmentBooker: AppointmentBooker {
     private let url: URL
     private let client: HTTPClient
     
@@ -22,7 +22,7 @@ public class RemoteAppointmentBooker: SalonAppointmentBooker {
         self.client = client
     }
     
-    public func bookAppointment(appointment: SalonAppointment) async throws -> SalonAppointment {
+    public func bookAppointment(appointment: Appointment) async throws -> Appointment {
         let remoteAppointmentData = try RemoteAppointmentMapper.map(appointment: appointment)
         guard let (data, response) = try? await client.postTo(url: url, data: remoteAppointmentData) else {
             throw Error.connectivity

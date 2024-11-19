@@ -24,24 +24,24 @@ internal enum RemoteAppointmentMapper {
             self.notes = notes
         }
         
-        init(appointment: SalonAppointment) {
+        init(appointment: Appointment) {
             self.init(id: appointment.id, appointmentTime: appointment.time, phone: appointment.phone, email: appointment.email, notes: appointment.notes)
         }
         
-        var salonAppointment: SalonAppointment {
-            return SalonAppointment(id: id, time: appointmentTime, phone: phone, email: email, notes: notes)
+        var salonAppointment: Appointment {
+            return Appointment(id: id, time: appointmentTime, phone: phone, email: email, notes: notes)
         }
         
     }
     
-    static func map(appointment: SalonAppointment) throws -> Data {
+    static func map(appointment: Appointment) throws -> Data {
         let remoteRequestItem = RemoteAppointmentRequestItem.init(appointment: appointment)
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         return try encoder.encode(remoteRequestItem)
     }
     
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> SalonAppointment {
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> Appointment {
         guard response.statusCode == 201 else {
             throw RemoteAppointmentBooker.Error.AppointmentFailure
         }
