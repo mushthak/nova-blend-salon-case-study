@@ -8,9 +8,7 @@
 import Foundation
 import SwiftData
 
-@ModelActor
-public actor SwiftDataSalonStore: SalonStore {
-    
+extension SwiftDataStore: SalonStore {
     public func retrieve() async throws -> CachedSalon? {
         guard let cache = try findCache() else { return nil }
         return (salons: cache.salons.compactMap{ $0.local }, timestamp: cache.timestamp)

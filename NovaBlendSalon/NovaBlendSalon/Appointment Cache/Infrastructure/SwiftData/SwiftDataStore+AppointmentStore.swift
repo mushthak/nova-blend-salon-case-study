@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-extension SwiftDataSalonStore: AppointmentStore {
+extension SwiftDataStore: AppointmentStore {
     public func insert(_ appointment: LocalAppointmentItem) async throws {
         let appointment = ManagedAppointmentItem.appointment(from: appointment)
         try await insertUniqueInstance(of: appointment)

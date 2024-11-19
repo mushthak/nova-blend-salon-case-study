@@ -57,7 +57,7 @@ final class NovaBlendSalonCacheIntegrationTests: XCTestCase {
     
     //MARK: Helpers
     private func makeSUT(container: ModelContainer, file: StaticString = #file, line: UInt = #line) -> LocalSalonLoader {
-        let store = SwiftDataSalonStore(modelContainer: container)
+        let store = SwiftDataStore(modelContainer: container)
         let sut = LocalSalonLoader(store: store, currentDate: Date.init)
         trackForMemoryLeak(store)
         trackForMemoryLeak(sut)
