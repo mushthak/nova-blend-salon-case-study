@@ -163,7 +163,7 @@ GET *url* (TBD)
 200 RESPONSE
 
 {
-    "items": [
+    "salons": [
         {
             "id": "a UUID",
             "name": "a name",
@@ -364,7 +364,47 @@ Given the customer doesn't have connectivity
 1. System delivers error.
 
 ---
+### Payload contract
 
+```
+GET *url* (TBD)
+
+200 RESPONSE
+
+{
+    "appointments": [
+        {
+          "salonId": "a UUID",
+          "appointmentTime" : "2024-10-20T11:24:59+0000",
+          "phone": "a phone number",
+          "email": "an email id",
+          "notes": "a note"
+        }
+        {
+            "salonId": "another UUID",
+            "appointmentTime": "2024-10-21T11:24:59+0000",
+            "phone": "another phone number",
+            "email": "another email id",
+            "notes": "another note"
+        },
+        {
+            "salonId": "even another UUID",
+            "appointmentTime": "2024-10-22T11:24:59+0000",
+            "phone": "even another phone number",
+            "email": "even another email id",
+            "notes": "even another note"
+        },
+        {
+            "salonId": "yet another UUID",
+            "appointmentTime": "2024-10-23T11:24:59+0000",
+            "phone": "yet another phone number",
+            "email": "yet another email id",
+            "notes": "yet another note"
+        }
+        ...
+    ]
+}
+```
 ---
 
 ## App Architecture
