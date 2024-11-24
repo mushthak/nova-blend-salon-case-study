@@ -12,13 +12,19 @@ private class RemoteAppointmentLoader {
     private let url: URL
     private let client: HTTPClient
     
+    public enum Error: Swift.Error {
+        case connectivity
+    }
+    
     init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
     func load() async throws {
-        _ = try await client.getFrom(url: url)
+        guard let (_, _) = try? await client.getFrom(url: url) else {
+            throw Error.connectivity
+        }
     }
 }
 
@@ -42,6 +48,17 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
         _ = try await sut.load()
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    func test_load_deliversConnectivityErrorOnClientError() async throws {
+        let error = anyError()
+        let (sut,_) = makeSUT(with: .failure(error))
+        
+        do {
+            _ = try await sut.load()
+        } catch {
+            XCTAssertEqual(error as? RemoteAppointmentLoader.Error, .connectivity)
+        }
     }
     
     //MARK: Helper
