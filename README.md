@@ -263,6 +263,109 @@ REQUEST
 }
 ```
 ---
+## 3. Story: Customer requests to see booked appointments
+
+### Narrative #1
+
+```
+As customer
+I want the app to show the the appoinments I booked
+So I can always view the latest appointment details 
+```
+
+#### Scenarios (Acceptance criteria)
+
+```
+Given the customer has connectivity
+  And customer requests to see his booked appointments
+ Then the app should display the appointment list from remote
+  And replace the cache with the new appointments
+
+```
+
+### Narrative #2
+
+```
+As an offline customer
+I want the app to show the saved appointment bookings
+So I can always see the booked appintment details 
+```
+
+#### Scenarios (Acceptance criteria)
+
+```
+Given the customer doesn't have connectivity
+  And there’s a cached version of the appointments
+ When the customer requests to see the booked appointments
+ Then the app should display the appointments saved
+ ```
+
+  ```
+Given the customer doesn't have connectivity
+  And the cache is empty
+ When the customer requests to see the booked appointments
+ Then the app should show empty list
+ ```
+---
+
+## Use Cases
+
+### Load Booked Appointments Data From Remote Use Case
+
+#### Data:
+- URL
+
+#### Primary course (happy path):
+1. Execute "Load Appointments" command with above data.
+2. System downloads data from the URL.
+3. System validates downloaded data.
+4. System delivers appointment data.
+
+#### Invalid data – error course (sad path):
+1. System delivers invalid data error.
+
+#### No connectivity – error course (sad path):
+1. System delivers connectivity error.
+
+---
+
+### Load Salons From Cache Use Case
+
+#### Primary course:
+1. Execute "Load Appointments" command.
+2. System retrieves appointment data from cache.
+3. System creates appointment list from cached data.
+4. System delivers appointment list.
+
+#### Retrieval error course (sad path):
+1. System delivers error.
+
+#### Empty cache course (sad path): 
+1. System delivers no appointments.
+
+---
+
+### Cache Appointments Use Case
+
+#### Data:
+- Appointments
+
+#### Primary course (happy path):
+1. Execute "Save appointments" command with above data.
+2. System deletes old cache data.
+3. System encodes appointments.
+4. System saves new cache data.
+5. System delivers success message.
+
+#### Deleting error course (sad path):
+1. System delivers error.
+
+#### Saving error course (sad path):
+1. System delivers error.
+
+---
+
+---
 
 ## App Architecture
 ![image description](architecture.svg)
