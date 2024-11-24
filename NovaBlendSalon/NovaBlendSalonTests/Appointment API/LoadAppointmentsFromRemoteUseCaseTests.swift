@@ -34,6 +34,16 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
         XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
+    func test_loadTwice_requestDataFromURLTwice() async throws{
+        let url = anyURL()
+        let (sut,client) = makeSUT(url: url)
+        
+        _ = try await sut.load()
+        _ = try await sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
     //MARK: Helper
     private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((Data.init(_: "{\"appointments\": []}".utf8), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteAppointmentLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy(result: result)
