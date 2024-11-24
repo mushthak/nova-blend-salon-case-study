@@ -16,12 +16,22 @@ private class RemoteAppointmentLoader {
         self.url = url
         self.client = client
     }
+    
+    func load() async throws {
+        _ = try await client.getFrom(url: url)
+    }
 }
 
 final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
     func test_init_doesnotRequestDataFromURL() {
         let (_,client) = makeSUT()
         XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+    
+    func test_load_requestDataFromURL() async throws{
+        let (sut,client) = makeSUT()
+        _ = try await sut.load()
+        XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
     //MARK: Helper
