@@ -8,6 +8,18 @@
 import XCTest
 import NovaBlendSalon
 
+private struct RemoteAppointmentItem: Decodable {
+    public let salonId: UUID
+    public let appointmentTime: Date
+    public let phone: String
+    public let email: String?
+    public let notes: String?
+}
+
+private struct Root: Decodable {
+    let appointments: [RemoteAppointmentItem]
+}
+
 private class RemoteAppointmentLoader {
     private let url: URL
     private let client: HTTPClient
@@ -23,10 +35,10 @@ private class RemoteAppointmentLoader {
     }
     
     func load() async throws {
-        guard let (_, response) = try? await client.getFrom(url: url) else {
+        guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
-        guard response.isOK else {
+        guard response.isOK, let _ = try? JSONDecoder().decode(Root.self, from: data) else {
             throw RemoteAppointmentLoader.Error.invalidData
         }
     }
@@ -95,6 +107,19 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
                     XCTFail("Expected to throw \(RemoteAppointmentLoader.Error.invalidData) but got success instead")
                 }
             }
+        }
+    }
+    
+    func test_load_deliversInvalidDataErrorOn200HTTPResponseWithInvalidJSON() async throws {
+        let response = anyValidHTTPResponse()
+        let invalidJSON = Data.init(_: "invalid json".utf8)
+        let (sut,_) = makeSUT(with: .success((invalidJSON, response)))
+        
+        do {
+            _ = try await sut.load()
+            XCTFail("Expected to throw \(RemoteAppointmentLoader.Error.invalidData) but got success instead")
+        } catch {
+            XCTAssertEqual(error as? RemoteAppointmentLoader.Error, .invalidData)
         }
     }
     
