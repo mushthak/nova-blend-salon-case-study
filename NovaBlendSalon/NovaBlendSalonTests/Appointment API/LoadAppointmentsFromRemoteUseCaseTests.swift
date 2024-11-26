@@ -42,7 +42,9 @@ private class RemoteAppointmentLoader {
         guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
-        guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
             throw RemoteAppointmentLoader.Error.invalidData
         }
         return root.appointments.map { $0.appointment }
@@ -140,6 +142,27 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
         }
     }
     
+    func test_load_deliversItemsArrayOn200HTTPResponseWithJSONList() async throws {
+        let item1 = makeItem(id: UUID(),
+                             time: Date(),
+                             phone: "any phone")
+        
+        let item2 = makeItem(id: UUID(),
+                             time: Date(),
+                             phone: "another phone")
+        
+        let json = makeItemsJSON(items: [item1.json, item2.json])
+        let (sut,_) = makeSUT(with: .success((json, anyValidHTTPResponse())))
+        
+        do {
+            let appointments: [Appointment] = try await sut.load()
+            XCTAssertEqual(appointments, [item1.model, item2.model])
+        } catch {
+            XCTFail("Expected to receive items array but got \(error) instead")
+        }
+        
+    }
+    
     //MARK: Helper
     private func makeSUT(url: URL = anyURL(),with result: Result<(Data, HTTPURLResponse), Error> = .success((Data.init(_: "{\"appointments\": []}".utf8), anyValidHTTPResponse())), file: StaticString = #file, line: UInt = #line) -> (sut: RemoteAppointmentLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy(result: result)
@@ -152,5 +175,26 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
     private func makeItemsJSON(items: [[String : Any]]) -> Data {
         let json = ["appointments": items]
         return try! JSONSerialization.data(withJSONObject: json)
+    }
+    
+    private func makeItem(id: UUID, time: Date, phone: String, email: String? = nil, notes: String? = nil) -> (model: Appointment, json: [String: Any]) {
+        let model = Appointment(id: id, time: time.roundedToSeconds(), phone: phone, email: email, notes: notes)
+        
+        let json: [String: Any?] = [
+            "salonId" : model.id.uuidString,
+            "appointmentTime": ISO8601DateFormatter().string(from: model.time),
+            "phone": model.phone,
+            "email":  model.email,
+            "notes": model.notes
+        ]
+        
+        return (model, json.compactMapValues { $0 })
+    }
+}
+
+private extension Date {
+    func roundedToSeconds() -> Date {
+        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
+        return Date(timeIntervalSince1970: timeInterval)
     }
 }
