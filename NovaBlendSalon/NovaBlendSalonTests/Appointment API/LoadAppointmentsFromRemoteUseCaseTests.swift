@@ -171,30 +171,4 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
         trackForMemoryLeak(client)
         return(sut, client)
     }
-    
-    private func makeItemsJSON(items: [[String : Any]]) -> Data {
-        let json = ["appointments": items]
-        return try! JSONSerialization.data(withJSONObject: json)
-    }
-    
-    private func makeItem(id: UUID, time: Date, phone: String, email: String? = nil, notes: String? = nil) -> (model: Appointment, json: [String: Any]) {
-        let model = Appointment(id: id, time: time.roundedToSeconds(), phone: phone, email: email, notes: notes)
-        
-        let json: [String: Any?] = [
-            "salonId" : model.id.uuidString,
-            "appointmentTime": ISO8601DateFormatter().string(from: model.time),
-            "phone": model.phone,
-            "email":  model.email,
-            "notes": model.notes
-        ]
-        
-        return (model, json.compactMapValues { $0 })
-    }
-}
-
-private extension Date {
-    func roundedToSeconds() -> Date {
-        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
-        return Date(timeIntervalSince1970: timeInterval)
-    }
 }

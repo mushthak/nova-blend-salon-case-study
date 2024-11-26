@@ -19,7 +19,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_sendsAppointmentRequestToURL() async {
         let (sut, client) = makeSUT()
-        let appointment = makeAppointmentItem().model
+        let appointment = makeAppointmentItem()
         
         _ = try? await sut.bookAppointment(appointment: appointment)
         
@@ -32,7 +32,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         let (sut,_) = makeSUT(with: .failure(error))
         
         do {
-            let appointment = makeAppointmentItem().model
+            let appointment = makeAppointmentItem()
             _ = try await sut.bookAppointment(appointment: appointment)
             XCTFail("Expected to throw \(RemoteAppointmentBooker.Error.connectivity) error. But got success instead")
         } catch {
@@ -42,7 +42,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_deliversAppointmentFailureErrorOnNon201HTTPResponse() async {
         let samples = [199, 200, 300, 400, 500]
-        let appointment = makeAppointmentItem().model
+        let appointment = makeAppointmentItem()
         await withThrowingTaskGroup(of: Void.self) { group in
             for statusCode in samples {
                 group.addTask {
@@ -71,8 +71,8 @@ final class BookAppointmentUseCaseTests: XCTestCase {
             let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
             let (sut,_) = self.makeSUT(with: .success((invalidJSON, response)))
             
-            let bookedAppointment = try await sut.bookAppointment(appointment: appointment.model)
-            XCTAssertEqual(bookedAppointment, appointment.model)
+            let bookedAppointment = try await sut.bookAppointment(appointment: appointment)
+            XCTAssertEqual(bookedAppointment, appointment)
             XCTFail("Expect to throw \(RemoteAppointmentBooker.Error.invalidData) but got success instead")
         } catch {
             XCTAssertEqual(error as? RemoteAppointmentBooker.Error, .invalidData)
@@ -81,7 +81,7 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_succeedsOn201HTTPResponseWithValidJSON() async {
         do {
-            let appointment = makeAppointmentItem()
+            let appointment = makeItem()
             let appointmentData = makeItemJSON(item: appointment.json)
             let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
             let (sut,_) = self.makeSUT(with: .success((appointmentData, response)))
@@ -103,12 +103,8 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         return(sut, client)
     }
     
-    private func makeAppointmentItem() -> (model: Appointment, json: [String: Any]) {
-        let model = Appointment(id: UUID(),
-                                     time: Date.init().roundedToSeconds(),
-                                     phone: "a phone number",
-                                     email: nil,
-                                     notes: nil)
+    private func makeItem() -> (model: Appointment, json: [String: Any]) {
+        let model = makeAppointmentItem()
         let json: [String: Any?] = [
             "id" : model.id.uuidString,
             "appointmentTime": ISO8601DateFormatter().string(from: model.time),
@@ -117,18 +113,6 @@ final class BookAppointmentUseCaseTests: XCTestCase {
             "notes": model.notes
         ]
         return (model, json.compactMapValues { $0 })
-    }
-    
-    private func makeItemJSON(item: [String : Any]) -> Data {
-        return try! JSONSerialization.data(withJSONObject: item)
-    }
-}
-
-
-private extension Date {
-    func roundedToSeconds() -> Date {
-        let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
-        return Date(timeIntervalSince1970: timeInterval)
     }
 }
 
