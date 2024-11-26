@@ -8,22 +8,6 @@
 import XCTest
 import NovaBlendSalon
 
-private struct RemoteAppointmentItem: Decodable {
-    public let salonId: UUID
-    public let appointmentTime: Date
-    public let phone: String
-    public let email: String?
-    public let notes: String?
-    
-    var appointment: Appointment {
-        return Appointment(id: salonId, time: appointmentTime, phone: phone, email: email, notes: notes)
-    }
-}
-
-private struct Root: Decodable {
-    let appointments: [RemoteAppointmentItem]
-}
-
 private class RemoteAppointmentLoader {
     private let url: URL
     private let client: HTTPClient
@@ -42,6 +26,28 @@ private class RemoteAppointmentLoader {
         guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
+        return try RemoteAppointmentMapper.map(data, from: response)
+    }
+    
+}
+
+private enum RemoteAppointmentMapper {
+    private struct RemoteAppointmentItem: Decodable {
+        public let salonId: UUID
+        public let appointmentTime: Date
+        public let phone: String
+        public let email: String?
+        public let notes: String?
+        
+        var appointment: Appointment {
+            return Appointment(id: salonId, time: appointmentTime, phone: phone, email: email, notes: notes)
+        }
+    }
+    
+    private struct Root: Decodable {
+        let appointments: [RemoteAppointmentItem]
+    }
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Appointment] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
@@ -49,7 +55,6 @@ private class RemoteAppointmentLoader {
         }
         return root.appointments.map { $0.appointment }
     }
-    
 }
 
 private extension HTTPURLResponse {
