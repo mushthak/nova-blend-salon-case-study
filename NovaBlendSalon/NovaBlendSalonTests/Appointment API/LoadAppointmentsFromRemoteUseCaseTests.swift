@@ -14,6 +14,10 @@ private struct RemoteAppointmentItem: Decodable {
     public let phone: String
     public let email: String?
     public let notes: String?
+    
+    var appointment: Appointment {
+        return Appointment(id: salonId, time: appointmentTime, phone: phone, email: email, notes: notes)
+    }
 }
 
 private struct Root: Decodable {
@@ -34,13 +38,14 @@ private class RemoteAppointmentLoader {
         self.client = client
     }
     
-    func load() async throws {
+    func load() async throws -> [Appointment] {
         guard let (data, response) = try? await client.getFrom(url: url) else {
             throw Error.connectivity
         }
-        guard response.isOK, let _ = try? JSONDecoder().decode(Root.self, from: data) else {
+        guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw RemoteAppointmentLoader.Error.invalidData
         }
+        return root.appointments.map { $0.appointment }
     }
     
 }
@@ -89,7 +94,7 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
     func test_load_deliversInvalidDataErrorOnNon200HTTPResponse() async throws {
         let samples = [199, 201, 300, 400, 500]
         let emptyListJSON = makeItemsJSON(items: [])
-        await withThrowingTaskGroup(of: Void.self) { group in
+        await withThrowingTaskGroup(of: [Appointment].self) { group in
             for statusCode in samples {
                 group.addTask {
                     let response = HTTPURLResponse(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
@@ -120,6 +125,18 @@ final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
             XCTFail("Expected to throw \(RemoteAppointmentLoader.Error.invalidData) but got success instead")
         } catch {
             XCTAssertEqual(error as? RemoteAppointmentLoader.Error, .invalidData)
+        }
+    }
+    
+    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() async throws {
+        let emptyListJSON = makeItemsJSON(items: [])
+        let (sut,_) = makeSUT(with: .success((emptyListJSON, anyValidHTTPResponse())))
+        
+        do {
+            let appointments: [Appointment] = try await sut.load()
+            XCTAssertEqual(appointments, [])
+        } catch {
+            XCTFail("Expected to receive empty items array but got \(error) instead")
         }
     }
     
