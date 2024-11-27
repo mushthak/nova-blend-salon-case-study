@@ -96,7 +96,7 @@ final class NovaBlendSalonAPIEndToEndTests: XCTestCase {
 extension NovaBlendSalonAPIEndToEndTests {
     func test_endToEndTestServerBookApppointment_matchesFixedTestAppointmentBookedResponse() async {
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let booker = RemoteAppointmentBooker(url: URL(string: "https://run.mocky.io/v3/9bdbf3ed-fcdc-4a55-ae28-6d7691d650f9")!, client: client)
+        let booker = RemoteAppointmentBooker(url: URL(string: "https://run.mocky.io/v3/c45a1211-3a83-48a1-a2c9-643efa2f0d7b")!, client: client)
         trackForMemoryLeak(client)
         trackForMemoryLeak(booker)
         do {
