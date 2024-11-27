@@ -8,63 +8,6 @@
 import XCTest
 import NovaBlendSalon
 
-private class RemoteAppointmentLoader {
-    private let url: URL
-    private let client: HTTPClient
-    
-    public enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load() async throws -> [Appointment] {
-        guard let (data, response) = try? await client.getFrom(url: url) else {
-            throw Error.connectivity
-        }
-        return try RemoteAppointmentMapper.map(data, from: response)
-    }
-    
-}
-
-private enum RemoteAppointmentMapper {
-    private struct RemoteAppointmentItem: Decodable {
-        public let salonId: UUID
-        public let appointmentTime: Date
-        public let phone: String
-        public let email: String?
-        public let notes: String?
-        
-        var appointment: Appointment {
-            return Appointment(id: salonId, time: appointmentTime, phone: phone, email: email, notes: notes)
-        }
-    }
-    
-    private struct Root: Decodable {
-        let appointments: [RemoteAppointmentItem]
-    }
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [Appointment] {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        guard response.isOK, let root = try? decoder.decode(Root.self, from: data) else {
-            throw RemoteAppointmentLoader.Error.invalidData
-        }
-        return root.appointments.map { $0.appointment }
-    }
-}
-
-private extension HTTPURLResponse {
-    private static var OK_200: Int { return 200 }
-    
-    var isOK: Bool {
-        return statusCode == HTTPURLResponse.OK_200
-    }
-}
-
 final class LoadAppointmentsFromRemoteUseCaseTests: XCTestCase {
     func test_init_doesnotRequestDataFromURL() {
         let (_,client) = makeSUT()

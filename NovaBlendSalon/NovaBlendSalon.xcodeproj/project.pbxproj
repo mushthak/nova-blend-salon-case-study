@@ -22,6 +22,7 @@
 		29500D522CF5F13D0099B780 /* AppointmentTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29500D512CF5F13D0099B780 /* AppointmentTestHelpers.swift */; };
 		29500D532CF5F13D0099B780 /* AppointmentTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29500D512CF5F13D0099B780 /* AppointmentTestHelpers.swift */; };
 		29500D542CF5F13D0099B780 /* AppointmentTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29500D512CF5F13D0099B780 /* AppointmentTestHelpers.swift */; };
+		29500D562CF63FE20099B780 /* RemoteAppointmentLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29500D552CF63FE20099B780 /* RemoteAppointmentLoader.swift */; };
 		296576852B5CDD36005ECB8B /* RemoteSalonLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */; };
 		296576872B615163005ECB8B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576862B615162005ECB8B /* HTTPClient.swift */; };
 		296576892B641001005ECB8B /* SalonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296576882B641001005ECB8B /* SalonMapper.swift */; };
@@ -134,6 +135,7 @@
 		293CE06B2C450446003FA8C0 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		29500D4F2CF311840099B780 /* LoadAppointmentsFromRemoteUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAppointmentsFromRemoteUseCaseTests.swift; sourceTree = "<group>"; };
 		29500D512CF5F13D0099B780 /* AppointmentTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentTestHelpers.swift; sourceTree = "<group>"; };
+		29500D552CF63FE20099B780 /* RemoteAppointmentLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAppointmentLoader.swift; sourceTree = "<group>"; };
 		296576842B5CDD36005ECB8B /* RemoteSalonLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSalonLoader.swift; sourceTree = "<group>"; };
 		296576862B615162005ECB8B /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		296576882B641001005ECB8B /* SalonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonMapper.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 			children = (
 				29D70FDB2C7F3490006C83B3 /* RemoteAppointmentBooker.swift */,
 				29D70FE12C82023D006C83B3 /* RemoteAppointmentMapper.swift */,
+				29500D552CF63FE20099B780 /* RemoteAppointmentLoader.swift */,
 			);
 			path = "Appointment API";
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				291F51012B7BC90F000771BE /* LocalSalonItem.swift in Sources */,
 				2994DB182CE481A500BD265C /* SwiftDataStore+AppointmentStore.swift in Sources */,
 				298856132C2AEA81009BB335 /* SwiftDataStore+SalonStore.swift in Sources */,
+				29500D562CF63FE20099B780 /* RemoteAppointmentLoader.swift in Sources */,
 				298CEDA92CDC9BA10051B714 /* LocalAppointmentLoader.swift in Sources */,
 				29D70FE02C7F73EB006C83B3 /* Appointment.swift in Sources */,
 				298CEDA42CDC99A30051B714 /* AppointmentCache.swift in Sources */,
