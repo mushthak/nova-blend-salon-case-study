@@ -24,11 +24,15 @@ func makeAppointmentItem(id: UUID, time: Date, phone: String, email: String? = n
 }
 
 func makeItem(id: UUID, time: Date, phone: String, email: String? = nil, notes: String? = nil) -> (model: Appointment, json: [String: Any]) {
-    let model = makeAppointmentItem(id: id, time: time, phone: phone, email: email, notes: notes)
+    let model = makeAppointmentItem(id: id,
+                                    time: time,
+                                    phone: phone,
+                                    email: email,
+                                    notes: notes)
     
     let json: [String: Any?] = [
         "salonId" : model.id.uuidString,
-        "appointmentTime": ISO8601DateFormatter().string(from: model.time),
+        "appointmentTime": DateFormatter.iso8601.string(from: model.time),
         "phone": model.phone,
         "email":  model.email,
         "notes": model.notes
@@ -51,4 +55,11 @@ private extension Date {
         let timeInterval = TimeInterval(Int(self.timeIntervalSince1970))
         return Date(timeIntervalSince1970: timeInterval)
     }
+}
+
+private extension DateFormatter {
+    static let iso8601: ISO8601DateFormatter = {
+        let formatter = ISO8601DateFormatter()
+        return formatter
+    }()
 }

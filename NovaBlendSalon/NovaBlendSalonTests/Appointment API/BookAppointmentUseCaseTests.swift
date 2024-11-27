@@ -81,7 +81,9 @@ final class BookAppointmentUseCaseTests: XCTestCase {
     
     func test_bookAppointment_succeedsOn201HTTPResponseWithValidJSON() async {
         do {
-            let appointment = makeItem()
+            let appointment = makeItem(id: UUID(),
+                                        time: Date.init(),
+                                        phone: "a phone number")
             let appointmentData = makeItemJSON(item: appointment.json)
             let response = HTTPURLResponse(url: anyURL(), statusCode: 201, httpVersion: nil, headerFields: nil)!
             let (sut,_) = self.makeSUT(with: .success((appointmentData, response)))
@@ -101,18 +103,6 @@ final class BookAppointmentUseCaseTests: XCTestCase {
         trackForMemoryLeak(sut)
         trackForMemoryLeak(client)
         return(sut, client)
-    }
-    
-    private func makeItem() -> (model: Appointment, json: [String: Any]) {
-        let model = makeAppointmentItem()
-        let json: [String: Any?] = [
-            "id" : model.id.uuidString,
-            "appointmentTime": ISO8601DateFormatter().string(from: model.time),
-            "phone": model.phone,
-            "email": model.email,
-            "notes": model.notes
-        ]
-        return (model, json.compactMapValues { $0 })
     }
 }
 
