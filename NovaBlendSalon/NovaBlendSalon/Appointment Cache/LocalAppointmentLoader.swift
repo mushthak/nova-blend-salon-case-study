@@ -13,6 +13,7 @@ public class LocalAppointmentLoader: AppointmentCache {
     public enum Error: Swift.Error {
         case insertion
         case retrieval
+        case deletion
     }
     
     public init(store: AppointmentStore) {
@@ -24,6 +25,14 @@ public class LocalAppointmentLoader: AppointmentCache {
             try await store.insert(appointment.toLocal())
         } catch {
             throw Error.insertion
+        }
+    }
+    
+    public func save(_ appointment: [Appointment]) async throws{
+        do {
+            try await store.deleteAll()
+        } catch {
+            throw Error.deletion
         }
     }
     

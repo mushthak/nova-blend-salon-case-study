@@ -19,6 +19,8 @@ extension SwiftDataStore: AppointmentStore {
         return cache.compactMap{ $0.local }
     }
     
+    public func deleteAll() async throws {}
+    
     //MARK: Helpers
     private func findAppointmentCache() throws -> [ManagedAppointmentItem] {
         let descriptor = FetchDescriptor<ManagedAppointmentItem>()

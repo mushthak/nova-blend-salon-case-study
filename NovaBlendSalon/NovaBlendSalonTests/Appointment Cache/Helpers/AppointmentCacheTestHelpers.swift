@@ -16,6 +16,10 @@ func retrievalError() -> AppointmentStoreSpy.Result {
     return .failure(.retrievalError)
 }
 
+func deletionError() -> AppointmentStoreSpy.Result {
+    return .failure(.deleteAllError)
+}
+
 func getLocalAppointment(from model: Appointment) -> LocalAppointmentItem {
     return LocalAppointmentItem(id: model.id,
                                 time: model.time,

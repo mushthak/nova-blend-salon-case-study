@@ -21,20 +21,37 @@ class AppointmentStoreSpy: AppointmentStore {
     enum Error: Swift.Error {
         case insertionError
         case retrievalError
+        case deleteAllError
     }
     
     enum ReceivedMessage: Equatable {
         case retrieve
         case insert(LocalAppointmentItem)
+        case deleteAll
     }
     
     func insert(_ appointment: LocalAppointmentItem) throws {
         receivedMessages.append(.insert(appointment))
-        _ = try result.get()
+        switch result {
+        case .failure(let error) where error == .insertionError:
+            throw error
+        case .success(_), .failure(_):
+            break
+        }
     }
     
     func retrieve() throws -> [LocalAppointmentItem] {
         receivedMessages.append(.retrieve)
         return try result.get() ?? []
+    }
+    
+    func deleteAll() async throws {
+        receivedMessages.append(.deleteAll)
+        switch result {
+        case .failure(let error) where error == .deleteAllError:
+            throw error
+        case .success(_), .failure(_):
+            break
+        }
     }
 }
