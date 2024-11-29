@@ -28,14 +28,14 @@ public class LocalAppointmentLoader: AppointmentCache {
         }
     }
     
-    public func save(_ appointment: [Appointment]) async throws{
+    public func save(_ appointments: [Appointment]) async throws{
         do {
             try await store.deleteAll()
         } catch {
             throw Error.deletion
         }
         do {
-            try await store.insert(appointment.map { $0.toLocal()})
+            try await store.insert(appointments.map { $0.toLocal()})
         } catch {
             throw Error.insertion
         }
