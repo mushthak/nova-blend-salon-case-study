@@ -51,6 +51,18 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_doesNotRequestCacheInsertionOnDeletionError() async {
+        let (sut, store) = makeSUT(with: deletionError())
+        let appointment = makeAppointmentItem()
+        
+        do {
+            try await sut.save([appointment])
+            XCTFail("Expect to throw error but got success instead")
+        } catch  {
+            XCTAssertEqual(store.receivedMessages, [AppointmentStoreSpy.ReceivedMessage.deleteAll])
+        }
+    }
+    
     func test_save_remoteAppointments_failsOnCacheDeletionError() async {
         let (sut, _) = makeSUT(with: deletionError())
         let appointment = makeAppointmentItem()
