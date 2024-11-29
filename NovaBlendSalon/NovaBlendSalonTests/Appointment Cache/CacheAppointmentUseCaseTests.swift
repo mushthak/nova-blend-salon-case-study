@@ -75,6 +75,18 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_remoteAppointments_failsOnCacheInsertionError() async {
+        let (sut, _) = makeSUT(with: insetionError())
+        let appointment = makeAppointmentItem()
+        
+        do {
+            try await sut.save([appointment])
+            XCTFail("Expect to throw \(LocalAppointmentLoader.Error.insertion) but got success instead")
+        } catch  {
+            XCTAssertEqual(error as? LocalAppointmentLoader.Error, .insertion)
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: AppointmentStoreSpy.Result = .success(.none)) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
         let store = AppointmentStoreSpy(result: result)

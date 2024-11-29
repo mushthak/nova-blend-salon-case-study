@@ -27,11 +27,22 @@ class AppointmentStoreSpy: AppointmentStore {
     enum ReceivedMessage: Equatable {
         case retrieve
         case insert(LocalAppointmentItem)
+        case insertAll([LocalAppointmentItem])
         case deleteAll
     }
     
     func insert(_ appointment: LocalAppointmentItem) throws {
         receivedMessages.append(.insert(appointment))
+        switch result {
+        case .failure(let error) where error == .insertionError:
+            throw error
+        case .success(_), .failure(_):
+            break
+        }
+    }
+    
+    func insert(_ appointments: [LocalAppointmentItem]) async throws {
+        receivedMessages.append(.insertAll(appointments))
         switch result {
         case .failure(let error) where error == .insertionError:
             throw error

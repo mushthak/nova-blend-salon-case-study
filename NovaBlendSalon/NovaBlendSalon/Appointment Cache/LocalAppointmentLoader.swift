@@ -34,6 +34,11 @@ public class LocalAppointmentLoader: AppointmentCache {
         } catch {
             throw Error.deletion
         }
+        do {
+            try await store.insert(appointment.map { $0.toLocal()})
+        } catch {
+            throw Error.insertion
+        }
     }
     
     public func load() async throws -> [Appointment]{

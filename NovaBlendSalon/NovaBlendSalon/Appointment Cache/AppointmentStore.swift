@@ -9,6 +9,7 @@ import Foundation
 
 public protocol AppointmentStore {
     func insert(_ appointment: LocalAppointmentItem) async throws
+    func insert(_ appointments: [LocalAppointmentItem]) async throws
     func retrieve() async throws -> [LocalAppointmentItem]
     func deleteAll() async throws
 }

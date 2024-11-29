@@ -21,6 +21,8 @@ extension SwiftDataStore: AppointmentStore {
     
     public func deleteAll() async throws {}
     
+    public func insert(_ appointments: [LocalAppointmentItem]) async throws {}
+    
     //MARK: Helpers
     private func findAppointmentCache() throws -> [ManagedAppointmentItem] {
         let descriptor = FetchDescriptor<ManagedAppointmentItem>()
