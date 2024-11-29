@@ -87,6 +87,18 @@ final class CacheAppointmentUseCaseTests: XCTestCase {
         }
     }
     
+    func test_save_remoteAppointments_succeedsOnSuccessfullCacheInsertion() async {
+        let (sut, _) = makeSUT()
+        let appointment = makeAppointmentItem()
+        
+        do {
+            try await sut.save([appointment])
+        } catch  {
+            XCTFail("Expected successfull cache insertion but got \(error) intead")
+
+        }
+    }
+    
     //MARK: Helpers
     private func makeSUT(with result: AppointmentStoreSpy.Result = .success(.none)) -> (sut: LocalAppointmentLoader, store: AppointmentStoreSpy ) {
         let store = AppointmentStoreSpy(result: result)
