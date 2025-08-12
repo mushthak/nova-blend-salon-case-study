@@ -9,6 +9,8 @@ import NovaBlendSalon
 import Foundation
 
 struct SalonLoaderSpec: RemoteLoaderTestable {
+    static var emptyListJSON: Data { Data("{\"salons\": []}".utf8) }
+    
     typealias LoaderError = RemoteSalonLoader.Error
     
     static var connectivityError: LoaderError { .connectivity }

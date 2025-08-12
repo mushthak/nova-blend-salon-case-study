@@ -10,6 +10,8 @@ import XCTest
 protocol RemoteLoaderTestable {
     associatedtype Loader: RemoteLoader
     associatedtype LoaderError: Error & Equatable
+    
+    static var emptyListJSON: Data { get }
 
     static var connectivityError: LoaderError { get }
     static var invalidDataError: LoaderError { get }
@@ -112,7 +114,7 @@ class LoadFromRemoteUseCaseTestsBase<Spec: RemoteLoaderTestable>: XCTestCase {
     
     private func makeSUT(
         url: URL = anyURL(),
-        with result: Result<(Data, HTTPURLResponse), Error> = .success((Data("{\"salons\": []}".utf8), anyValidHTTPResponse())),
+        with result: Result<(Data, HTTPURLResponse), Error> = .success((Spec.emptyListJSON, anyValidHTTPResponse())),
         file: StaticString = #file, line: UInt = #line
     ) -> (sut: Spec.Loader, client: HTTPClientSpy) {
         let client = HTTPClientSpy(result: result)
