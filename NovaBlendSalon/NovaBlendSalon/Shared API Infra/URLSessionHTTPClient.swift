@@ -27,6 +27,7 @@ public final class URLSessionHTTPClient: HTTPClient {
     public func postTo(url: URL, data: Data) async throws -> (Data, HTTPURLResponse) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.httpBody = data
         let (data, response) = try await session.data(for: request)
         guard let response = response as? HTTPURLResponse else {
             throw UnexpectedValuesRepresentation()
