@@ -9,12 +9,12 @@ import Foundation
 import SwiftData
 
 @Model public class ManagedSalonItem {
-    public let id: UUID
-    let name: String
-    let location: String
-    let phone: String?
-    let openTime: Float
-    let closeTime: Float
+    public var id: UUID
+    var name: String
+    var location: String
+    var phone: String?
+    var openTime: Float
+    var closeTime: Float
     var cache: ManagedCache?
     
     public init(id: UUID, name: String, location: String, phone: String?, openTime: Float, closeTime: Float) {

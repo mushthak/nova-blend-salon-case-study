@@ -9,13 +9,13 @@ import Foundation
 import SwiftData
 
 @Model public class ManagedAppointmentItem {
-     public let id: UUID
-     let time: Date
-     let phone: String
-     let email: String?
-     let notes: String?
+    public var id: UUID
+    var time: Date
+    var phone: String
+    var email: String?
+    var notes: String?
     
-     init(id: UUID, time: Date, phone: String, email: String?, notes: String?) {
+    init(id: UUID, time: Date, phone: String, email: String?, notes: String?) {
         self.id = id
         self.time = time
         self.phone = phone
