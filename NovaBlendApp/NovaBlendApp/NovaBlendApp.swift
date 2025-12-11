@@ -93,6 +93,7 @@ struct NovaBlendApp: App {
 #endif
     
     private func getContainer() -> ModelContainer {
+        ensureAppSupportDirectoryExists()
         let container =  try! ModelContainer(for: ManagedCache.self)
 #if DEBUG
         if CommandLine.arguments.contains("-reset") {
@@ -101,5 +102,19 @@ struct NovaBlendApp: App {
         }
 #endif
         return container
+    }
+
+    private func ensureAppSupportDirectoryExists() {
+        let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
+        if let appSupportURL = paths.first {
+            do {
+                try FileManager.default.createDirectory(at: appSupportURL, withIntermediateDirectories: true)
+                print("✅ Application Support directory ensured at: \(appSupportURL.path)")
+            } catch {
+                print("⚠️ Failed to create Application Support directory: \(error)")
+            }
+        } else {
+            print("⚠️ Application Support directory path could not be resolved")
+        }
     }
 }
