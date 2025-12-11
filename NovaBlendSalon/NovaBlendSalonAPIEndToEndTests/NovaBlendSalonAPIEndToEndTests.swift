@@ -96,7 +96,7 @@ final class NovaBlendSalonAPIEndToEndTests: XCTestCase {
 extension NovaBlendSalonAPIEndToEndTests {
     func test_endToEndTestServerBookApppointment_matchesFixedTestAppointmentBookedResponse() async {
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let booker = RemoteAppointmentBooker(url: URL(string: "https://run.mocky.io/v3/c45a1211-3a83-48a1-a2c9-643efa2f0d7b")!, client: client)
+        let booker = RemoteAppointmentBooker(url: URL(string: "https://webhook.site/515a22f7-1bf1-4209-864f-61a913edffe9")!, client: client)
         trackForMemoryLeak(client)
         trackForMemoryLeak(booker)
         do {
@@ -112,7 +112,7 @@ extension NovaBlendSalonAPIEndToEndTests {
     private func makeAppointmentItem() -> (Appointment) {
         return Appointment(id: UUID(uuidString: "9208E424-2EA9-4862-BD1B-0A1DA148382A")!,
                                 time: Date.init(timeIntervalSince1970: 1731418080),
-                                          phone: "a phone number",
+                                          phone: "12345678910",
                                           email: nil,
                                           notes: nil)
     }
