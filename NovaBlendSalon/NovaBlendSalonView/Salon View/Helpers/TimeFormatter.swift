@@ -34,7 +34,7 @@ public enum TimeFormatter {
         dateFormatter.dateFormat = "h:mm a"
         
         // Convert the Date object back to a string in 12-hour format
-        let time12 = dateFormatter.string(from: date)
+        let time12 = dateFormatter.string(from: date).lowercased()
         
         return time12
     }
