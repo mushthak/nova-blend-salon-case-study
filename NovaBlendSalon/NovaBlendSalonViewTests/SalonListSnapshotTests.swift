@@ -13,7 +13,7 @@ final class SalonListSnapshotTests: XCTestCase {
     
     func test_salonListWithContent() async {
         let vm = PreviewHelper.salonListViewModelPreview
-        let view = SalonListView(viewModel: vm)
+        let view = await SalonListView(viewModel: vm)
         let sut =  await UIHostingController(rootView: view)
         await vm.loadSalons()
         

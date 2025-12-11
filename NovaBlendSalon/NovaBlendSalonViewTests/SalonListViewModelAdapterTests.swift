@@ -23,7 +23,7 @@ class SpyLoader: SalonLoader {
 final class SalonListViewModelAdapterTests: XCTestCase {
     
     func test_map_salonsToSalonViewModels() async {
-        let salon = uniqueSalon(with: (open: 10, close: 19), hoursString: "Today’s hours : 10:00 AM - 7:00 PM")
+        let salon = uniqueSalon(with: (open: 10, close: 19), hoursString: "Today’s hours : 10:00 am - 7:00 pm")
         let loader = SpyLoader(salons: [salon.model])
         let sut = SalonListViewModelAdapter(loader: loader)
         
